@@ -1,1 +1,2 @@
 test
+alfred commit test 2
