@@ -1,1 +1,2 @@
 git commit test
+fredriks kommentar
