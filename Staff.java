@@ -3,7 +3,7 @@ public class Staff extends Weapon {
 
     public Staff(String name, int level) {
         super(name, level);
-        intelligence += 2 * level;
+        intelligence += 2 * level; //Intelligence ökar med item level
     }
 
     public int getIntelligence() {
