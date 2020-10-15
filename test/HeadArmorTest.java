@@ -15,11 +15,11 @@ class HeadArmorTest {
 
     @Test
     void createHelmetHigherThanOne() {
-        Helmet skullHelmet = new Helmet("Skull Helmet", 10);
+        Helmet skullHelmet = new Helmet("Skull Helmet", 15);
         assertEquals("Skull Helmet", skullHelmet.getName());
-        assertEquals(10, skullHelmet.getLevel());
-        assertEquals(30, skullHelmet.getHealth());
-        assertEquals(25, skullHelmet.getDefense());
+        assertEquals(15, skullHelmet.getLevel());
+        assertEquals(32, skullHelmet.getHealth());
+        assertEquals(27, skullHelmet.getDefense());
     }
     @Test
     void createLevelOneCap() {
@@ -32,9 +32,9 @@ class HeadArmorTest {
 
     @Test
     void createCapHigherThanOne() {
-        Cap priestCap = new Cap("Priest Cap", 20);
+        Cap priestCap = new Cap("Priest Cap", 27);
         assertEquals("Priest Cap", priestCap.getName());
-        assertEquals(20, priestCap.getLevel());
+        assertEquals(27, priestCap.getLevel());
         assertEquals(50, priestCap.getMana());
         assertEquals(45, priestCap.getDefense());
     }

@@ -5,8 +5,8 @@ public class Cap extends HeadArmor {
     public Cap(String name, int level) {
         super(name, level);
         if (level != 1) {
-            mana += 2 * level; //Mana ökar med level
-            defense += 2 * level;   //Defense ökar med level
+            mana += 1.5 * level; //Mana ökar med level
+            defense += 1.5 * level;   //Defense ökar med level
         }
     }
 
