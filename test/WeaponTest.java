@@ -6,34 +6,34 @@ class WeaponTest {
 
     @Test
     void createLevelOneSword() {
-        Sword sword = new Sword("excalibur", 1);
-        assertEquals("excalibur", sword.getName());
-        assertEquals(1, sword.getLevel());
-        assertEquals(5, sword.getAttack());
+        Sword rustySword = new Sword("Rusty Sword", 1);
+        assertEquals("Rusty Sword", rustySword.getName());
+        assertEquals(1, rustySword.getLevel());
+        assertEquals(5, rustySword.getAttack());
     }
 
     @Test
     void createSwordHigherThanLevelOne() {
-        Sword sword = new Sword("excalibur", 10);
-        assertEquals("excalibur", sword.getName());
-        assertEquals(10, sword.getLevel());
-        assertEquals(25, sword.getAttack());
+        Sword excalibur = new Sword("Excalibur", 10);
+        assertEquals("Excalibur", excalibur.getName());
+        assertEquals(10, excalibur.getLevel());
+        assertEquals(25, excalibur.getAttack());
     }
 
     @Test
     void createLevelOneStaff() {
-        Staff staff = new Staff("darkness staff", 1);
-        assertEquals("darkness staff", staff.getName());
-        assertEquals(1, staff.getLevel());
-        assertEquals(5, staff.getIntelligence());
+        Staff woodenStaff = new Staff("Wooden Staff", 1);
+        assertEquals("Wooden Staff", woodenStaff.getName());
+        assertEquals(1, woodenStaff.getLevel());
+        assertEquals(5, woodenStaff.getIntelligence());
     }
 
     @Test
     void createStaffHigherThanLevelOne() {
-        Staff staff = new Staff("darkness staff", 10);
-        assertEquals("darkness staff", staff.getName());
-        assertEquals(10, staff.getLevel());
-        assertEquals(25, staff.getIntelligence());
+        Staff goldenStaff = new Staff("Golden Staff", 10);
+        assertEquals("Golden Staff", goldenStaff.getName());
+        assertEquals(10, goldenStaff.getLevel());
+        assertEquals(25, goldenStaff.getIntelligence());
     }
 
     @Test
@@ -44,12 +44,12 @@ class WeaponTest {
     @Test
     void createWeaponWithLevelLowerThanOne() {
         assertThrows(IllegalArgumentException.class, () ->
-                new Sword("excalibur", 0));
+                new Sword("Rusty Sword", 0));
     }
 
     @Test
     void createWeaponWithLevelHigherThanOneHundred() {
         assertThrows(IllegalArgumentException.class, () ->
-                new Staff("darkness staff", 101));
+                new Staff("Merlin Staff", 101));
     }
 }
