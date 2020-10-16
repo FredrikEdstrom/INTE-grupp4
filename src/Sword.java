@@ -4,7 +4,7 @@ public class Sword extends Weapon {
     public Sword(String name, int level) {
         super(name, level);
         if (level != 1)
-            attack += 1.5 * level; //Attack ökar med item level
+            attack += 2 * level; //Attack förändras med item level
     }
 
     public int getAttack() {
