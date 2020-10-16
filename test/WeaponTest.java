@@ -17,7 +17,7 @@ class WeaponTest {
         Sword excalibur = new Sword("Excalibur", 11);
         assertEquals("Excalibur", excalibur.getName());
         assertEquals(11, excalibur.getLevel());
-        assertEquals(21, excalibur.getAttack());
+        assertEquals(27, excalibur.getAttack());
     }
 
     @Test
@@ -33,7 +33,7 @@ class WeaponTest {
         Staff goldenStaff = new Staff("Golden Staff", 13);
         assertEquals("Golden Staff", goldenStaff.getName());
         assertEquals(13, goldenStaff.getLevel());
-        assertEquals(24, goldenStaff.getIntelligence());
+        assertEquals(31, goldenStaff.getIntelligence());
     }
 
     @Test
