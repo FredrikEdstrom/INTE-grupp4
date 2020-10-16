@@ -37,8 +37,15 @@ class WeaponTest {
     }
 
     @Test
+    void createWeaponWithEmptyName() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new Sword("", 25));
+    }
+
+    @Test
     void createWeaponWithBlankName() {
-        assertThrows(IllegalArgumentException.class, () -> new Sword(" ", 10));
+        assertThrows(IllegalArgumentException.class,
+                () -> new Sword(" ", 10));
     }
 
     @Test

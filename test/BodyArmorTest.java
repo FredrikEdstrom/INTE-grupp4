@@ -23,6 +23,11 @@ class BodyArmorTest {
         assertEquals(59, steelPlate.getDefense());
     }
     @Test
+    void createBodyArmorEmptyName() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new BodyArmor("", 11));
+    }
+    @Test
     void createBodyArmorBlankName() {
         assertThrows(IllegalArgumentException.class,
                 () -> new BodyArmor(" ", 22));

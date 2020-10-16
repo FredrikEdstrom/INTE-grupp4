@@ -39,6 +39,11 @@ class HeadArmorTest {
         assertEquals(45, priestCap.getDefense());
     }
     @Test
+    void createHeadArmorEmptyName() {
+        assertThrows(IllegalArgumentException.class, () ->
+                new Helmet("", 10));
+    }
+    @Test
     void createHeadArmorBlankName() {
         assertThrows(IllegalArgumentException.class, () ->
                 new Helmet(" ", 5));
