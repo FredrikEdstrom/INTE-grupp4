@@ -14,13 +14,14 @@ class HeadArmorTest {
     }
 
     @Test
-    void createHelmetHigherThanOne() {
+    void createHelmetHigherThanLevelOne() {
         Helmet skullHelmet = new Helmet("Skull Helmet", 15);
         assertEquals("Skull Helmet", skullHelmet.getName());
         assertEquals(15, skullHelmet.getLevel());
         assertEquals(32, skullHelmet.getHealth());
         assertEquals(27, skullHelmet.getDefense());
     }
+
     @Test
     void createLevelOneCap() {
         Cap tornCap = new Cap("Torn Cap", 1);
@@ -31,31 +32,35 @@ class HeadArmorTest {
     }
 
     @Test
-    void createCapHigherThanOne() {
+    void createCapHigherThanLevelOne() {
         Cap priestCap = new Cap("Priest Cap", 27);
         assertEquals("Priest Cap", priestCap.getName());
         assertEquals(27, priestCap.getLevel());
         assertEquals(50, priestCap.getMana());
         assertEquals(45, priestCap.getDefense());
     }
+
     @Test
     void createHeadArmorEmptyName() {
         assertThrows(IllegalArgumentException.class, () ->
                 new Helmet("", 10));
     }
+
     @Test
     void createHeadArmorBlankName() {
         assertThrows(IllegalArgumentException.class, () ->
                 new Helmet(" ", 5));
     }
+
     @Test
-    void createHeadArmorLevelLowerThanOne() {
+    void createHeadArmorLowerThanLevelOne() {
         assertThrows(IllegalArgumentException.class, () ->
                 new Helmet("Rusty Helmet", 0));
     }
+
     @Test
     void createHeadArmorHigherThanLevelOneHundred() {
         assertThrows(IllegalArgumentException.class, () ->
-                new Cap ("High Priest Cap", 101));
+                new Cap("High Priest Cap", 101));
     }
 }
