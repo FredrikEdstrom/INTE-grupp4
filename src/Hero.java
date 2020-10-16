@@ -1,6 +1,6 @@
 public class Hero {
 
-    private String name;
+    private final String name;
     private int level = 1;
     private int attack = 10;
     private int defense = 10;
@@ -9,14 +9,17 @@ public class Hero {
     private int intelligence = 10;
     private int experience = 0;
 
-    public Hero (String name, int level, int attack, int defense, int health, int intelligence, int experience) {
+    private Weapon weapon;
+    private HeadArmor headArmor;
+    private BodyArmor bodyArmor;
+    private HandArmor handArmor;
+    private LegArmor legArmor;
+    private FootArmor footArmor;
+
+    public Hero (String name) {
+        if(name.isEmpty() || name.isBlank())
+            throw new IllegalArgumentException("Name: empty"); //Namn får inte vara tom eller blank
         this.name = name;
-        this.level = level;
-        this.attack = attack;
-        this.defense = defense;
-        this.health = health;
-        this.intelligence = intelligence;
-        this.experience = experience;
     }
 
     public String getName() {
@@ -51,4 +54,75 @@ public class Hero {
         return experience;
     }
 
+    public void setAttack(int attack) {
+        this.attack = attack;
+    }
+
+    public void setDefense(int defense) {
+        this.defense = defense;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
+    public void setMana(int mana) {
+        this.mana = mana;
+    }
+
+    public void setIntelligence(int intelligence) {
+        this.intelligence = intelligence;
+    }
+
+    public void setExperience(int experience) {
+        this.experience = experience;
+    }
+
+    public void levelUp( ) {
+        this.level++;
+        //Osäkert om hur mycket ska attributer öka för varje level up
+        //Om de ökar kvadratisk så bli de för stor
+        health += 20;
+        mana += 20;
+        attack += 5;
+        defense += 5;
+        intelligence += 5;
+    }
+
+    //Setter metod för level som används för testning
+    protected void setLevel(int level) {
+        while (this.level != level)
+            levelUp();
+    }
+
+    //Equip weapon och armor metoder start:
+    //Low level hero får inte equipa high level item
+    public void equipWeapon(Weapon weapon) {
+        if(weapon.getLevel() > level) {
+            throw new IllegalStateException("Hero level: " + level + " Item level: " + weapon.getLevel());
+        } else {
+            this.weapon = weapon;
+            if(weapon instanceof Sword) {
+                attack += ((Sword) weapon).getAttack();
+            } else {
+                intelligence += ((Staff) weapon).getIntelligence();
+            }
+        }
+    }
+
+    public void equipHeadArmor(HeadArmor headArmor) {
+        if(headArmor.getLevel() > level) {
+            throw new IllegalStateException("Hero level: " + level + " Item level: " + headArmor.getLevel());
+        } else {
+            this.headArmor = headArmor;
+            if(headArmor instanceof Helmet) {
+                health += ((Helmet) headArmor).getHealth();
+                defense += ((Helmet) headArmor).getDefense();
+            } else {
+                mana += ((Cap) headArmor).getMana();
+                defense += ((Cap) headArmor).getDefense();
+            }
+        }
+    }
+    //Equip weapon och armor metoder end
 }
