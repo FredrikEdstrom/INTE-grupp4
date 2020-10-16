@@ -18,8 +18,8 @@ class FootArmorTest {
         Boots boneBoots = new Boots("Bone Boots", 16);
         assertEquals("Bone Boots", boneBoots.getName());
         assertEquals(16, boneBoots.getLevel());
-        assertEquals(34, boneBoots.getHealth());
-        assertEquals(29, boneBoots.getDefense());
+        assertEquals(42, boneBoots.getHealth());
+        assertEquals(37, boneBoots.getDefense());
     }
 
     @Test
@@ -36,8 +36,8 @@ class FootArmorTest {
         Shoes priestShoes = new Shoes("Priest Shoes", 67);
         assertEquals("Priest Shoes", priestShoes.getName());
         assertEquals(67, priestShoes.getLevel());
-        assertEquals(110, priestShoes.getMana());
-        assertEquals(105, priestShoes.getDefense());
+        assertEquals(144, priestShoes.getMana());
+        assertEquals(139, priestShoes.getDefense());
     }
 
     @Test
@@ -49,7 +49,7 @@ class FootArmorTest {
     @Test
     void createFootArmorBlankName() {
         assertThrows(IllegalArgumentException.class, () ->
-                new Shoes(" ", 5));
+                new Shoes("    ", 5));
     }
 
     @Test
