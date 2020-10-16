@@ -16,7 +16,9 @@ class HeroTest {
                 () -> new Hero("   "));
     }
 
-    //Hero equip and un-equip weapon and armor start
+    //Hero equip and un-equip weapon and armor start:
+
+    //Weapon equip test start:
     @Test
     void heroEquipSwordWeapon() {
         Hero slasher = new Hero("Slasher");
@@ -24,7 +26,6 @@ class HeroTest {
         slasher.equipWeapon(rustySword);
 
         assertEquals(20, slasher.getAttack());
-        assertEquals(10, slasher.getIntelligence());
     }
 
     @Test
@@ -34,7 +35,6 @@ class HeroTest {
         caster.equipWeapon(woodenStaff);
 
         assertEquals(20, caster.getIntelligence());
-        assertEquals(10, caster.getAttack());
     }
 
     @Test
@@ -45,7 +45,6 @@ class HeroTest {
         slasher.equipWeapon(goldenSword);
 
         assertEquals(365, slasher.getAttack());
-        assertEquals(255, slasher.getIntelligence());
     }
 
     @Test
@@ -56,7 +55,6 @@ class HeroTest {
         slasher.equipWeapon(rustySword);
 
         assertEquals(265, slasher.getAttack());
-        assertEquals(255, slasher.getIntelligence());
     }
 
     @Test
@@ -66,7 +64,9 @@ class HeroTest {
 
         assertThrows(IllegalStateException.class, () -> caster.equipWeapon(goldenStaff));
     }
+    //Weapon equip test ends
 
+    //Head armor equip start:
     @Test
     void heroEquipHeadArmorHelmet() {
         Hero slasher = new Hero("Slasher");
@@ -74,7 +74,6 @@ class HeroTest {
         slasher.equipHeadArmor(rustyHelmet);
 
         assertEquals(110, slasher.getHealth());
-        assertEquals(100, slasher.getMana());
         assertEquals(15, slasher.getDefense());
     }
 
@@ -85,7 +84,6 @@ class HeroTest {
         caster.equipHeadArmor(tornCap);
 
         assertEquals(110, caster.getMana());
-        assertEquals(100, caster.getHealth());
         assertEquals(15, caster.getDefense());
     }
 
@@ -97,7 +95,6 @@ class HeroTest {
         slasher.equipHeadArmor(rustyHelmet);
 
         assertEquals(690, slasher.getHealth());
-        assertEquals(680, slasher.getMana());
         assertEquals(160, slasher.getDefense());
     }
 
@@ -109,7 +106,6 @@ class HeroTest {
         caster.equipHeadArmor(priestCap);
 
         assertEquals(750, caster.getMana());
-        assertEquals(680, caster.getHealth());
         assertEquals(220, caster.getDefense());
     }
 
@@ -120,6 +116,7 @@ class HeroTest {
 
         assertThrows(IllegalStateException.class, () -> slasher.equipHeadArmor(skullHelm));
     }
+    //Head armor equip ends
 
     //Hero equip and un-equip weapon and armor end
 }
