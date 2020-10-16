@@ -1,5 +1,5 @@
 public class Sword extends Weapon {
-    private int attack = 5;
+    private int attack = 10;
 
     public Sword(String name, int level) {
         super(name, level);

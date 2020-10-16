@@ -1,5 +1,5 @@
 public class Staff extends Weapon {
-    private int intelligence = 5;
+    private int intelligence = 10;
 
     public Staff(String name, int level) {
         super(name, level);
