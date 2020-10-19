@@ -119,7 +119,7 @@ public class Hero {
     }
 
     public void equipHeadArmor(HeadArmor headArmor) {
-        if(headArmor.getLevel() > level) {
+        if(level < headArmor.getLevel()) {
             throw new IllegalStateException("Hero level: " + level + " Item level: " + headArmor.getLevel());
         } else {
             this.headArmor = headArmor;
@@ -132,5 +132,109 @@ public class Hero {
             }
         }
     }
+
+    public void unEquipHeadArmor() {
+        if(headArmor instanceof Helmet) {
+            health -= ((Helmet) headArmor).getHealth();
+            defense -= ((Helmet) headArmor).getDefense();
+        } else {
+            mana -= ((Cap) headArmor).getMana();
+            defense -= ((Cap) headArmor).getDefense();
+        }
+        headArmor = null;
+    }
+
+    public void equipBodyArmor(BodyArmor bodyArmor) {
+        if(level < bodyArmor.getLevel()) {
+            throw new IllegalStateException("Hero level: " + level + " Item level: " + bodyArmor.getLevel());
+        } else {
+            health += bodyArmor.getHealth();
+            mana += bodyArmor.getMana();
+            defense += bodyArmor.getDefense();
+            this.bodyArmor = bodyArmor;
+        }
+    }
+
+    public void unEquipBodyArmor() {
+        health -= bodyArmor.getHealth();
+        mana -= bodyArmor.getMana();
+        defense -= bodyArmor.getDefense();
+        bodyArmor = null;
+    }
+
+    public void equipHandArmor(HandArmor handArmor) {
+        if(level < handArmor.getLevel()) {
+            throw new IllegalStateException("Hero level: " + level + " Item level: " + bodyArmor.getLevel());
+        } else {
+            this.handArmor = handArmor;
+            if(handArmor instanceof Gauntlets) {
+                health += ((Gauntlets) handArmor).getHealth();
+                attack += ((Gauntlets) handArmor).getAttack();
+                defense += ((Gauntlets) handArmor).getDefense();
+            } else {
+                mana += ((Gloves) handArmor).getMana();
+                intelligence += ((Gloves) handArmor).getIntelligence();
+                defense += ((Gloves) handArmor).getDefense();
+            }
+        }
+    }
+
+    public void unEquipHandArmor() {
+        if(handArmor instanceof Gauntlets) {
+            health -= ((Gauntlets) handArmor).getHealth();
+            attack -= ((Gauntlets) handArmor).getAttack();
+            defense -= ((Gauntlets) handArmor).getDefense();
+        } else {
+            mana -= ((Gloves) handArmor).getMana();
+            intelligence -= ((Gloves) handArmor).getIntelligence();
+            defense -= ((Gloves) handArmor).getDefense();
+        }
+        handArmor = null;
+    }
+
+    public void equipLegArmor(LegArmor legArmor) {
+        if(level < legArmor.getLevel()) {
+            throw new IllegalStateException("Hero level: " + level + " Item level: " + legArmor.getLevel());
+        } else {
+            health += legArmor.getHealth();
+            mana += legArmor.getMana();
+            defense += legArmor.getDefense();
+            this.legArmor = legArmor;
+        }
+    }
+
+    public void unEquipLegArmor() {
+        health -= legArmor.getHealth();
+        mana -= legArmor.getMana();
+        defense -= legArmor.getDefense();
+        legArmor = null;
+    }
+
+    public void equipFootArmor(FootArmor footArmor) {
+        if(level < footArmor.getLevel()) {
+            throw new IllegalStateException("Hero level: " + level + " Item level: " + footArmor.getLevel());
+        } else {
+            this.footArmor = footArmor;
+            if(footArmor instanceof Boots) {
+                health += ((Boots) footArmor).getHealth();
+                defense += ((Boots) footArmor).getDefense();
+            } else {
+                mana += ((Shoes) footArmor).getMana();
+                defense += ((Shoes) footArmor).getDefense();
+            }
+        }
+    }
+
+    public void unEquipFootArmor() {
+        if(footArmor instanceof Boots) {
+            health -= ((Boots) footArmor).getHealth();
+            defense -= ((Boots) footArmor).getDefense();
+        } else {
+            mana -= ((Shoes) footArmor).getMana();
+            defense -= ((Shoes) footArmor).getDefense();
+        }
+        footArmor = null;
+    }
+
     //Equip weapon och armor metoder end
 }

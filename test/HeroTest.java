@@ -89,7 +89,7 @@ class HeroTest {
 
     //Weapon equip and un-equip test ends
 
-    //Head armor equip start:
+    //Head armor equip  and un-equip start:
     @Test
     void heroEquipHeadArmorHelmet() {
         Hero slasher = new Hero("Slasher");
@@ -139,7 +139,21 @@ class HeroTest {
 
         assertThrows(IllegalStateException.class, () -> slasher.equipHeadArmor(skullHelm));
     }
-    //Head armor equip ends
+
+    @Test
+    void unEquipHeadArmorHelmet() {
+        Hero slasher = new Hero("Slasher");
+        HeadArmor skullHelmet = new Helmet("Skull Helmet", 25);
+        slasher.setLevel(25);
+        slasher.equipHeadArmor(skullHelmet);
+        slasher.unEquipHeadArmor();
+
+        assertEquals(580, slasher.getHealth());
+        assertEquals(130, slasher.getDefense());
+    }
+    //Head armor equip un-equip ends
+
+    //Body armor equip
 
     //Hero equip and un-equip weapon and armor end
 }
