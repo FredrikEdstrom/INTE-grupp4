@@ -237,4 +237,28 @@ public class Hero {
     }
 
     //Equip weapon och armor metoder end
+
+    public void castBuffSpell(BuffSpell spell){
+        switch (spell.getName()){
+            case "AttackUp":
+                int newAttack = getAttack() + spell.getBuffValue();
+                setAttack(newAttack);
+                break;
+            case "DefenseUp":
+                int newDefense = getDefense() + spell.getBuffValue();
+                setDefense(newDefense);
+                break;
+            case "IntelligenceUp":
+                int newIntelligence = getIntelligence() + spell.getBuffValue();
+                setIntelligence(newIntelligence);
+                break;
+        }
+    }
+
+    public void castHealSpell(HealSpell spell){
+        int newHealth = getHealth() + spell.getHealValue();
+        if (newHealth>100)
+            newHealth = 100;
+        setHealth(newHealth);
+    }
 }
