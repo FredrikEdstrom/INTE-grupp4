@@ -54,6 +54,30 @@ public class Hero {
         return experience;
     }
 
+    public Weapon getWeapon() {
+        return weapon;
+    }
+
+    public HeadArmor getHeadArmor() {
+        return headArmor;
+    }
+
+    public BodyArmor getBodyArmor() {
+        return bodyArmor;
+    }
+
+    public HandArmor getHandArmor() {
+        return handArmor;
+    }
+
+    public LegArmor getLegArmor() {
+        return legArmor;
+    }
+
+    public FootArmor getFootArmor() {
+        return footArmor;
+    }
+
     public void setAttack(int attack) {
         this.attack = attack;
     }
@@ -98,7 +122,7 @@ public class Hero {
     //Equip weapon och armor metoder start:
     //Low level hero får inte equipa high level item
     public void equipWeapon(Weapon weapon) {
-        if (weapon.getLevel() > level) {
+        if (level < weapon.getLevel()) {
             throw new IllegalStateException("Hero level: " + level + " Item level: " + weapon.getLevel());
         } else {
             this.weapon = weapon;

@@ -3,7 +3,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class HeroTest {
-
+    
     @Test
     void createHeroWithEmptyName() {
         assertThrows(IllegalArgumentException.class,
@@ -25,6 +25,7 @@ class HeroTest {
         Weapon rustySword = new Sword("Rusty Sword", 1);
         slasher.equipWeapon(rustySword);
 
+        assertEquals(rustySword, slasher.getWeapon());
         assertEquals(30, slasher.getAttack());
     }
 
@@ -34,6 +35,7 @@ class HeroTest {
         Weapon woodenStaff = new Staff("Wooden Staff", 1);
         caster.equipWeapon(woodenStaff);
 
+        assertEquals(woodenStaff, caster.getWeapon());
         assertEquals(30, caster.getIntelligence());
     }
 
@@ -44,6 +46,7 @@ class HeroTest {
         slasher.setLevel(50);
         slasher.equipWeapon(goldenSword);
 
+        assertEquals(goldenSword, slasher.getWeapon());
         assertEquals(525, slasher.getAttack());
     }
 
@@ -54,6 +57,7 @@ class HeroTest {
         slasher.setLevel(50);
         slasher.equipWeapon(rustySword);
 
+        assertEquals(rustySword, slasher.getWeapon());
         assertEquals(275, slasher.getAttack());
     }
 
@@ -73,6 +77,7 @@ class HeroTest {
         caster.equipWeapon(goldenStaff);
         caster.unEquipWeapon();
 
+        assertNull(caster.getWeapon());
         assertEquals(305, caster.getIntelligence());
 
     }
@@ -85,6 +90,7 @@ class HeroTest {
         slasher.equipWeapon(goldenSword);
         slasher.unEquipWeapon();
 
+        assertNull(slasher.getWeapon());
         assertEquals(255, slasher.getAttack());
     }
 
@@ -98,6 +104,7 @@ class HeroTest {
         HeadArmor rustyHelmet = new Helmet("Rusty Helmet", 1);
         slasher.equipHeadArmor(rustyHelmet);
 
+        assertEquals(rustyHelmet, slasher.getHeadArmor());
         assertEquals(110, slasher.getHealth());
         assertEquals(15, slasher.getDefense());
     }
@@ -108,6 +115,7 @@ class HeroTest {
         HeadArmor tornCap = new Cap("Torn Cap", 1);
         caster.equipHeadArmor(tornCap);
 
+        assertEquals(tornCap, caster.getHeadArmor());
         assertEquals(110, caster.getMana());
         assertEquals(15, caster.getDefense());
     }
@@ -119,6 +127,7 @@ class HeroTest {
         slasher.setLevel(30);
         slasher.equipHeadArmor(rustyHelmet);
 
+        assertEquals(rustyHelmet, slasher.getHeadArmor());
         assertEquals(690, slasher.getHealth());
         assertEquals(160, slasher.getDefense());
     }
@@ -130,6 +139,7 @@ class HeroTest {
         caster.setLevel(30);
         caster.equipHeadArmor(priestCap);
 
+        assertEquals(priestCap, caster.getHeadArmor());
         assertEquals(840, caster.getMana());
         assertEquals(250, caster.getDefense());
     }
@@ -150,18 +160,20 @@ class HeroTest {
         slasher.equipHeadArmor(skullHelmet);
         slasher.unEquipHeadArmor();
 
+        assertNull(slasher.getHeadArmor());
         assertEquals(580, slasher.getHealth());
         assertEquals(130, slasher.getDefense());
     }
 
     @Test
     void heroUnEquipHeadArmorCap() {
-        Hero caster = new Hero ("Caster");
+        Hero caster = new Hero("Caster");
         HeadArmor priestHelm = new Cap("Priest Helm", 45);
         caster.setLevel(45);
         caster.equipHeadArmor(priestHelm);
         caster.unEquipHeadArmor();
 
+        assertNull(caster.getHeadArmor());
         assertEquals(980, caster.getMana());
         assertEquals(230, caster.getDefense());
     }
@@ -170,10 +182,11 @@ class HeroTest {
     //Body armor equip
     @Test
     void lowLevelHeroEquipLowLevelBodyArmor() {
-        Hero slasher = new Hero ("Slasher");
+        Hero slasher = new Hero("Slasher");
         BodyArmor rustyPlate = new BodyArmor("Rusty Plate", 1);
         slasher.equipBodyArmor(rustyPlate);
 
+        assertEquals(rustyPlate, slasher.getBodyArmor());
         assertEquals(120, slasher.getHealth());
         assertEquals(120, slasher.getMana());
         assertEquals(20, slasher.getDefense());
@@ -181,11 +194,12 @@ class HeroTest {
 
     @Test
     void highLevelHeroEquipSameLevelBodyArmor() {
-        Hero caster = new Hero ("Caster");
+        Hero caster = new Hero("Caster");
         BodyArmor priestRobe = new BodyArmor("Priest Robe", 55);
         caster.setLevel(55);
         caster.equipBodyArmor(priestRobe);
 
+        assertEquals(priestRobe, caster.getBodyArmor());
         assertEquals(1475, caster.getHealth());
         assertEquals(1475, caster.getMana());
         assertEquals(455, caster.getDefense());
@@ -193,11 +207,12 @@ class HeroTest {
 
     @Test
     void highLevelHeroEquipLowLevelBodyArmor() {
-        Hero slasher = new Hero ("Slasher");
+        Hero slasher = new Hero("Slasher");
         BodyArmor rustyPlate = new BodyArmor("Rusty Plate", 1);
         slasher.setLevel(65);
         slasher.equipBodyArmor(rustyPlate);
 
+        assertEquals(rustyPlate, slasher.getBodyArmor());
         assertEquals(1400, slasher.getHealth());
         assertEquals(1400, slasher.getMana());
         assertEquals(340, slasher.getDefense());
@@ -208,17 +223,18 @@ class HeroTest {
         Hero caster = new Hero("Caster");
         BodyArmor merlinRobe = new BodyArmor("Merlin Robe", 100);
 
-        assertThrows(IllegalStateException.class,() -> caster.equipBodyArmor(merlinRobe));
+        assertThrows(IllegalStateException.class, () -> caster.equipBodyArmor(merlinRobe));
     }
 
     @Test
     void heroUnEquipBodyArmor() {
-        Hero slasher = new Hero ("Slasher");
+        Hero slasher = new Hero("Slasher");
         BodyArmor dragonPlate = new BodyArmor("Dragon Plate", 90);
         slasher.setLevel(90);
         slasher.equipBodyArmor(dragonPlate);
         slasher.unEquipBodyArmor();
 
+        assertNull(slasher.getBodyArmor());
         assertEquals(1880, slasher.getHealth());
         assertEquals(1880, slasher.getMana());
         assertEquals(455, slasher.getDefense());
