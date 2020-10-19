@@ -16,8 +16,8 @@ public class Hero {
     private LegArmor legArmor;
     private FootArmor footArmor;
 
-    public Hero (String name) {
-        if(name.isEmpty() || name.isBlank())
+    public Hero(String name) {
+        if (name.isEmpty() || name.isBlank())
             throw new IllegalArgumentException("Name: empty"); //Namn får inte vara tom eller blank
         this.name = name;
     }
@@ -78,7 +78,7 @@ public class Hero {
         this.experience = experience;
     }
 
-    public void levelUp( ) {
+    public void levelUp() {
         this.level++;
         //Osäkert om hur mycket ska attributer öka för varje level up
         //Om de ökar kvadratisk så bli de för stor
@@ -98,11 +98,11 @@ public class Hero {
     //Equip weapon och armor metoder start:
     //Low level hero får inte equipa high level item
     public void equipWeapon(Weapon weapon) {
-        if(weapon.getLevel() > level) {
+        if (weapon.getLevel() > level) {
             throw new IllegalStateException("Hero level: " + level + " Item level: " + weapon.getLevel());
         } else {
             this.weapon = weapon;
-            if(weapon instanceof Sword) {
+            if (weapon instanceof Sword) {
                 attack += ((Sword) weapon).getAttack();
             } else {
                 intelligence += ((Staff) weapon).getIntelligence();
@@ -111,7 +111,7 @@ public class Hero {
     }
 
     public void unEquipWeapon() {
-        if(weapon instanceof Sword)
+        if (weapon instanceof Sword)
             attack -= ((Sword) weapon).getAttack();
         else
             intelligence -= ((Staff) weapon).getIntelligence();
@@ -119,11 +119,11 @@ public class Hero {
     }
 
     public void equipHeadArmor(HeadArmor headArmor) {
-        if(level < headArmor.getLevel()) {
+        if (level < headArmor.getLevel()) {
             throw new IllegalStateException("Hero level: " + level + " Item level: " + headArmor.getLevel());
         } else {
             this.headArmor = headArmor;
-            if(headArmor instanceof Helmet) {
+            if (headArmor instanceof Helmet) {
                 health += ((Helmet) headArmor).getHealth();
                 defense += ((Helmet) headArmor).getDefense();
             } else {
@@ -134,7 +134,7 @@ public class Hero {
     }
 
     public void unEquipHeadArmor() {
-        if(headArmor instanceof Helmet) {
+        if (headArmor instanceof Helmet) {
             health -= ((Helmet) headArmor).getHealth();
             defense -= ((Helmet) headArmor).getDefense();
         } else {
@@ -145,7 +145,7 @@ public class Hero {
     }
 
     public void equipBodyArmor(BodyArmor bodyArmor) {
-        if(level < bodyArmor.getLevel()) {
+        if (level < bodyArmor.getLevel()) {
             throw new IllegalStateException("Hero level: " + level + " Item level: " + bodyArmor.getLevel());
         } else {
             health += bodyArmor.getHealth();
@@ -163,11 +163,11 @@ public class Hero {
     }
 
     public void equipHandArmor(HandArmor handArmor) {
-        if(level < handArmor.getLevel()) {
+        if (level < handArmor.getLevel()) {
             throw new IllegalStateException("Hero level: " + level + " Item level: " + bodyArmor.getLevel());
         } else {
             this.handArmor = handArmor;
-            if(handArmor instanceof Gauntlets) {
+            if (handArmor instanceof Gauntlets) {
                 health += ((Gauntlets) handArmor).getHealth();
                 attack += ((Gauntlets) handArmor).getAttack();
                 defense += ((Gauntlets) handArmor).getDefense();
@@ -180,7 +180,7 @@ public class Hero {
     }
 
     public void unEquipHandArmor() {
-        if(handArmor instanceof Gauntlets) {
+        if (handArmor instanceof Gauntlets) {
             health -= ((Gauntlets) handArmor).getHealth();
             attack -= ((Gauntlets) handArmor).getAttack();
             defense -= ((Gauntlets) handArmor).getDefense();
@@ -193,7 +193,7 @@ public class Hero {
     }
 
     public void equipLegArmor(LegArmor legArmor) {
-        if(level < legArmor.getLevel()) {
+        if (level < legArmor.getLevel()) {
             throw new IllegalStateException("Hero level: " + level + " Item level: " + legArmor.getLevel());
         } else {
             health += legArmor.getHealth();
@@ -211,11 +211,11 @@ public class Hero {
     }
 
     public void equipFootArmor(FootArmor footArmor) {
-        if(level < footArmor.getLevel()) {
+        if (level < footArmor.getLevel()) {
             throw new IllegalStateException("Hero level: " + level + " Item level: " + footArmor.getLevel());
         } else {
             this.footArmor = footArmor;
-            if(footArmor instanceof Boots) {
+            if (footArmor instanceof Boots) {
                 health += ((Boots) footArmor).getHealth();
                 defense += ((Boots) footArmor).getDefense();
             } else {
@@ -226,7 +226,7 @@ public class Hero {
     }
 
     public void unEquipFootArmor() {
-        if(footArmor instanceof Boots) {
+        if (footArmor instanceof Boots) {
             health -= ((Boots) footArmor).getHealth();
             defense -= ((Boots) footArmor).getDefense();
         } else {
@@ -238,8 +238,8 @@ public class Hero {
 
     //Equip weapon och armor metoder end
 
-    public void castBuffSpell(BuffSpell spell){
-        switch (spell.getName()){
+    public void castBuffSpell(BuffSpell spell) {
+        switch (spell.getName()) {
             case "AttackUp":
                 int newAttack = getAttack() + spell.getBuffValue();
                 setAttack(newAttack);
@@ -255,9 +255,9 @@ public class Hero {
         }
     }
 
-    public void castHealSpell(HealSpell spell){
+    public void castHealSpell(HealSpell spell) {
         int newHealth = getHealth() + spell.getHealValue();
-        if (newHealth>100)
+        if (newHealth > 100)
             newHealth = 100;
         setHealth(newHealth);
     }
