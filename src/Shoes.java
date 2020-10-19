@@ -4,9 +4,9 @@ public class Shoes extends FootArmor {
 
     public Shoes(String name, int level) {
         super(name, level);
-        if(level != 1) {
-            mana += 2 * level; //Mana och defense förändras med item level
-            defense += 2 * level;
+        if (level != 1) {
+            mana += 5 * level; //Mana och defense förändras med item level
+            defense += 3 * level;
         }
     }
 

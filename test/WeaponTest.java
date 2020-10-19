@@ -9,7 +9,7 @@ class WeaponTest {
         Sword rustySword = new Sword("Rusty Sword", 1);
         assertEquals("Rusty Sword", rustySword.getName());
         assertEquals(1, rustySword.getLevel());
-        assertEquals(5, rustySword.getAttack());
+        assertEquals(20, rustySword.getAttack());
     }
 
     @Test
@@ -17,7 +17,7 @@ class WeaponTest {
         Sword excalibur = new Sword("Excalibur", 11);
         assertEquals("Excalibur", excalibur.getName());
         assertEquals(11, excalibur.getLevel());
-        assertEquals(27, excalibur.getAttack());
+        assertEquals(75, excalibur.getAttack());
     }
 
     @Test
@@ -25,7 +25,7 @@ class WeaponTest {
         Staff woodenStaff = new Staff("Wooden Staff", 1);
         assertEquals("Wooden Staff", woodenStaff.getName());
         assertEquals(1, woodenStaff.getLevel());
-        assertEquals(5, woodenStaff.getIntelligence());
+        assertEquals(20, woodenStaff.getIntelligence());
     }
 
     @Test
@@ -33,7 +33,7 @@ class WeaponTest {
         Staff goldenStaff = new Staff("Golden Staff", 13);
         assertEquals("Golden Staff", goldenStaff.getName());
         assertEquals(13, goldenStaff.getLevel());
-        assertEquals(31, goldenStaff.getIntelligence());
+        assertEquals(85, goldenStaff.getIntelligence());
     }
 
     @Test

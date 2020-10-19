@@ -13,9 +13,9 @@ public class BodyArmor {
             throw new IllegalArgumentException("Level: " + level); //Level får inte vara lägre än 1 eller högre än 100
         this.level = level;
         if(level != 1) {
-            health += 1.5 * level; //Health, mana, och defense förändras med item level
-            mana += 1.5 * level;
-            defense += 1.5 * level;
+            health += 5 * level; //Health, mana, och defense förändras med item level
+            mana += 5 * level;
+            defense += 3 * level;
         }
     }
 

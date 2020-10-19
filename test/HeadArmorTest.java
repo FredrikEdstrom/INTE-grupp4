@@ -18,8 +18,8 @@ class HeadArmorTest {
         Helmet skullHelmet = new Helmet("Skull Helmet", 15);
         assertEquals("Skull Helmet", skullHelmet.getName());
         assertEquals(15, skullHelmet.getLevel());
-        assertEquals(40, skullHelmet.getHealth());
-        assertEquals(35, skullHelmet.getDefense());
+        assertEquals(85, skullHelmet.getHealth());
+        assertEquals(50, skullHelmet.getDefense());
     }
 
     @Test
@@ -36,8 +36,8 @@ class HeadArmorTest {
         Cap priestCap = new Cap("Priest Cap", 27);
         assertEquals("Priest Cap", priestCap.getName());
         assertEquals(27, priestCap.getLevel());
-        assertEquals(64, priestCap.getMana());
-        assertEquals(59, priestCap.getDefense());
+        assertEquals(145, priestCap.getMana());
+        assertEquals(86, priestCap.getDefense());
     }
 
     @Test

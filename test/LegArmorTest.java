@@ -19,9 +19,9 @@ class LegArmorTest {
         LegArmor steelLegPlate = new LegArmor("Steel Leg Plate", 50);
         assertEquals("Steel Leg Plate", steelLegPlate.getName());
         assertEquals(50, steelLegPlate.getLevel());
-        assertEquals(95, steelLegPlate.getHealth());
-        assertEquals(95, steelLegPlate.getMana());
-        assertEquals(85, steelLegPlate.getDefense());
+        assertEquals(270, steelLegPlate.getHealth());
+        assertEquals(270, steelLegPlate.getMana());
+        assertEquals(160, steelLegPlate.getDefense());
     }
 
     @Test

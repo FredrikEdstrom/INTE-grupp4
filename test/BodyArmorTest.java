@@ -18,9 +18,9 @@ class BodyArmorTest {
         BodyArmor steelPlate = new BodyArmor("Steel Plate", 33);
         assertEquals("Steel Plate", steelPlate.getName());
         assertEquals(33, steelPlate.getLevel());
-        assertEquals(69, steelPlate.getHealth());
-        assertEquals(69, steelPlate.getMana());
-        assertEquals(59, steelPlate.getDefense());
+        assertEquals(185, steelPlate.getHealth());
+        assertEquals(185, steelPlate.getMana());
+        assertEquals(109, steelPlate.getDefense());
     }
     @Test
     void createBodyArmorEmptyName() {

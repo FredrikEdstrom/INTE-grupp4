@@ -10,6 +10,7 @@ class HandArmorTest {
         assertEquals("Rusty Gauntlets", rustyGauntlets.getName());
         assertEquals(1, rustyGauntlets.getLevel());
         assertEquals(10, rustyGauntlets.getHealth());
+        assertEquals(5, rustyGauntlets.getAttack());
         assertEquals(5, rustyGauntlets.getDefense());
     }
 
@@ -18,8 +19,9 @@ class HandArmorTest {
         Gauntlets boneGauntlets = new Gauntlets("Bone Gauntlets", 28);
         assertEquals("Bone Gauntlets", boneGauntlets.getName());
         assertEquals(28, boneGauntlets.getLevel());
-        assertEquals(52, boneGauntlets.getHealth());
-        assertEquals(47, boneGauntlets.getDefense());
+        assertEquals(150, boneGauntlets.getHealth());
+        assertEquals(89,boneGauntlets.getAttack() ) ;
+        assertEquals(89, boneGauntlets.getDefense());
     }
 
     @Test
@@ -28,6 +30,7 @@ class HandArmorTest {
         assertEquals("Torn Gloves", tornGloves.getName());
         assertEquals(1, tornGloves.getLevel());
         assertEquals(10, tornGloves.getMana());
+        assertEquals(5, tornGloves.getIntelligence());
         assertEquals(5, tornGloves.getDefense());
     }
 
@@ -36,8 +39,9 @@ class HandArmorTest {
         Gloves priestGloves = new Gloves("Priest Gloves", 56);
         assertEquals("Priest Gloves", priestGloves.getName());
         assertEquals(56, priestGloves.getLevel());
-        assertEquals(94, priestGloves.getMana());
-        assertEquals(89, priestGloves.getDefense());
+        assertEquals(290, priestGloves.getMana());
+        assertEquals(173, priestGloves.getIntelligence());
+        assertEquals(173, priestGloves.getDefense());
     }
 
     @Test

@@ -16,16 +16,16 @@ class HeroTest {
                 () -> new Hero("   "));
     }
 
-    //Hero equip and un-equip weapon and armor start:
+    //Hero equip and un-equip weapon and armor test start:
 
-    //Weapon equip test start:
+    //Weapon equip and un-equip test start:
     @Test
     void heroEquipSwordWeapon() {
         Hero slasher = new Hero("Slasher");
         Weapon rustySword = new Sword("Rusty Sword", 1);
         slasher.equipWeapon(rustySword);
 
-        assertEquals(20, slasher.getAttack());
+        assertEquals(30, slasher.getAttack());
     }
 
     @Test
@@ -34,7 +34,7 @@ class HeroTest {
         Weapon woodenStaff = new Staff("Wooden Staff", 1);
         caster.equipWeapon(woodenStaff);
 
-        assertEquals(20, caster.getIntelligence());
+        assertEquals(30, caster.getIntelligence());
     }
 
     @Test
@@ -44,7 +44,7 @@ class HeroTest {
         slasher.setLevel(50);
         slasher.equipWeapon(goldenSword);
 
-        assertEquals(365, slasher.getAttack());
+        assertEquals(525, slasher.getAttack());
     }
 
     @Test
@@ -54,7 +54,7 @@ class HeroTest {
         slasher.setLevel(50);
         slasher.equipWeapon(rustySword);
 
-        assertEquals(265, slasher.getAttack());
+        assertEquals(275, slasher.getAttack());
     }
 
     @Test
@@ -64,7 +64,30 @@ class HeroTest {
 
         assertThrows(IllegalStateException.class, () -> caster.equipWeapon(goldenStaff));
     }
-    //Weapon equip test ends
+
+    @Test
+    void lowLevelHeroUnEquipLowLevelWeapon() {
+        Hero slasher = new Hero("Slasher");
+        Weapon rustySword = new Sword("Rusty Sword", 1);
+        slasher.equipWeapon(rustySword);
+        slasher.unEquipWeapon();
+
+        assertEquals(10, slasher.getAttack());
+    }
+
+    @Test
+    void highLevelHeroUnEquipHighLevelWeapon() {
+        Hero caster = new Hero("Caster");
+        Weapon goldenStaff = new Staff("Golden Staff", 50);
+        caster.setLevel(60);
+        caster.equipWeapon(goldenStaff);
+        caster.unEquipWeapon();
+
+        assertEquals(305, caster.getIntelligence());
+
+    }
+
+    //Weapon equip and un-equip test ends
 
     //Head armor equip start:
     @Test
@@ -88,7 +111,7 @@ class HeroTest {
     }
 
     @Test
-    void HighLevelHeroEquipLowLevelHeadArmor() {
+    void highLevelHeroEquipLowLevelHeadArmor() {
         Hero slasher = new Hero("Slasher");
         HeadArmor rustyHelmet = new Helmet("Rusty Helmet", 1);
         slasher.setLevel(30);
@@ -99,14 +122,14 @@ class HeroTest {
     }
 
     @Test
-    void HighLevelHeroEquipSameLevelHeadArmor() {
+    void highLevelHeroEquipSameLevelHeadArmor() {
         Hero caster = new Hero("Caster");
         HeadArmor priestCap = new Cap("Priest Cap", 30);
         caster.setLevel(30);
         caster.equipHeadArmor(priestCap);
 
-        assertEquals(750, caster.getMana());
-        assertEquals(220, caster.getDefense());
+        assertEquals(840, caster.getMana());
+        assertEquals(250, caster.getDefense());
     }
 
     @Test

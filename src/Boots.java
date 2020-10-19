@@ -4,9 +4,9 @@ public class Boots extends FootArmor {
 
     public Boots(String name, int level) {
         super(name, level);
-        if(level != 1) {
-            health += 2 * level; //Health och defense förändras med item level
-            defense += 2 * level;
+        if (level != 1) {
+            health += 5 * level; //Health och defense förändras med item level
+            defense += 3 * level;
         }
     }
 

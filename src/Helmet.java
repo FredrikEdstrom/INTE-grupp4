@@ -5,8 +5,8 @@ public class Helmet extends HeadArmor {
     public Helmet(String name, int level) {
         super(name, level);
         if (level != 1) {
-            health += 2 * level; //Health och defense förändras med item level
-            defense += 2 * level;
+            health += 5 * level; //Health och defense förändras med item level
+            defense += 3 * level;
         }
     }
 

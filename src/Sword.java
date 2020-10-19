@@ -1,10 +1,10 @@
 public class Sword extends Weapon {
-    private int attack = 10;
+    private int attack = 20;
 
     public Sword(String name, int level) {
         super(name, level);
         if (level != 1)
-            attack += 2 * level; //Attack förändras med item level
+            attack += 5 * level; //Attack förändras med item level
     }
 
     public int getAttack() {

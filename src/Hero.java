@@ -110,6 +110,14 @@ public class Hero {
         }
     }
 
+    public void unEquipWeapon() {
+        if(weapon instanceof Sword)
+            attack -= ((Sword) weapon).getAttack();
+        else
+            intelligence -= ((Staff) weapon).getIntelligence();
+        weapon = null;
+    }
+
     public void equipHeadArmor(HeadArmor headArmor) {
         if(headArmor.getLevel() > level) {
             throw new IllegalStateException("Hero level: " + level + " Item level: " + headArmor.getLevel());

@@ -18,8 +18,8 @@ class FootArmorTest {
         Boots boneBoots = new Boots("Bone Boots", 16);
         assertEquals("Bone Boots", boneBoots.getName());
         assertEquals(16, boneBoots.getLevel());
-        assertEquals(42, boneBoots.getHealth());
-        assertEquals(37, boneBoots.getDefense());
+        assertEquals(90, boneBoots.getHealth());
+        assertEquals(53, boneBoots.getDefense());
     }
 
     @Test
@@ -36,8 +36,8 @@ class FootArmorTest {
         Shoes priestShoes = new Shoes("Priest Shoes", 67);
         assertEquals("Priest Shoes", priestShoes.getName());
         assertEquals(67, priestShoes.getLevel());
-        assertEquals(144, priestShoes.getMana());
-        assertEquals(139, priestShoes.getDefense());
+        assertEquals(345, priestShoes.getMana());
+        assertEquals(206, priestShoes.getDefense());
     }
 
     @Test
