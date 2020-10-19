@@ -66,17 +66,7 @@ class HeroTest {
     }
 
     @Test
-    void lowLevelHeroUnEquipLowLevelWeapon() {
-        Hero slasher = new Hero("Slasher");
-        Weapon rustySword = new Sword("Rusty Sword", 1);
-        slasher.equipWeapon(rustySword);
-        slasher.unEquipWeapon();
-
-        assertEquals(10, slasher.getAttack());
-    }
-
-    @Test
-    void highLevelHeroUnEquipHighLevelWeapon() {
+    void heroUnEquipWeaponStaff() {
         Hero caster = new Hero("Caster");
         Weapon goldenStaff = new Staff("Golden Staff", 50);
         caster.setLevel(60);
@@ -88,7 +78,7 @@ class HeroTest {
     }
 
     @Test
-    void heroUnEquipWeapon() {
+    void heroUnEquipWeaponSword() {
         Hero slasher = new Hero("Slasher");
         Weapon goldenSword = new Sword("Golden Sword", 50);
         slasher.setLevel(50);
@@ -97,6 +87,7 @@ class HeroTest {
 
         assertEquals(255, slasher.getAttack());
     }
+
 
     //Weapon equip and un-equip test ends
 
