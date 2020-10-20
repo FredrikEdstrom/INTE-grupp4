@@ -15,6 +15,16 @@ class HandArmorTest {
     }
 
     @Test
+    void createGlovesLevelOne() {
+        Gloves tornGloves = new Gloves("Torn Gloves", 1);
+        assertEquals("Torn Gloves", tornGloves.getName());
+        assertEquals(1, tornGloves.getLevel());
+        assertEquals(10, tornGloves.getMana());
+        assertEquals(5, tornGloves.getIntelligence());
+        assertEquals(2, tornGloves.getDefense());
+    }
+
+    @Test
     void createGauntletsHigherThanLevelOne() {
         Gauntlets boneGauntlets = new Gauntlets("Bone Gauntlets", 28);
         assertEquals("Bone Gauntlets", boneGauntlets.getName());
@@ -25,23 +35,13 @@ class HandArmorTest {
     }
 
     @Test
-    void createGlovesLevelOne() {
-        Gloves tornGloves = new Gloves("Torn Gloves", 1);
-        assertEquals("Torn Gloves", tornGloves.getName());
-        assertEquals(1, tornGloves.getLevel());
-        assertEquals(10, tornGloves.getMana());
-        assertEquals(5, tornGloves.getIntelligence());
-        assertEquals(3, tornGloves.getDefense());
-    }
-
-    @Test
     void createGlovesHigherThanLevelOne() {
-        Gloves priestGloves = new Gloves("Priest Gloves", 56);
+        Gloves priestGloves = new Gloves("Priest Gloves", 28);
         assertEquals("Priest Gloves", priestGloves.getName());
-        assertEquals(56, priestGloves.getLevel());
-        assertEquals(290, priestGloves.getMana());
-        assertEquals(173, priestGloves.getIntelligence());
-        assertEquals(115, priestGloves.getDefense());
+        assertEquals(28, priestGloves.getLevel());
+        assertEquals(150, priestGloves.getMana());
+        assertEquals(89, priestGloves.getIntelligence());
+        assertEquals(44, priestGloves.getDefense());
     }
 
     @Test

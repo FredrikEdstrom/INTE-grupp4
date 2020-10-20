@@ -6,6 +6,7 @@ public class Hero {
     private int defense = 10;
     private int health = 100;
     private int mana = 100;
+    private int agility = 10;
     private int intelligence = 10;
     private int agility = 10;
     private int experience = 0;
@@ -109,12 +110,11 @@ public class Hero {
 
     public void levelUp() {
         this.level++;
-        //Osäkert om hur mycket ska attributer öka för varje level up
-        //Om de ökar kvadratisk så bli de för stor
         health += 20;
         mana += 20;
         attack += 5;
         defense += 5;
+        agility += 5;
         intelligence += 5;
         agility += 5;
     }
@@ -132,11 +132,10 @@ public class Hero {
             throw new IllegalStateException("Hero level: " + level + " Item level: " + weapon.getLevel());
         } else {
             this.weapon = weapon;
-            if (weapon instanceof Sword) {
+            if (weapon instanceof Sword)
                 attack += ((Sword) weapon).getAttack();
-            } else {
+            else
                 intelligence += ((Staff) weapon).getIntelligence();
-            }
         }
     }
 
@@ -153,24 +152,20 @@ public class Hero {
             throw new IllegalStateException("Hero level: " + level + " Item level: " + headArmor.getLevel());
         } else {
             this.headArmor = headArmor;
-            if (headArmor instanceof Helmet) {
+            defense += headArmor.getDefense();
+            if (headArmor instanceof Helmet)
                 health += ((Helmet) headArmor).getHealth();
-                defense += ((Helmet) headArmor).getDefense();
-            } else {
+            else
                 mana += ((Cap) headArmor).getMana();
-                defense += ((Cap) headArmor).getDefense();
-            }
         }
     }
 
     public void unEquipHeadArmor() {
-        if (headArmor instanceof Helmet) {
+        if (headArmor instanceof Helmet)
             health -= ((Helmet) headArmor).getHealth();
-            defense -= ((Helmet) headArmor).getDefense();
-        } else {
+        else
             mana -= ((Cap) headArmor).getMana();
-            defense -= ((Cap) headArmor).getDefense();
-        }
+        defense -= headArmor.getDefense();
         headArmor = null;
     }
 
@@ -179,32 +174,24 @@ public class Hero {
             throw new IllegalStateException("Hero level: " + level + " Item level: " + bodyArmor.getLevel());
         } else {
             this.bodyArmor = bodyArmor;
-            if (bodyArmor instanceof BodyPlate) {
-                health += ((BodyPlate) bodyArmor).getHealth();
-                mana += ((BodyPlate) bodyArmor).getMana();
+            health += bodyArmor.getHealth();
+            mana += bodyArmor.getMana();
+            defense += bodyArmor.getDefense();
+            if (bodyArmor instanceof BodyPlate)
                 attack += ((BodyPlate) bodyArmor).getAttack();
-                defense += ((BodyPlate) bodyArmor).getDefense();
-            } else {
-                health += ((Robe) bodyArmor).getHealth();
-                mana += ((Robe) bodyArmor).getMana();
+            else
                 intelligence += ((Robe) bodyArmor).getIntelligence();
-                defense += ((Robe) bodyArmor).getDefense();
-            }
         }
     }
 
     public void unEquipBodyArmor() {
-        if (bodyArmor instanceof BodyPlate) {
-            health -= ((BodyPlate) bodyArmor).getHealth();
-            mana -= ((BodyPlate) bodyArmor).getMana();
+        if (bodyArmor instanceof BodyPlate)
             attack -= ((BodyPlate) bodyArmor).getAttack();
-            defense -= ((BodyPlate) bodyArmor).getDefense();
-        } else {
-            health -= ((Robe) bodyArmor).getHealth();
-            mana -= ((Robe) bodyArmor).getMana();
+        else
             intelligence -= ((Robe) bodyArmor).getIntelligence();
-            defense -= ((Robe) bodyArmor).getDefense();
-        }
+        health -= bodyArmor.getHealth();
+        mana -= bodyArmor.getMana();
+        defense -= bodyArmor.getDefense();
         bodyArmor = null;
     }
 
@@ -213,14 +200,13 @@ public class Hero {
             throw new IllegalStateException("Hero level: " + level + " Item level: " + bodyArmor.getLevel());
         } else {
             this.handArmor = handArmor;
+            defense += handArmor.getDefense();
             if (handArmor instanceof Gauntlets) {
                 health += ((Gauntlets) handArmor).getHealth();
                 attack += ((Gauntlets) handArmor).getAttack();
-                defense += ((Gauntlets) handArmor).getDefense();
             } else {
                 mana += ((Gloves) handArmor).getMana();
                 intelligence += ((Gloves) handArmor).getIntelligence();
-                defense += ((Gloves) handArmor).getDefense();
             }
         }
     }
@@ -229,12 +215,11 @@ public class Hero {
         if (handArmor instanceof Gauntlets) {
             health -= ((Gauntlets) handArmor).getHealth();
             attack -= ((Gauntlets) handArmor).getAttack();
-            defense -= ((Gauntlets) handArmor).getDefense();
         } else {
             mana -= ((Gloves) handArmor).getMana();
             intelligence -= ((Gloves) handArmor).getIntelligence();
-            defense -= ((Gloves) handArmor).getDefense();
         }
+        defense -= handArmor.getDefense();
         handArmor = null;
     }
 
@@ -242,16 +227,18 @@ public class Hero {
         if (level < legArmor.getLevel()) {
             throw new IllegalStateException("Hero level: " + level + " Item level: " + legArmor.getLevel());
         } else {
+            this.legArmor = legArmor;
             health += legArmor.getHealth();
             mana += legArmor.getMana();
+            agility += legArmor.getAgility();
             defense += legArmor.getDefense();
-            this.legArmor = legArmor;
         }
     }
 
     public void unEquipLegArmor() {
         health -= legArmor.getHealth();
         mana -= legArmor.getMana();
+        agility -= legArmor.getAgility();
         defense -= legArmor.getDefense();
         legArmor = null;
     }
@@ -261,24 +248,22 @@ public class Hero {
             throw new IllegalStateException("Hero level: " + level + " Item level: " + footArmor.getLevel());
         } else {
             this.footArmor = footArmor;
-            if (footArmor instanceof Boots) {
+            defense += footArmor.getDefense();
+            agility += footArmor.getAgility();
+            if (footArmor instanceof Boots)
                 health += ((Boots) footArmor).getHealth();
-                defense += ((Boots) footArmor).getDefense();
-            } else {
+            else
                 mana += ((Shoes) footArmor).getMana();
-                defense += ((Shoes) footArmor).getDefense();
-            }
         }
     }
 
     public void unEquipFootArmor() {
-        if (footArmor instanceof Boots) {
+        if (footArmor instanceof Boots)
             health -= ((Boots) footArmor).getHealth();
-            defense -= ((Boots) footArmor).getDefense();
-        } else {
+        else
             mana -= ((Shoes) footArmor).getMana();
-            defense -= ((Shoes) footArmor).getDefense();
-        }
+        defense -= footArmor.getDefense();
+        agility -= footArmor.getAgility();
         footArmor = null;
     }
 
@@ -309,16 +294,16 @@ public class Hero {
     }
 
     public void attackOrder(Hero a, Hero b) {
-        b.setHealth(b.getHealth()-(a.getAttack()/b.getDefense()));
+        b.setHealth(b.getHealth() - (a.getAttack() / b.getDefense()));
     }
 
     public void defenseOrder(Hero a, Hero b) {
-        a.setHealth(a.getHealth()-(b.getAttack()/(a.getDefense()*2)));
+        a.setHealth(a.getHealth() - (b.getAttack() / (a.getDefense() * 2)));
     }
 
     public void magicAttack(Hero a, Hero b) {
-        a.setMana(a.getMana()-20);
-        b.setHealth(b.getHealth()-2*a.getAttack());
+        a.setMana(a.getMana() - 20);
+        b.setHealth(b.getHealth() - 2 * a.getAttack());
     }
 
 }

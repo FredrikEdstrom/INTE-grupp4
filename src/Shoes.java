@@ -1,13 +1,13 @@
 public class Shoes extends FootArmor {
     private int mana = 10;
-    private int defense = 3;
+    private int defense = 2;
     private int agility = 5;
 
     public Shoes(String name, int level) {
         super(name, level);
         if (level != 1) {
             mana += 5 * level; //Mana, agility och defense förändras med item level
-            defense += 2 * level;
+            defense += level;
             agility += 3 * level;
         }
     }
@@ -16,10 +16,12 @@ public class Shoes extends FootArmor {
         return mana;
     }
 
+    @Override
     public int getDefense() {
         return defense;
     }
 
+    @Override
     public int getAgility() {
         return agility;
     }

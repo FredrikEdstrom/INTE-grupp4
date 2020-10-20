@@ -18,4 +18,6 @@ public abstract class HandArmor {
     public int getLevel() {
         return level;
     }
+
+    public abstract int getDefense();
 }

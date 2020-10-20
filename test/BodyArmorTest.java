@@ -10,9 +10,19 @@ class BodyArmorTest {
         assertEquals("Rusty Plate", rustyPlate.getName());
         assertEquals(1, rustyPlate.getLevel());
         assertEquals(20, rustyPlate.getHealth());
-        assertEquals(10, rustyPlate.getMana());
+        assertEquals(5, rustyPlate.getMana());
         assertEquals(10, rustyPlate.getAttack());
         assertEquals(10, rustyPlate.getDefense());
+    }
+
+    @Test
+    void createRobeLevelOne() {
+        Robe noviceRobe = new Robe("Novice Robe", 1);
+        assertEquals(1, noviceRobe.getLevel());
+        assertEquals(5, noviceRobe.getHealth());
+        assertEquals(20, noviceRobe.getMana());
+        assertEquals(10, noviceRobe.getIntelligence());
+        assertEquals(5, noviceRobe.getDefense());
     }
 
     @Test
@@ -21,29 +31,19 @@ class BodyArmorTest {
         assertEquals("Steel Plate", steelPlate.getName());
         assertEquals(33, steelPlate.getLevel());
         assertEquals(185, steelPlate.getHealth());
-        assertEquals(76, steelPlate.getMana());
+        assertEquals(38, steelPlate.getMana());
         assertEquals(109, steelPlate.getAttack());
         assertEquals(109, steelPlate.getDefense());
     }
 
     @Test
-    void createRobeLevelOne() {
-        Robe noviceRobe = new Robe("Novice Robe", 1);
-        assertEquals(1, noviceRobe.getLevel());
-        assertEquals(10, noviceRobe.getHealth());
-        assertEquals(20, noviceRobe.getMana());
-        assertEquals(10, noviceRobe.getIntelligence());
-        assertEquals(5, noviceRobe.getDefense());
-    }
-
-    @Test
     void createRobeHigherThanLevelOne() {
-        Robe merlinRobe = new Robe("Merlin Robe", 99);
-        assertEquals(99, merlinRobe.getLevel());
-        assertEquals(208, merlinRobe.getHealth());
-        assertEquals(515, merlinRobe.getMana());
-        assertEquals(307, merlinRobe.getIntelligence());
-        assertEquals(203, merlinRobe.getDefense());
+        Robe priestRobe = new Robe("Priest Robe", 33);
+        assertEquals(33, priestRobe.getLevel());
+        assertEquals(38, priestRobe.getHealth());
+        assertEquals(185, priestRobe.getMana());
+        assertEquals(109, priestRobe.getIntelligence());
+        assertEquals(38, priestRobe.getDefense());
     }
 
     @Test

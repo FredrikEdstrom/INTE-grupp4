@@ -1,19 +1,18 @@
-public class Robe extends BodyArmor {
+public class Trousers extends LegArmor {
     private int health = 5;
     private int mana = 20;
-    private int intelligence = 10;
+    private int agility = 10;
     private int defense = 5;
 
-    public Robe(String name, int level) {
+    public Trousers(String name, int level) {
         super(name, level);
         if (level != 1) {
-            health += level; //Health, mana, intelligence och defense förändras med item level
+            health += level; //Health, mana, agility och defense förändras med item level
             mana += 5 * level;
-            intelligence += 3 * level;
+            agility += 3 * level;
             defense += level;
         }
     }
-
 
     @Override
     public int getHealth() {
@@ -26,10 +25,12 @@ public class Robe extends BodyArmor {
     }
 
     @Override
+    public int getAgility() {
+        return agility;
+    }
+
+    @Override
     public int getDefense() {
         return defense;
     }
-
-    public int getIntelligence() { return intelligence; }
-
 }

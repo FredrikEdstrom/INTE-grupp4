@@ -1,9 +1,6 @@
-public class LegArmor {
+public abstract class LegArmor {
     private final String name;
     private final int level;
-    private int health = 20;
-    private int mana = 20;
-    private int defense = 10;
 
     public LegArmor(String name, int level) {
         if (name.isEmpty() || name.isBlank())
@@ -12,11 +9,6 @@ public class LegArmor {
         if (level < 1 || level > 100)
             throw new IllegalArgumentException("Level: " + level); //Level får inte vara lägre än 1 eller högre än 100
         this.level = level;
-        if(level != 1) {
-            health += 5 * level; //Health, mana, och defense förändras med item level
-            mana += 5 * level;
-            defense += 3 * level;
-        }
     }
 
     public String getName() {
@@ -27,15 +19,11 @@ public class LegArmor {
         return level;
     }
 
-    public int getHealth() {
-        return health;
-    }
+    public abstract int getHealth();
 
-    public int getMana() {
-        return mana;
-    }
+    public abstract int getMana();
 
-    public int getDefense() {
-        return defense;
-    }
+    public abstract int getAgility();
+
+    public abstract int getDefense();
 }
