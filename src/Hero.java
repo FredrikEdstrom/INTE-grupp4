@@ -6,7 +6,6 @@ public class Hero {
     private int defense = 10;
     private int health = 100;
     private int mana = 100;
-    private int agility = 10;
     private int intelligence = 10;
     private int agility = 10;
     private int experience = 0;
@@ -114,7 +113,6 @@ public class Hero {
         mana += 20;
         attack += 5;
         defense += 5;
-        agility += 5;
         intelligence += 5;
         agility += 5;
     }
