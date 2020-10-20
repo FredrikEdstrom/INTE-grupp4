@@ -104,8 +104,6 @@ public class Hero {
 
     public void levelUp() {
         this.level++;
-        //Osäkert om hur mycket ska attributer öka för varje level up
-        //Om de ökar kvadratisk så bli de för stor
         health += 20;
         mana += 20;
         attack += 5;
@@ -303,16 +301,16 @@ public class Hero {
     }
 
     public void attackOrder(Hero a, Hero b) {
-        b.setHealth(b.getHealth()-(a.getAttack()/b.getDefense()));
+        b.setHealth(b.getHealth() - (a.getAttack() / b.getDefense()));
     }
 
     public void defenseOrder(Hero a, Hero b) {
-        a.setHealth(a.getHealth()-(b.getAttack()/(a.getDefense()*2)));
+        a.setHealth(a.getHealth() - (b.getAttack() / (a.getDefense() * 2)));
     }
 
     public void magicAttack(Hero a, Hero b) {
-        a.setMana(a.getMana()-20);
-        b.setHealth(b.getHealth()-2*a.getAttack());
+        a.setMana(a.getMana() - 20);
+        b.setHealth(b.getHealth() - 2 * a.getAttack());
     }
 
 }

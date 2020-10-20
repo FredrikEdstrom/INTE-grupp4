@@ -14,6 +14,15 @@ class HeadArmorTest {
     }
 
     @Test
+    void createLevelOneCap() {
+        Cap tornCap = new Cap("Torn Cap", 1);
+        assertEquals("Torn Cap", tornCap.getName());
+        assertEquals(1, tornCap.getLevel());
+        assertEquals(10, tornCap.getMana());
+        assertEquals(2, tornCap.getDefense());
+    }
+
+    @Test
     void createHelmetHigherThanLevelOne() {
         Helmet skullHelmet = new Helmet("Skull Helmet", 15);
         assertEquals("Skull Helmet", skullHelmet.getName());
@@ -22,22 +31,14 @@ class HeadArmorTest {
         assertEquals(50, skullHelmet.getDefense());
     }
 
-    @Test
-    void createLevelOneCap() {
-        Cap tornCap = new Cap("Torn Cap", 1);
-        assertEquals("Torn Cap", tornCap.getName());
-        assertEquals(1, tornCap.getLevel());
-        assertEquals(10, tornCap.getMana());
-        assertEquals(3, tornCap.getDefense());
-    }
 
     @Test
     void createCapHigherThanLevelOne() {
-        Cap priestCap = new Cap("Priest Cap", 27);
+        Cap priestCap = new Cap("Priest Cap", 15);
         assertEquals("Priest Cap", priestCap.getName());
-        assertEquals(27, priestCap.getLevel());
-        assertEquals(145, priestCap.getMana());
-        assertEquals(57, priestCap.getDefense());
+        assertEquals(15, priestCap.getLevel());
+        assertEquals(85, priestCap.getMana());
+        assertEquals(17, priestCap.getDefense());
     }
 
     @Test

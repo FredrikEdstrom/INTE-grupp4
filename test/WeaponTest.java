@@ -13,14 +13,6 @@ class WeaponTest {
     }
 
     @Test
-    void createSwordHigherThanLevelOne() {
-        Sword excalibur = new Sword("Excalibur", 11);
-        assertEquals("Excalibur", excalibur.getName());
-        assertEquals(11, excalibur.getLevel());
-        assertEquals(75, excalibur.getAttack());
-    }
-
-    @Test
     void createLevelOneStaff() {
         Staff woodenStaff = new Staff("Wooden Staff", 1);
         assertEquals("Wooden Staff", woodenStaff.getName());
@@ -29,11 +21,20 @@ class WeaponTest {
     }
 
     @Test
+    void createSwordHigherThanLevelOne() {
+        Sword excalibur = new Sword("Excalibur", 11);
+        assertEquals("Excalibur", excalibur.getName());
+        assertEquals(11, excalibur.getLevel());
+        assertEquals(75, excalibur.getAttack());
+    }
+
+
+    @Test
     void createStaffHigherThanLevelOne() {
-        Staff goldenStaff = new Staff("Golden Staff", 13);
+        Staff goldenStaff = new Staff("Golden Staff", 11);
         assertEquals("Golden Staff", goldenStaff.getName());
-        assertEquals(13, goldenStaff.getLevel());
-        assertEquals(85, goldenStaff.getIntelligence());
+        assertEquals(11, goldenStaff.getLevel());
+        assertEquals(75, goldenStaff.getIntelligence());
     }
 
     @Test
