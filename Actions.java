@@ -1,10 +1,10 @@
 
 public interface Actions {
 
-	public void attackOrder(Hero a, Hero b);
+	public void attackOrder(Character a, Character b);
 	
-	public void defenseOrder(Hero a, Hero b);
+	public void defenseOrder(Character a, Character b);
 	
-	public void magicAttack(Hero a, Hero b);
+	public void magicAttack(Character a, Character b);
 	
 }
