@@ -3,7 +3,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		Hero player = new Hero();
+		Hero player = new Hero(player);
 		Hero dummy = new Hero(20, 1, 100, 100);
 		player.attackOrder(player, dummy);
 		player.defenseOrder(player, dummy);
