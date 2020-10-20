@@ -28,7 +28,7 @@ class HeadArmorTest {
         assertEquals("Torn Cap", tornCap.getName());
         assertEquals(1, tornCap.getLevel());
         assertEquals(10, tornCap.getMana());
-        assertEquals(5, tornCap.getDefense());
+        assertEquals(3, tornCap.getDefense());
     }
 
     @Test
@@ -37,7 +37,7 @@ class HeadArmorTest {
         assertEquals("Priest Cap", priestCap.getName());
         assertEquals(27, priestCap.getLevel());
         assertEquals(145, priestCap.getMana());
-        assertEquals(86, priestCap.getDefense());
+        assertEquals(57, priestCap.getDefense());
     }
 
     @Test

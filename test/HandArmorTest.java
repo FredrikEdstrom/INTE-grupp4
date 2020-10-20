@@ -31,7 +31,7 @@ class HandArmorTest {
         assertEquals(1, tornGloves.getLevel());
         assertEquals(10, tornGloves.getMana());
         assertEquals(5, tornGloves.getIntelligence());
-        assertEquals(5, tornGloves.getDefense());
+        assertEquals(3, tornGloves.getDefense());
     }
 
     @Test
@@ -41,7 +41,7 @@ class HandArmorTest {
         assertEquals(56, priestGloves.getLevel());
         assertEquals(290, priestGloves.getMana());
         assertEquals(173, priestGloves.getIntelligence());
-        assertEquals(173, priestGloves.getDefense());
+        assertEquals(115, priestGloves.getDefense());
     }
 
     @Test

@@ -172,17 +172,33 @@ public class Hero {
         if (level < bodyArmor.getLevel()) {
             throw new IllegalStateException("Hero level: " + level + " Item level: " + bodyArmor.getLevel());
         } else {
-            health += bodyArmor.getHealth();
-            mana += bodyArmor.getMana();
-            defense += bodyArmor.getDefense();
             this.bodyArmor = bodyArmor;
+            if (bodyArmor instanceof BodyPlate) {
+                health += ((BodyPlate) bodyArmor).getHealth();
+                mana += ((BodyPlate) bodyArmor).getMana();
+                attack += ((BodyPlate) bodyArmor).getAttack();
+                defense += ((BodyPlate) bodyArmor).getDefense();
+            } else {
+                health += ((Robe) bodyArmor).getHealth();
+                mana += ((Robe) bodyArmor).getMana();
+                intelligence += ((Robe) bodyArmor).getIntelligence();
+                defense += ((Robe) bodyArmor).getDefense();
+            }
         }
     }
 
     public void unEquipBodyArmor() {
-        health -= bodyArmor.getHealth();
-        mana -= bodyArmor.getMana();
-        defense -= bodyArmor.getDefense();
+        if (bodyArmor instanceof BodyPlate) {
+            health -= ((BodyPlate) bodyArmor).getHealth();
+            mana -= ((BodyPlate) bodyArmor).getMana();
+            attack -= ((BodyPlate) bodyArmor).getAttack();
+            defense -= ((BodyPlate) bodyArmor).getDefense();
+        } else {
+            health -= ((Robe) bodyArmor).getHealth();
+            mana -= ((Robe) bodyArmor).getMana();
+            intelligence -= ((Robe) bodyArmor).getIntelligence();
+            defense -= ((Robe) bodyArmor).getDefense();
+        }
         bodyArmor = null;
     }
 

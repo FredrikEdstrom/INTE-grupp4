@@ -117,7 +117,7 @@ class HeroTest {
 
         assertEquals(tornCap, caster.getHeadArmor());
         assertEquals(110, caster.getMana());
-        assertEquals(15, caster.getDefense());
+        assertEquals(13, caster.getDefense());
     }
 
     @Test
@@ -141,7 +141,7 @@ class HeroTest {
 
         assertEquals(priestCap, caster.getHeadArmor());
         assertEquals(840, caster.getMana());
-        assertEquals(250, caster.getDefense());
+        assertEquals(218, caster.getDefense());
     }
 
     @Test
@@ -179,57 +179,102 @@ class HeroTest {
     }
     //Head armor equip un-equip ends
 
-    //Body armor equip
+    //Body armor equip and un-equip test start:
     @Test
-    void lowLevelHeroEquipLowLevelBodyArmor() {
+    void lowLevelHeroEquipLowLevelBodyPlate() {
         Hero slasher = new Hero("Slasher");
-        BodyArmor rustyPlate = new BodyArmor("Rusty Plate", 1);
+        BodyPlate rustyPlate = new BodyPlate("Rusty Plate", 1);
         slasher.equipBodyArmor(rustyPlate);
 
         assertEquals(rustyPlate, slasher.getBodyArmor());
         assertEquals(120, slasher.getHealth());
-        assertEquals(120, slasher.getMana());
+        assertEquals(110, slasher.getMana());
+        assertEquals(20, slasher.getAttack());
         assertEquals(20, slasher.getDefense());
     }
 
     @Test
-    void highLevelHeroEquipSameLevelBodyArmor() {
+    void highLevelHeroEquipSameLevelBodyPlate() {
+        Hero slasher = new Hero("Slasher");
+        BodyPlate goldenPlate = new BodyPlate("Golden Plate", 72);
+        slasher.setLevel(72);
+        slasher.equipBodyArmor(goldenPlate);
+
+        assertEquals(goldenPlate, slasher.getBodyArmor());
+        assertEquals(1900, slasher.getHealth());
+        assertEquals(1674, slasher.getMana());
+        assertEquals(591, slasher.getAttack());
+        assertEquals(591, slasher.getDefense());
+    }
+
+    @Test
+    void lowLevelHeroEquipLowLevelRobe() {
         Hero caster = new Hero("Caster");
-        BodyArmor priestRobe = new BodyArmor("Priest Robe", 55);
+        Robe noviceRobe = new Robe("Novice Robe", 1);
+        caster.equipBodyArmor(noviceRobe);
+
+        assertEquals(noviceRobe, caster.getBodyArmor());
+        assertEquals(110, caster.getHealth());
+        assertEquals(120, caster.getMana());
+        assertEquals(20, caster.getIntelligence());
+        assertEquals(15, caster.getDefense());
+    }
+
+    @Test
+    void highLevelHeroEquipSameLevelRobe() {
+        Hero caster = new Hero("Caster");
+        Robe priestRobe = new Robe("Priest Robe", 55);
         caster.setLevel(55);
         caster.equipBodyArmor(priestRobe);
 
         assertEquals(priestRobe, caster.getBodyArmor());
-        assertEquals(1475, caster.getHealth());
+        assertEquals(1300, caster.getHealth());
         assertEquals(1475, caster.getMana());
-        assertEquals(455, caster.getDefense());
+        assertEquals(455, caster.getIntelligence());
+        assertEquals(395, caster.getDefense());
     }
 
     @Test
     void highLevelHeroEquipLowLevelBodyArmor() {
         Hero slasher = new Hero("Slasher");
-        BodyArmor rustyPlate = new BodyArmor("Rusty Plate", 1);
+        BodyPlate rustyPlate = new BodyPlate("Rusty Plate", 1);
         slasher.setLevel(65);
         slasher.equipBodyArmor(rustyPlate);
 
         assertEquals(rustyPlate, slasher.getBodyArmor());
         assertEquals(1400, slasher.getHealth());
-        assertEquals(1400, slasher.getMana());
+        assertEquals(1390, slasher.getMana());
+        assertEquals(340, slasher.getAttack());
         assertEquals(340, slasher.getDefense());
     }
 
     @Test
     void lowLevelHeroEquipHighLevelBodyArmor() {
         Hero caster = new Hero("Caster");
-        BodyArmor merlinRobe = new BodyArmor("Merlin Robe", 100);
+        Robe merlinRobe = new Robe("Merlin Robe", 100);
 
         assertThrows(IllegalStateException.class, () -> caster.equipBodyArmor(merlinRobe));
     }
 
     @Test
-    void heroUnEquipBodyArmor() {
+    void heroUnEquipRobe() {
+        Hero caster = new Hero("Caster");
+        Robe blessedRobe = new Robe("Blessed Robe", 82);
+        caster.setLevel(82);
+        caster.equipBodyArmor(blessedRobe);
+        caster.unEquipBodyArmor();
+
+        assertNull(caster.getBodyArmor());
+        assertEquals(1720, caster.getHealth());
+        assertEquals(1720, caster.getMana());
+        assertEquals(415, caster.getIntelligence());
+        assertEquals(415, caster.getDefense());
+    }
+
+    @Test
+    void heroUnEquipBodyPlate() {
         Hero slasher = new Hero("Slasher");
-        BodyArmor dragonPlate = new BodyArmor("Dragon Plate", 90);
+        BodyPlate dragonPlate = new BodyPlate("Dragon Plate", 90);
         slasher.setLevel(90);
         slasher.equipBodyArmor(dragonPlate);
         slasher.unEquipBodyArmor();
@@ -237,6 +282,7 @@ class HeroTest {
         assertNull(slasher.getBodyArmor());
         assertEquals(1880, slasher.getHealth());
         assertEquals(1880, slasher.getMana());
+        assertEquals(455, slasher.getAttack());
         assertEquals(455, slasher.getDefense());
     }
     //Body armor equip and un-equip test ends
