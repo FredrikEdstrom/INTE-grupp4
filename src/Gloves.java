@@ -8,7 +8,7 @@ public class Gloves extends HandArmor {
         if (level != 1) {
             mana += 5 * level; //Mana, intelligence och defense förändras med item level
             intelligence += 3 * level;
-            defense += 1.5 * level;
+            defense += level;
         }
     }
 

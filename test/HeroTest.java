@@ -18,7 +18,7 @@ class HeroTest {
 
     //Hero equip and un-equip weapon and armor test start:
 
-    //Weapon equip and un-equip test start:
+    //Weapon equip and un-equip test starts
     @Test
     void heroEquipSwordWeapon() {
         Hero slasher = new Hero("Slasher");
@@ -109,7 +109,7 @@ class HeroTest {
 
     //Weapon equip and un-equip test ends
 
-    //Head armor equip  and un-equip start:
+    //Head armor equip  and un-equip starts
     @Test
     void heroEquipHeadArmorHelmet() {
         Hero slasher = new Hero("Slasher");
@@ -203,7 +203,7 @@ class HeroTest {
     }
     //Head armor equip un-equip ends
 
-    //Body armor equip and un-equip test start:
+    //Body armor equip and un-equip test starts
     @Test
     void lowLevelHeroEquipLowLevelBodyPlate() {
         Hero slasher = new Hero("Slasher");
@@ -312,6 +312,119 @@ class HeroTest {
     }
 
     //Body armor equip and un-equip test ends
+
+    //Hand armor equip and un-equip test starts
+    @Test
+    void heroEquipHandArmorGauntlets() {
+        Hero slasher = new Hero("Slasher");
+        HandArmor rustyGauntlets = new Gauntlets("Rusty Gauntlets", 1);
+        slasher.equipHandArmor(rustyGauntlets);
+
+        assertEquals(rustyGauntlets, slasher.getHandArmor());
+        assertEquals(110, slasher.getHealth());
+        assertEquals(15, slasher.getAttack());
+        assertEquals(15, slasher.getDefense());
+    }
+
+    @Test
+    void heroEquipHandArmorGloves() {
+        Hero caster = new Hero("Caster");
+        HandArmor tornGloves = new Gloves("Torn Gloves", 1);
+        caster.equipHandArmor(tornGloves);
+
+        assertEquals(tornGloves, caster.getHandArmor());
+        assertEquals(110, caster.getMana());
+        assertEquals(15, caster.getIntelligence());
+        assertEquals(12, caster.getDefense());
+    }
+
+    @Test
+    void highLevelHeroEquipLowLevelHandArmor() {
+        Hero slasher = new Hero("Slasher");
+        HandArmor rustyGauntlets = new Gauntlets("Rusty Gauntlets", 1);
+        slasher.setLevel(40);
+        slasher.equipHandArmor(rustyGauntlets);
+
+        assertEquals(rustyGauntlets, slasher.getHandArmor());
+        assertEquals(890, slasher.getHealth());
+        assertEquals(210, slasher.getAttack());
+        assertEquals(210, slasher.getDefense());
+    }
+
+    @Test
+    void highLevelHeroEquipSameLevelGauntlets() {
+        Hero slasher = new Hero("Slasher");
+        HandArmor boneGauntlets = new Gauntlets("Bone Gauntlets", 40);
+        slasher.setLevel(40);
+        slasher.equipHandArmor(boneGauntlets);
+
+        assertEquals(boneGauntlets, slasher.getHandArmor());
+        assertEquals(1090, slasher.getHealth());
+        assertEquals(330, slasher.getAttack());
+        assertEquals(330, slasher.getDefense());
+    }
+
+    @Test
+    void highLevelHeroEquipSameLevelGloves() {
+        Hero caster = new Hero("Caster");
+        HandArmor priestGloves = new Gloves("Priest Gloves", 40);
+        caster.setLevel(40);
+        caster.equipHandArmor(priestGloves);
+
+        assertEquals(priestGloves, caster.getHandArmor());
+        assertEquals(1090, caster.getMana());
+        assertEquals(330, caster.getIntelligence());
+        assertEquals(247, caster.getDefense());
+    }
+
+    @Test
+    void lowLevelHeroEquipHighLevelHandArmor() {
+        Hero slasher = new Hero("Slasher");
+        HandArmor boneGauntlets = new Gauntlets("Bone Gauntlets", 50);
+
+        assertThrows(IllegalStateException.class, () -> slasher.equipHandArmor(boneGauntlets));
+    }
+
+    @Test
+    void heroUnEquipHeadArmorGauntlets() {
+        Hero slasher = new Hero("Slasher");
+        HandArmor skullHelmet = new Gauntlets("Bone Gauntlets", 40);
+        slasher.setLevel(40);
+        slasher.equipHandArmor(skullHelmet);
+        slasher.unEquipHandArmor();
+
+        assertNull(slasher.getHandArmor());
+        assertEquals(880, slasher.getHealth());
+        assertEquals(205, slasher.getAttack());
+        assertEquals(205, slasher.getDefense());
+    }
+
+    @Test
+    void heroUnEquipHeadArmorGloves() {
+        Hero caster = new Hero("Caster");
+        HandArmor priestGloves = new Gloves("Priest Gloves", 40);
+        caster.setLevel(40);
+        caster.equipHandArmor(priestGloves);
+        caster.unEquipHandArmor();
+
+        assertNull(caster.getHandArmor());
+        assertEquals(880, caster.getMana());
+        assertEquals(205, caster.getIntelligence());
+        assertEquals(205, caster.getDefense());
+    }
+    //Hand armor equip and un-equip test ends
+
+    //Leg armor equip and un-equip test starts
+
+    //Leg armor equip and un-equip test ends
+
+    //Foot armor equip and un-equip test starts
+
+    //Foot armor equip and un-equip test ends
+
+    //Full armor equip test starts
+
+    //Full armor equip test ends
 
     //Hero equip and un-equip weapon and armor end
 }

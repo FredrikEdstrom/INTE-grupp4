@@ -51,7 +51,7 @@ public class Hero {
         return intelligence;
     }
 
-    private int getAgility() {return agility;}
+    public int getAgility() {return agility;}
 
     public int getExperience() {
         return experience;
@@ -195,7 +195,7 @@ public class Hero {
 
     public void equipHandArmor(HandArmor handArmor) {
         if (level < handArmor.getLevel()) {
-            throw new IllegalStateException("Hero level: " + level + " Item level: " + bodyArmor.getLevel());
+            throw new IllegalStateException("Hero level: " + level + " Item level: " + handArmor.getLevel());
         } else {
             this.handArmor = handArmor;
             defense += handArmor.getDefense();
