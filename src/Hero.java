@@ -7,6 +7,7 @@ public class Hero {
     private int health = 100;
     private int mana = 100;
     private int intelligence = 10;
+    private int agility = 10;
     private int experience = 0;
 
     private Weapon weapon;
@@ -49,6 +50,8 @@ public class Hero {
     public int getIntelligence() {
         return intelligence;
     }
+
+    private int getAgility() {return agility;}
 
     public int getExperience() {
         return experience;
@@ -98,6 +101,8 @@ public class Hero {
         this.intelligence = intelligence;
     }
 
+    public void setAgility(int agility) { this.agility = agility; }
+
     public void setExperience(int experience) {
         this.experience = experience;
     }
@@ -111,6 +116,7 @@ public class Hero {
         attack += 5;
         defense += 5;
         intelligence += 5;
+        agility += 5;
     }
 
     //Setter metod för level som används för testning
