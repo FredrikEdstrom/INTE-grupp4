@@ -285,7 +285,7 @@ public class Hero {
             newHealth = 100;
         setHealth(newHealth);
     }
-    //attack
+
 	public void attackOrder(Hero a, Hero b) {
 		b.setHealth(b.getHealth()-(a.getAttack()/b.getDefense()));
 	}
