@@ -15,8 +15,12 @@ public abstract class BodyArmor {
         return name;
     }
 
-    public int getLevel() {
-        return level;
-    }
+    public int getLevel() { return level; }
+
+    public abstract int getHealth();
+
+    public abstract int getMana();
+
+    public abstract int getDefense();
 
 }

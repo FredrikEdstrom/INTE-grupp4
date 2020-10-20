@@ -18,4 +18,6 @@ public abstract class HeadArmor {
     public int getLevel() {
         return level;
     }
+
+    public abstract int getDefense();
 }

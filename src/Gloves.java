@@ -20,6 +20,7 @@ public class Gloves extends HandArmor {
         return intelligence;
     }
 
+    @Override
     public int getDefense() {
         return defense;
     }

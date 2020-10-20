@@ -19,4 +19,7 @@ public abstract class FootArmor {
         return level;
     }
 
+    public abstract int getDefense();
+
+    public abstract int getAgility();
 }

@@ -16,10 +16,14 @@ public class Boots extends FootArmor {
         return health;
     }
 
+    @Override
     public int getDefense() {
         return defense;
     }
 
-    public int getAgility() { return  agility; }
+    @Override
+    public int getAgility() {
+        return agility;
+    }
 
 }

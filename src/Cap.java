@@ -14,6 +14,7 @@ public class Cap extends HeadArmor {
         return mana;
     }
 
+    @Override
     public int getDefense() {
         return defense;
     }

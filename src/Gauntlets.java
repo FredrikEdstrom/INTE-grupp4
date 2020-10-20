@@ -20,6 +20,7 @@ public class Gauntlets extends HandArmor {
         return attack;
     }
 
+    @Override
     public int getDefense() {
         return defense;
     }

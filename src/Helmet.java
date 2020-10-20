@@ -14,6 +14,7 @@ public class Helmet extends HeadArmor {
         return health;
     }
 
+    @Override
     public int getDefense() {
         return defense;
     }

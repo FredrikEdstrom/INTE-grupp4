@@ -16,10 +16,12 @@ public class Shoes extends FootArmor {
         return mana;
     }
 
+    @Override
     public int getDefense() {
         return defense;
     }
 
+    @Override
     public int getAgility() {
         return agility;
     }
