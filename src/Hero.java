@@ -301,4 +301,18 @@ public class Hero {
             newHealth = 100;
         setHealth(newHealth);
     }
+
+    public void attackOrder(Hero a, Hero b) {
+        b.setHealth(b.getHealth()-(a.getAttack()/b.getDefense()));
+    }
+
+    public void defenseOrder(Hero a, Hero b) {
+        a.setHealth(a.getHealth()-(b.getAttack()/(a.getDefense()*2)));
+    }
+
+    public void magicAttack(Hero a, Hero b) {
+        a.setMana(a.getMana()-20);
+        b.setHealth(b.getHealth()-2*a.getAttack());
+    }
+
 }
