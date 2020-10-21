@@ -415,7 +415,7 @@ class HeroTest {
     //Hand armor equip and un-equip test ends
 
     //Leg armor equip and un-equip test starts
-
+    
     //Leg armor equip and un-equip test ends
 
     //Foot armor equip and un-equip test starts
