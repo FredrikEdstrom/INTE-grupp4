@@ -23,6 +23,19 @@ public class Hero {
         this.name = name;
     }
 
+    public Hero(String name, int level, int attack, int defense, int health, int mana, int intelligence, int agility){
+        if (name.isEmpty() || name.isBlank())
+            throw new IllegalArgumentException("Name: empty"); //Namn får inte vara tom eller blank
+        this.name = name;
+        this.level = level;
+        this.attack = attack;
+        this.defense = defense;
+        this.health = health;
+        this.mana = mana;
+        this.intelligence = intelligence;
+        this.agility = agility;
+    }
+
     public String getName() {
         return name;
     }
@@ -289,19 +302,6 @@ public class Hero {
         if (newHealth > 100)
             newHealth = 100;
         setHealth(newHealth);
-    }
-
-    public void attackOrder(Hero a, Hero b) {
-        b.setHealth(b.getHealth() - (a.getAttack() / b.getDefense()));
-    }
-
-    public void defenseOrder(Hero a, Hero b) {
-        a.setHealth(a.getHealth() - (b.getAttack() / (a.getDefense() * 2)));
-    }
-
-    public void magicAttack(Hero a, Hero b) {
-        a.setMana(a.getMana() - 20);
-        b.setHealth(b.getHealth() - 2 * a.getAttack());
     }
 
 }
