@@ -31,7 +31,7 @@ class FootArmorTest {
         assertEquals(67, boneBoots.getLevel());
         assertEquals(345, boneBoots.getHealth());
         assertEquals(206, boneBoots.getDefense());
-        assertEquals(69, boneBoots.getAgility());
+        assertEquals(35, boneBoots.getAgility());
 
     }
 
@@ -41,7 +41,7 @@ class FootArmorTest {
         assertEquals("Priest Shoes", priestShoes.getName());
         assertEquals(67, priestShoes.getLevel());
         assertEquals(345, priestShoes.getMana());
-        assertEquals(69, priestShoes.getDefense());
+        assertEquals(35, priestShoes.getDefense());
         assertEquals(206, priestShoes.getAgility());
     }
 

@@ -31,7 +31,7 @@ class BodyArmorTest {
         assertEquals("Steel Plate", steelPlate.getName());
         assertEquals(33, steelPlate.getLevel());
         assertEquals(185, steelPlate.getHealth());
-        assertEquals(38, steelPlate.getMana());
+        assertEquals(21, steelPlate.getMana());
         assertEquals(109, steelPlate.getAttack());
         assertEquals(109, steelPlate.getDefense());
     }
@@ -40,10 +40,10 @@ class BodyArmorTest {
     void createRobeHigherThanLevelOne() {
         Robe priestRobe = new Robe("Priest Robe", 33);
         assertEquals(33, priestRobe.getLevel());
-        assertEquals(38, priestRobe.getHealth());
+        assertEquals(21, priestRobe.getHealth());
         assertEquals(185, priestRobe.getMana());
         assertEquals(109, priestRobe.getIntelligence());
-        assertEquals(38, priestRobe.getDefense());
+        assertEquals(21, priestRobe.getDefense());
     }
 
     @Test

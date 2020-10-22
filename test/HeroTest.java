@@ -27,6 +27,7 @@ class HeroTest {
         assertThrows(IllegalStateException.class, () -> caster.equipWeapon(goldenStaff));
     }
 
+    //Sword increases attack
     @Test
     void heroEquipSword() {
         Hero slasher = new Hero("Slasher");
@@ -38,31 +39,40 @@ class HeroTest {
         assertEquals(525, slasher.getAttack());
     }
 
+    //Staff increases intelligence
     @Test
     void heroEquipStaff() {
-        Hero slasher = new Hero("Slasher");
+        Hero caster = new Hero("Caster");
         Weapon goldenStaff = new Staff("Golden Staff", 50);
-        slasher.setLevel(50);
-        slasher.equipWeapon(goldenStaff);
+        caster.setLevel(50);
+        caster.equipWeapon(goldenStaff);
 
-        assertEquals(goldenStaff, slasher.getWeapon());
-        assertEquals(525, slasher.getIntelligence());
+        assertEquals(goldenStaff, caster.getWeapon());
+        assertEquals(525, caster.getIntelligence());
     }
 
     @Test
-    void heroUnEquipWeapon() {
+    void heroUnEquipSword() {
+        Hero slasher = new Hero("Slasher");
+        Weapon goldenSword = new Sword("Golden Sword", 50);
+        slasher.setLevel(50);
+        slasher.equipWeapon(goldenSword);
+        slasher.unEquipWeapon();
+
+        assertNull(slasher.getWeapon());
+        assertEquals(255, slasher.getAttack());
+    }
+
+    @Test
+    void heroUnEquipStaff() {
         Hero caster = new Hero("Caster");
         Weapon goldenStaff = new Staff("Golden Staff", 50);
-        Weapon goldenSword = new Sword("Golden Sword", 50);
         caster.setLevel(50);
         caster.equipWeapon(goldenStaff);
-        caster.unEquipWeapon();
-        caster.equipWeapon(goldenSword);
         caster.unEquipWeapon();
 
         assertNull(caster.getWeapon());
         assertEquals(255, caster.getIntelligence());
-        assertEquals(255, caster.getAttack());
     }
     //Weapon equip and un-equip test ends
 
@@ -75,6 +85,7 @@ class HeroTest {
         assertThrows(IllegalStateException.class, () -> slasher.equipHeadArmor(skullHelm));
     }
 
+    //Helmet increases health and defense
     @Test
     void heroEquipHelmet() {
         Hero slasher = new Hero("Slasher");
@@ -87,6 +98,7 @@ class HeroTest {
         assertEquals(250, slasher.getDefense());
     }
 
+    //Cap increases mana and defense
     @Test
     void heroEquipCap() {
         Hero caster = new Hero("Caster");
@@ -96,24 +108,33 @@ class HeroTest {
 
         assertEquals(priestCap, caster.getHeadArmor());
         assertEquals(840, caster.getMana());
-        assertEquals(187, caster.getDefense());
+        assertEquals(172, caster.getDefense());
     }
 
     @Test
-    void heroUnEquipHeadArmor() {
+    void heroUnEquipHelmet() {
         Hero slasher = new Hero("Slasher");
         HeadArmor skullHelmet = new Helmet("Skull Helmet", 45);
-        HeadArmor priestHelm = new Cap("Priest Helm", 45);
         slasher.setLevel(45);
         slasher.equipHeadArmor(skullHelmet);
-        slasher.unEquipHeadArmor();
-        slasher.equipHeadArmor(priestHelm);
         slasher.unEquipHeadArmor();
 
         assertNull(slasher.getHeadArmor());
         assertEquals(980, slasher.getHealth());
-        assertEquals(980, slasher.getMana());
         assertEquals(230, slasher.getDefense());
+    }
+
+    @Test
+    void heroUnEquipHeadArmor() {
+        Hero caster = new Hero("Caster");
+        HeadArmor priestHelm = new Cap("Priest Helm", 45);
+        caster.setLevel(45);
+        caster.equipHeadArmor(priestHelm);
+        caster.unEquipHeadArmor();
+
+        assertNull(caster.getHeadArmor());
+        assertEquals(980, caster.getMana());
+        assertEquals(230, caster.getDefense());
     }
     //Head armor equip un-equip ends
 
@@ -126,6 +147,7 @@ class HeroTest {
         assertThrows(IllegalStateException.class, () -> caster.equipBodyArmor(merlinRobe));
     }
 
+    //Body plate increases health, mana, attack, and defense
     @Test
     void heroEquipBodyPlate() {
         Hero slasher = new Hero("Slasher");
@@ -135,11 +157,12 @@ class HeroTest {
 
         assertEquals(goldenPlate, slasher.getBodyArmor());
         assertEquals(1900, slasher.getHealth());
-        assertEquals(1597, slasher.getMana());
+        assertEquals(1561, slasher.getMana());
         assertEquals(591, slasher.getAttack());
         assertEquals(591, slasher.getDefense());
     }
 
+    //Robe increases health, mana, intelligence, and defense
     @Test
     void heroEquipRobe() {
         Hero caster = new Hero("Caster");
@@ -148,29 +171,39 @@ class HeroTest {
         caster.equipBodyArmor(priestRobe);
 
         assertEquals(priestRobe, caster.getBodyArmor());
-        assertEquals(1597, caster.getHealth());
+        assertEquals(1561, caster.getHealth());
         assertEquals(1900, caster.getMana());
         assertEquals(591, caster.getIntelligence());
-        assertEquals(442, caster.getDefense());
+        assertEquals(406, caster.getDefense());
     }
 
     @Test
-    void heroUnEquipBodyArmor() {
+    void heroUnEquipBodyPlate() {
         Hero slasher = new Hero("Slasher");
         BodyPlate dragonPlate = new BodyPlate("Dragon Plate", 82);
-        Robe blessedRobe = new Robe("Blessed Robe", 82);
         slasher.setLevel(82);
         slasher.equipBodyArmor(dragonPlate);
-        slasher.unEquipBodyArmor();
-        slasher.equipBodyArmor(blessedRobe);
         slasher.unEquipBodyArmor();
 
         assertNull(slasher.getBodyArmor());
         assertEquals(1720, slasher.getHealth());
         assertEquals(1720, slasher.getMana());
         assertEquals(415, slasher.getAttack());
-        assertEquals(415, slasher.getIntelligence());
         assertEquals(415, slasher.getDefense());
+    }
+    @Test
+    void heroUnEquipRobe() {
+        Hero caster = new Hero("Caster");
+        Robe blessedRobe = new Robe("Blessed Robe", 82);
+        caster.setLevel(82);
+        caster.equipBodyArmor(blessedRobe);
+        caster.unEquipBodyArmor();
+
+        assertNull(caster.getBodyArmor());
+        assertEquals(1720, caster.getHealth());
+        assertEquals(1720, caster.getMana());
+        assertEquals(415, caster.getIntelligence());
+        assertEquals(415, caster.getDefense());
     }
     //Body armor equip and un-equip test ends
 
@@ -183,6 +216,7 @@ class HeroTest {
         assertThrows(IllegalStateException.class, () -> slasher.equipHandArmor(boneGauntlets));
     }
 
+    //Gauntlets increases health, attack, and defense
     @Test
     void heroEquipGauntlets() {
         Hero slasher = new Hero("Slasher");
@@ -196,6 +230,7 @@ class HeroTest {
         assertEquals(330, slasher.getDefense());
     }
 
+    //Gloves increases mana, intelligence, and defense
     @Test
     void heroEquipGloves() {
         Hero caster = new Hero("Caster");
@@ -206,23 +241,33 @@ class HeroTest {
         assertEquals(priestGloves, caster.getHandArmor());
         assertEquals(1090, caster.getMana());
         assertEquals(330, caster.getIntelligence());
-        assertEquals(247, caster.getDefense());
+        assertEquals(227, caster.getDefense());
     }
 
     @Test
-    void heroUnEquipHandArmor() {
+    void heroUnEquipGauntlets() {
         Hero slasher = new Hero("Slasher");
         HandArmor skullHelmet = new Gauntlets("Bone Gauntlets", 40);
-        HandArmor priestGloves = new Gloves("Priest Gloves", 40);
         slasher.setLevel(40);
         slasher.equipHandArmor(skullHelmet);
-        slasher.unEquipHandArmor();
-        slasher.equipHandArmor(priestGloves);
         slasher.unEquipHandArmor();
 
         assertNull(slasher.getHandArmor());
         assertEquals(880, slasher.getHealth());
         assertEquals(205, slasher.getAttack());
+        assertEquals(205, slasher.getDefense());
+    }
+
+    @Test
+    void heroUnEquipGloves() {
+        Hero slasher = new Hero("Slasher");
+        HandArmor priestGloves = new Gloves("Priest Gloves", 40);
+        slasher.setLevel(40);
+        slasher.equipHandArmor(priestGloves);
+        slasher.unEquipHandArmor();
+
+        assertNull(slasher.getHandArmor());
+        assertEquals(880, slasher.getMana());
         assertEquals(205, slasher.getIntelligence());
         assertEquals(205, slasher.getDefense());
     }
@@ -237,6 +282,7 @@ class HeroTest {
         assertThrows(IllegalStateException.class, () -> caster.equipLegArmor(merlinTrousers));
     }
 
+    //Both leg plate and trousers increases health, mana, agility and defense but in a different way
     @Test
     void heroEquipLegPlate() {
         Hero slasher = new Hero("Slasher");
@@ -246,8 +292,8 @@ class HeroTest {
 
         assertEquals(goldenLegPlate, slasher.getLegArmor());
         assertEquals(2100, slasher.getHealth());
-        assertEquals(1765, slasher.getMana());
-        assertEquals(490, slasher.getAgility());
+        assertEquals(1725, slasher.getMana());
+        assertEquals(450, slasher.getAgility());
         assertEquals(655, slasher.getDefense());
     }
 
@@ -259,21 +305,18 @@ class HeroTest {
         caster.equipLegArmor(priestTrousers);
 
         assertEquals(priestTrousers, caster.getLegArmor());
-        assertEquals(1765, caster.getHealth());
+        assertEquals(1725, caster.getHealth());
         assertEquals(2100, caster.getMana());
         assertEquals(655, caster.getAgility());
-        assertEquals(490, caster.getDefense());
+        assertEquals(450, caster.getDefense());
     }
 
     @Test
-    void heroUnEquipLegArmor() {
+    void heroUnEquipLegPlate() {
         Hero slasher = new Hero("Slasher");
         LegArmor dragonLegPlate = new LegPlate("Dragon Leg Plate", 80);
-        LegArmor blessedTrousers = new Trousers("Blessed Trousers", 80);
         slasher.setLevel(80);
         slasher.equipLegArmor(dragonLegPlate);
-        slasher.unEquipLegArmor();
-        slasher.equipLegArmor(blessedTrousers);
         slasher.unEquipLegArmor();
 
         assertNull(slasher.getLegArmor());
@@ -281,6 +324,21 @@ class HeroTest {
         assertEquals(1680, slasher.getMana());
         assertEquals(405, slasher.getAgility());
         assertEquals(405, slasher.getDefense());
+    }
+
+    @Test
+    void heroUnEquipTrousers() {
+        Hero caster = new Hero("Caster");
+        LegArmor blessedTrousers = new Trousers("Blessed Trousers", 80);
+        caster.setLevel(80);
+        caster.equipLegArmor(blessedTrousers);
+        caster.unEquipLegArmor();
+
+        assertNull(caster.getLegArmor());
+        assertEquals(1680, caster.getHealth());
+        assertEquals(1680, caster.getMana());
+        assertEquals(405, caster.getAgility());
+        assertEquals(405, caster.getDefense());
     }
     //Leg armor equip and un-equip test ends
 
@@ -293,6 +351,7 @@ class HeroTest {
         assertThrows(IllegalStateException.class, () -> caster.equipFootArmor(priestShoes));
     }
 
+    //Boots increases health, agility and defense
     @Test
     void heroEquipBoots() {
         Hero slasher = new Hero("Slasher");
@@ -302,10 +361,11 @@ class HeroTest {
 
         assertEquals(boneBoots, slasher.getFootArmor());
         assertEquals(965, slasher.getHealth());
-        assertEquals(217, slasher.getAgility());
+        assertEquals(199, slasher.getAgility());
         assertEquals(290, slasher.getDefense());
     }
 
+    //Shoes increases mana, agility and defense
     @Test
     void heroEquipShoes() {
         Hero caster = new Hero("Caster");
@@ -316,30 +376,42 @@ class HeroTest {
         assertEquals(priestShoes, caster.getFootArmor());
         assertEquals(965, caster.getMana());
         assertEquals(290, caster.getAgility());
-        assertEquals(217, caster.getDefense());
+        assertEquals(199, caster.getDefense());
     }
 
     @Test
-    void heroUnEquipFootArmor() {
+    void heroUnEquipBoots() {
         Hero slasher = new Hero("Slasher");
         FootArmor boneBoots = new Boots("Bone Boots", 35);
-        FootArmor priestShoes = new Shoes("Priest Shoes", 35);
         slasher.setLevel(35);
         slasher.equipFootArmor(boneBoots);
-        slasher.unEquipFootArmor();
-        slasher.equipFootArmor(priestShoes);
         slasher.unEquipFootArmor();
 
         assertNull(slasher.getFootArmor());
         assertEquals(780, slasher.getHealth());
-        assertEquals(780, slasher.getMana());
         assertEquals(180, slasher.getAgility());
         assertEquals(180, slasher.getDefense());
+    }
+
+    @Test
+    void heroUnEquipShoes() {
+        Hero caster = new Hero("Caster");
+        FootArmor priestShoes = new Shoes("Priest Shoes", 35);
+        caster.setLevel(35);
+        caster.equipFootArmor(priestShoes);
+        caster.unEquipFootArmor();
+
+        assertNull(caster.getFootArmor());
+        assertEquals(780, caster.getMana());
+        assertEquals(180, caster.getAgility());
+        assertEquals(180, caster.getDefense());
     }
     //Foot armor equip and un-equip test ends
 
     //Full armor equip test starts
+
     //Full plate armor pieces are helmet, gauntlets, body plate, leg plate, and boots
+    //Full plate armor with sword have more health, attack and defense
     @Test
     void heroEquipFullPlateArmorWithSword() {
         Hero slasher = new Hero("Slasher");
@@ -364,13 +436,15 @@ class HeroTest {
         assertEquals(dragonLegPlate, slasher.getLegArmor());
         assertEquals(dragonBoots, slasher.getFootArmor());
         assertEquals(4650, slasher.getHealth());
-        assertEquals(2290, slasher.getMana());
+        assertEquals(2190, slasher.getMana());
         assertEquals(1640, slasher.getAttack());
         assertEquals(505, slasher.getIntelligence());
-        assertEquals(712, slasher.getAgility());
+        assertEquals(612, slasher.getAgility());
         assertEquals(2040, slasher.getDefense());
     }
+
     //Full cloth armor pieces are cap, gloves, robe, trousers, and shoes
+    //Full cloth armor with staff have more mana, intelligence and agility
     @Test
     void heroEquipFullClothArmorWithStaff() {
         Hero caster = new Hero("Caster");
@@ -394,12 +468,12 @@ class HeroTest {
         assertEquals(merlinGloves, caster.getHandArmor());
         assertEquals(merlinTrouser, caster.getLegArmor());
         assertEquals(merlinShoes, caster.getFootArmor());
-        assertEquals(2290, caster.getHealth());
+        assertEquals(2190, caster.getHealth());
         assertEquals(4650, caster.getMana());
         assertEquals(505, caster.getAttack());
         assertEquals(1640, caster.getIntelligence());
         assertEquals(1120, caster.getAgility());
-        assertEquals(1021, caster.getDefense());
+        assertEquals(771, caster.getDefense());
     }
     //Full armor equip test ends
     //Hero equip and un-equip weapon and armor end

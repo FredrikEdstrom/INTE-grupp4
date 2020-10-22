@@ -9,7 +9,7 @@ public class BodyPlate extends BodyArmor {
         super(name, level);
         if (level != 1) {
             health += 5 * level; //Health, mana, attack och defense förändras med item level
-            mana += level;
+            mana += 0.5 * level;
             attack += 3 * level;
             defense += 3 * level;
         }

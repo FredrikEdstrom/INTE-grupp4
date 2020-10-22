@@ -8,7 +8,7 @@ public class Boots extends FootArmor {
         if (level != 1) {
             health += 5 * level; //Health, agility och defense förändras med item level
             defense += 3 * level;
-            agility += level;
+            agility += 0.5 * level;
         }
     }
 

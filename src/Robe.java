@@ -7,10 +7,10 @@ public class Robe extends BodyArmor {
     public Robe(String name, int level) {
         super(name, level);
         if (level != 1) {
-            health += level; //Health, mana, intelligence och defense förändras med item level
+            health += 0.5 * level; //Health, mana, intelligence och defense förändras med item level
             mana += 5 * level;
             intelligence += 3 * level;
-            defense += level;
+            defense += 0.5 * level;
         }
     }
 

@@ -6,7 +6,7 @@ public class Cap extends HeadArmor {
         super(name, level);
         if (level != 1) {
             mana += 5 * level; //Mana och defense förändras med item level
-            defense += level;
+            defense += 0.5 * level;
         }
     }
 

@@ -8,8 +8,8 @@ public class LegPlate extends LegArmor {
         super(name, level);
         if (level != 1) {
             health += 5 * level; //Health, mana, agility och defense förändras med item level
-            mana += level;
-            agility += level;
+            mana += 0.5 * level;
+            agility += 0.5 * level;
             defense += 3 * level;
         }
     }

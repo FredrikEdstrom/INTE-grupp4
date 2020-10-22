@@ -32,8 +32,8 @@ class LegArmorTest {
         assertEquals("Steel Leg Plate", steelLegPlate.getName());
         assertEquals(50, steelLegPlate.getLevel());
         assertEquals(270, steelLegPlate.getHealth());
-        assertEquals(55, steelLegPlate.getMana());
-        assertEquals(55, steelLegPlate.getAgility());
+        assertEquals(30, steelLegPlate.getMana());
+        assertEquals(30, steelLegPlate.getAgility());
         assertEquals(160, steelLegPlate.getDefense());
     }
 
@@ -42,10 +42,10 @@ class LegArmorTest {
         LegArmor priestTrousers = new Trousers("Priest Trousers", 50);
         assertEquals("Priest Trousers", priestTrousers.getName());
         assertEquals(50, priestTrousers.getLevel());
-        assertEquals(55, priestTrousers.getHealth());
+        assertEquals(30, priestTrousers.getHealth());
         assertEquals(270, priestTrousers.getMana());
         assertEquals(160, priestTrousers.getAgility());
-        assertEquals(55, priestTrousers.getDefense());
+        assertEquals(30, priestTrousers.getDefense());
     }
 
     @Test

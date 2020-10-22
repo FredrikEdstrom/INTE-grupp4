@@ -7,10 +7,10 @@ public class Trousers extends LegArmor {
     public Trousers(String name, int level) {
         super(name, level);
         if (level != 1) {
-            health += level; //Health, mana, agility och defense förändras med item level
+            health += 0.5 * level; //Health, mana, agility och defense förändras med item level
             mana += 5 * level;
             agility += 3 * level;
-            defense += level;
+            defense += 0.5 * level;
         }
     }
 
