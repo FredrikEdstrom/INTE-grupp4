@@ -11,40 +11,6 @@ public class Hero extends Character {
         super(name);
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public int getLevel() {
-        return level;
-    }
-
-    public int getAttack() {
-        return attack;
-    }
-
-    public int getDefense() {
-        return defense;
-    }
-
-    public int getHealth() {
-        return health;
-    }
-
-    public int getMana() {
-        return mana;
-    }
-
-    public int getIntelligence() {
-        return intelligence;
-    }
-
-    public int getAgility() {return agility;}
-
-    public int getExperience() {
-        return experience;
-    }
-
     public Weapon getWeapon() {
         return weapon;
     }
@@ -67,42 +33,6 @@ public class Hero extends Character {
 
     public FootArmor getFootArmor() {
         return footArmor;
-    }
-
-    public void setAttack(int attack) {
-        this.attack = attack;
-    }
-
-    public void setDefense(int defense) {
-        this.defense = defense;
-    }
-
-    public void setHealth(int health) {
-        this.health = health;
-    }
-
-    public void setMana(int mana) {
-        this.mana = mana;
-    }
-
-    public void setIntelligence(int intelligence) {
-        this.intelligence = intelligence;
-    }
-
-    public void setAgility(int agility) { this.agility = agility; }
-
-    public void setExperience(int experience) {
-        this.experience = experience;
-    }
-
-    public void levelUp() {
-        this.level++;
-        health += 20;
-        mana += 20;
-        attack += 5;
-        defense += 5;
-        intelligence += 5;
-        agility += 5;
     }
 
     //Equip weapon och armor metoder start:
@@ -246,7 +176,6 @@ public class Hero extends Character {
         agility -= footArmor.getAgility();
         footArmor = null;
     }
-
     //Equip weapon och armor metoder end
 
     public void castBuffSpell(BuffSpell spell) {
@@ -273,11 +202,12 @@ public class Hero extends Character {
         setHealth(newHealth);
     }
 
+    @Override
     public String toString() {
-        return "Hero [name=" + name + ", level=" + level + ", attack=" + attack + ", defense=" + defense + ", health="
-                + health + ", mana=" + mana + ", intelligence=" + intelligence + ", agility=" + agility
-                + ", experience=" + experience + "]";
+        return "Hero [name =" + this.getName() + ", level =" + this.getLevel() + ", " +
+                "attack =" + this.getAttack() + ", defense =" + this.getDefense() + ", health ="
+                + this.getHealth() + ", mana=" + this.getMana() + ", " + "intelligence=" +
+                this.getIntelligence() + ", agility =" + this.getAgility()
+                + ", experience=" + this.getExperience() + "]";
     }
-
-
 }

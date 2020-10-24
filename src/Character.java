@@ -1,5 +1,5 @@
 
-public class Character {
+public abstract class Character {
 
     protected final String name;
     protected int level = 1;
@@ -100,7 +100,6 @@ public class Character {
             intelligence += 5;
             agility += 5;
         }
-
     }
 
     //Setter metod för level som används för testning
