@@ -15,40 +15,6 @@ public class Hero extends Character {
         super(name);
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public int getLevel() {
-        return level;
-    }
-
-    public int getAttack() {
-        return attack;
-    }
-
-    public int getDefense() {
-        return defense;
-    }
-
-    public int getHealth() {
-        return health;
-    }
-
-    public int getMana() {
-        return mana;
-    }
-
-    public int getIntelligence() {
-        return intelligence;
-    }
-
-    public int getAgility() {return agility;}
-
-    public int getExperience() {
-        return experience;
-    }
-
     public Weapon getWeapon() {
         return weapon;
     }
@@ -252,7 +218,6 @@ public class Hero extends Character {
         agility -= footArmor.getAgility();
         footArmor = null;
     }
-
     //Equip weapon och armor metoder end
 
     public void addSpellToSpellBook(Spell spell){
@@ -283,11 +248,12 @@ public class Hero extends Character {
         setHealth(newHealth);
     }
 
+    @Override
     public String toString() {
-        return "Hero [name=" + name + ", level=" + level + ", attack=" + attack + ", defense=" + defense + ", health="
-                + health + ", mana=" + mana + ", intelligence=" + intelligence + ", agility=" + agility
-                + ", experience=" + experience + "]";
+        return "Hero [name =" + this.getName() + ", level =" + this.getLevel() + ", " +
+                "attack =" + this.getAttack() + ", defense =" + this.getDefense() + ", health ="
+                + this.getHealth() + ", mana=" + this.getMana() + ", " + "intelligence=" +
+                this.getIntelligence() + ", agility =" + this.getAgility()
+                + ", experience=" + this.getExperience() + "]";
     }
-
-
 }
