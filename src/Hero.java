@@ -1,14 +1,4 @@
-public class Hero {
-
-    private final String name;
-    private int level = 1;
-    private int attack = 10;
-    private int defense = 10;
-    private int health = 100;
-    private int mana = 100;
-    private int intelligence = 10;
-    private int agility = 10;
-    private int experience = 0;
+public class Hero extends Character {
 
     private Weapon weapon;
     private HeadArmor headArmor;
@@ -18,22 +8,7 @@ public class Hero {
     private FootArmor footArmor;
 
     public Hero(String name) {
-        if (name.isEmpty() || name.isBlank())
-            throw new IllegalArgumentException("Name: empty"); //Namn får inte vara tom eller blank
-        this.name = name;
-    }
-
-    public Hero(String name, int level, int attack, int defense, int health, int mana, int intelligence, int agility){
-        if (name.isEmpty() || name.isBlank())
-            throw new IllegalArgumentException("Name: empty"); //Namn får inte vara tom eller blank
-        this.name = name;
-        this.level = level;
-        this.attack = attack;
-        this.defense = defense;
-        this.health = health;
-        this.mana = mana;
-        this.intelligence = intelligence;
-        this.agility = agility;
+        super(name);
     }
 
     public String getName() {

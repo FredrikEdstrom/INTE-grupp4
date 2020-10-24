@@ -3,7 +3,35 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class HeroTest {
-    
+
+    @Test
+    void playerLevelUpTest() {
+        Hero player = new Hero("player");
+        player.levelUp();
+        assertEquals(2, player.getLevel());
+    }
+
+    @Test
+    void setPlayerMaxLevelTest() {
+        Hero player = new Hero("player");
+        player.setLevel(100);
+        assertEquals(100, player.getLevel());
+    }
+
+    @Test
+    void setPlayerOverMaxLevelTest() {
+        Hero player = new Hero("player");
+        player.setLevel(101);
+        assertEquals(100, player.getLevel());
+    }
+
+    @Test
+    void setPlayerLevelZeroTest() {
+        Hero player = new Hero("player");
+        player.setLevel(0);
+        assertEquals(1, player.getLevel());
+    }
+
     @Test
     void createHeroWithEmptyName() {
         assertThrows(IllegalArgumentException.class,
