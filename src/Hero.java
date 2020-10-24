@@ -105,12 +105,6 @@ public class Hero extends Character {
         agility += 5;
     }
 
-    //Setter metod för level som används för testning
-    protected void setLevel(int level) {
-        while (this.level != level)
-            levelUp();
-    }
-
     //Equip weapon och armor metoder start:
     //Low level hero får inte equipa high level item
     public void equipWeapon(Weapon weapon) {
@@ -278,5 +272,12 @@ public class Hero extends Character {
             newHealth = 100;
         setHealth(newHealth);
     }
+
+    public String toString() {
+        return "Hero [name=" + name + ", level=" + level + ", attack=" + attack + ", defense=" + defense + ", health="
+                + health + ", mana=" + mana + ", intelligence=" + intelligence + ", agility=" + agility
+                + ", experience=" + experience + "]";
+    }
+
 
 }
