@@ -1,3 +1,6 @@
+import java.util.HashSet;
+import java.util.Set;
+
 public class Hero extends Character {
 
     private Weapon weapon;
@@ -6,6 +9,7 @@ public class Hero extends Character {
     private HandArmor handArmor;
     private LegArmor legArmor;
     private FootArmor footArmor;
+    private Set<Spell> spellBook = new HashSet<Spell>();
 
     public Hero(String name) {
         super(name);
@@ -68,6 +72,8 @@ public class Hero extends Character {
     public FootArmor getFootArmor() {
         return footArmor;
     }
+
+    public Set<Spell> getSpellBook(){ return spellBook; }
 
     public void setAttack(int attack) {
         this.attack = attack;
@@ -248,6 +254,10 @@ public class Hero extends Character {
     }
 
     //Equip weapon och armor metoder end
+
+    public void addSpellToSpellBook(Spell spell){
+        spellBook.add(spell);
+    }
 
     public void castBuffSpell(BuffSpell spell) {
         switch (spell.getName()) {

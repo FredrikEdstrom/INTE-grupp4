@@ -1,4 +1,4 @@
-public class Spell {
+public abstract class Spell {
     private String name;
     private int cost;
     private int levelReq;
@@ -14,10 +14,10 @@ public class Spell {
     }
 
     public int getCost(){
-        return cost;
+       return cost;
     }
 
-    public int getLevelReq(){
+   public int getLevelReq(){
         return levelReq;
     }
 }

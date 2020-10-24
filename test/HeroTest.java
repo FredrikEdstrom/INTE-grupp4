@@ -505,4 +505,12 @@ class HeroTest {
     }
     //Full armor equip test ends
     //Hero equip and un-equip weapon and armor end
+
+    @Test
+    void addSpellToSpellBook(){
+        Hero hero = new Hero("Hero");
+        Fireball fireball = new Fireball();
+        hero.addSpellToSpellBook(fireball);
+        assertEquals(true,hero.getSpellBook().contains(fireball));
+    }
 }
