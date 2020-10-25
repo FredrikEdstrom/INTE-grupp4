@@ -7,10 +7,11 @@ class FireballTest {
     @Test
     void constantValuesSet(){
         Fireball fireball = new Fireball();
-        assertEquals(20,fireball.getDefaultDamage());
+        assertEquals("Fireball",fireball.getName());
+        assertEquals(5,fireball.getCost());
+        assertEquals(1,fireball.getLevelReq());
         assertEquals("Fire",fireball.getDamageType());
-        assertEquals(5,fireball.getDefaultManaCost());
-        assertEquals(1,fireball.getLevelRequirement());
+        assertEquals(20,fireball.getDefaultDamage());
     }
 
     @Test
@@ -25,6 +26,13 @@ class FireballTest {
         Fireball fireball = new Fireball();
         Fireball fireball2 = new Fireball();
         assertEquals(true,fireball.equals(fireball2));
+    }
+
+    @Test
+    void hashCodeSameForAllFireballs(){
+        Fireball fireball = new Fireball();
+        Fireball fireball2 = new Fireball();
+        assertEquals(true,fireball.hashCode()==fireball2.hashCode());
     }
 
 }

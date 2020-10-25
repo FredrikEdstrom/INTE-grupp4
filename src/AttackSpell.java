@@ -1,4 +1,4 @@
-public class AttackSpell extends Spell{
+public abstract class AttackSpell extends Spell{
     private String damageType;
     private int defaultDamage;
 
@@ -16,7 +16,4 @@ public class AttackSpell extends Spell{
         return defaultDamage;
     }
 
-    public int getModifiedDamage(int intelligence){
-        return defaultDamage + intelligence;
-    }
 }

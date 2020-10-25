@@ -1,31 +1,19 @@
-public class Fireball extends Spell {
+public class Fireball extends AttackSpell {
     private static final String NAME = "Fireball";
-    private static final String DAMAGE_TYPE = "Fire";
-    private static final int DEFAULT_DAMAGE = 20;
     private static final int DEFAULT_MANA_COST = 5;
     private static final int LEVEL_REQUIREMENT = 1;
+    private static final String DAMAGE_TYPE = "Fire";
+    private static final int DEFAULT_DAMAGE = 20;
+
+
 
 
     public Fireball(){
-        super(NAME, DEFAULT_MANA_COST,LEVEL_REQUIREMENT);
-    }
-
-    public String getDamageType(){
-        return DAMAGE_TYPE;
-    }
-
-    public int getDefaultDamage(){
-        return DEFAULT_DAMAGE;
-    }
-
-    public int getDefaultManaCost() {return DEFAULT_MANA_COST; }
-
-    public int getLevelRequirement(){
-        return LEVEL_REQUIREMENT;
+        super(NAME, DEFAULT_MANA_COST,LEVEL_REQUIREMENT,DAMAGE_TYPE,DEFAULT_DAMAGE);
     }
 
     public int getModifiedDamage(int intelligence){
-        return DEFAULT_DAMAGE + intelligence * 2;
+        return getDefaultDamage() + intelligence * 2;
     }
 
     public boolean equals(Object other){
@@ -40,6 +28,6 @@ public class Fireball extends Spell {
 
     @Override
     public int hashCode() {
-        return NAME.hashCode() + DAMAGE_TYPE.hashCode() * 10000 + DEFAULT_MANA_COST + DEFAULT_DAMAGE;
+        return NAME.hashCode() + DAMAGE_TYPE.hashCode() * 10000 + DEFAULT_MANA_COST + DEFAULT_DAMAGE + LEVEL_REQUIREMENT;
     }
 }

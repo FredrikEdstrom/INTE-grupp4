@@ -1,4 +1,4 @@
-public class HealSpell extends Spell {
+public abstract class HealSpell extends Spell {
     private int healValue;
 
     public HealSpell(String name, int cost, int levelReq,int healValue) {
@@ -9,5 +9,7 @@ public class HealSpell extends Spell {
     public int getHealValue(){
         return healValue;
     }
+
+    abstract int getModifiedHealValue(int intelligence);
 
 }

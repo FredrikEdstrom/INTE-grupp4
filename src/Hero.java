@@ -226,7 +226,7 @@ public class Hero extends Character {
 
     public void castBuffSpell(BuffSpell spell) {
         switch (spell.getName()) {
-            case "AttackUp":
+            case "Increase Attack":
                 int newAttack = getAttack() + spell.getBuffValue();
                 setAttack(newAttack);
                 break;
@@ -242,7 +242,7 @@ public class Hero extends Character {
     }
 
     public void castHealSpell(HealSpell spell) {
-        int newHealth = getHealth() + spell.getHealValue();
+        int newHealth = getHealth() + spell.getModifiedHealValue(getIntelligence());
         if (newHealth > 100)
             newHealth = 100;
         setHealth(newHealth);

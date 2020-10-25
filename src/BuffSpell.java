@@ -1,4 +1,4 @@
-public class BuffSpell extends Spell {
+public abstract class BuffSpell extends Spell {
     private int buffValue;
     private int duration;
 
