@@ -39,42 +39,8 @@ public class Hero extends Character {
         return footArmor;
     }
 
-    public Set<Spell> getSpellBook(){ return spellBook; }
-
-    public void setAttack(int attack) {
-        this.attack = attack;
-    }
-
-    public void setDefense(int defense) {
-        this.defense = defense;
-    }
-
-    public void setHealth(int health) {
-        this.health = health;
-    }
-
-    public void setMana(int mana) {
-        this.mana = mana;
-    }
-
-    public void setIntelligence(int intelligence) {
-        this.intelligence = intelligence;
-    }
-
-    public void setAgility(int agility) { this.agility = agility; }
-
-    public void setExperience(int experience) {
-        this.experience = experience;
-    }
-
-    public void levelUp() {
-        this.level++;
-        health += 20;
-        mana += 20;
-        attack += 5;
-        defense += 5;
-        intelligence += 5;
-        agility += 5;
+    public Set<Spell> getSpellBook() {
+        return spellBook;
     }
 
     //Equip weapon och armor metoder start:
@@ -85,17 +51,17 @@ public class Hero extends Character {
         } else {
             this.weapon = weapon;
             if (weapon instanceof Sword)
-                attack += ((Sword) weapon).getAttack();
+                setAttack(getAttack() + ((Sword) weapon).getAttack());
             else
-                intelligence += ((Staff) weapon).getIntelligence();
+                setIntelligence(getIntelligence() + ((Staff) weapon).getIntelligence());
         }
     }
 
     public void unEquipWeapon() {
         if (weapon instanceof Sword)
-            attack -= ((Sword) weapon).getAttack();
+            setAttack(getAttack() - ((Sword) weapon).getAttack());
         else
-            intelligence -= ((Staff) weapon).getIntelligence();
+            setIntelligence(getIntelligence() - ((Staff) weapon).getIntelligence());
         weapon = null;
     }
 
@@ -104,20 +70,20 @@ public class Hero extends Character {
             throw new IllegalStateException("Hero level: " + level + " Item level: " + headArmor.getLevel());
         } else {
             this.headArmor = headArmor;
-            defense += headArmor.getDefense();
+            setDefense(getDefense() + headArmor.getDefense());
             if (headArmor instanceof Helmet)
-                health += ((Helmet) headArmor).getHealth();
+                setHealth(getHealth() + ((Helmet) headArmor).getHealth());
             else
-                mana += ((Cap) headArmor).getMana();
+                setMana(getMana() + ((Cap) headArmor).getMana());
         }
     }
 
     public void unEquipHeadArmor() {
         if (headArmor instanceof Helmet)
-            health -= ((Helmet) headArmor).getHealth();
+            setHealth(getHealth() - ((Helmet) headArmor).getHealth());
         else
-            mana -= ((Cap) headArmor).getMana();
-        defense -= headArmor.getDefense();
+            setMana(getMana() - ((Cap) headArmor).getMana());
+        setDefense(getDefense() - headArmor.getDefense());
         headArmor = null;
     }
 
@@ -126,24 +92,24 @@ public class Hero extends Character {
             throw new IllegalStateException("Hero level: " + level + " Item level: " + bodyArmor.getLevel());
         } else {
             this.bodyArmor = bodyArmor;
-            health += bodyArmor.getHealth();
-            mana += bodyArmor.getMana();
-            defense += bodyArmor.getDefense();
+            setHealth(getHealth() + bodyArmor.getHealth());
+            setMana(getMana() + bodyArmor.getMana());
+            setDefense(getDefense() + bodyArmor.getDefense());
             if (bodyArmor instanceof BodyPlate)
-                attack += ((BodyPlate) bodyArmor).getAttack();
+                setAttack(getAttack() + ((BodyPlate) bodyArmor).getAttack());
             else
-                intelligence += ((Robe) bodyArmor).getIntelligence();
+                setIntelligence(getIntelligence() + ((Robe) bodyArmor).getIntelligence());
         }
     }
 
     public void unEquipBodyArmor() {
         if (bodyArmor instanceof BodyPlate)
-            attack -= ((BodyPlate) bodyArmor).getAttack();
+            setAttack(getAttack() - ((BodyPlate) bodyArmor).getAttack());
         else
-            intelligence -= ((Robe) bodyArmor).getIntelligence();
-        health -= bodyArmor.getHealth();
-        mana -= bodyArmor.getMana();
-        defense -= bodyArmor.getDefense();
+            setIntelligence(getIntelligence() - ((Robe) bodyArmor).getIntelligence());
+        setHealth(getHealth() - bodyArmor.getHealth());
+        setMana(getMana() - bodyArmor.getMana());
+        setDefense(getDefense() - bodyArmor.getDefense());
         bodyArmor = null;
     }
 
@@ -152,26 +118,26 @@ public class Hero extends Character {
             throw new IllegalStateException("Hero level: " + level + " Item level: " + handArmor.getLevel());
         } else {
             this.handArmor = handArmor;
-            defense += handArmor.getDefense();
+            setDefense(getDefense() + handArmor.getDefense());
             if (handArmor instanceof Gauntlets) {
-                health += ((Gauntlets) handArmor).getHealth();
-                attack += ((Gauntlets) handArmor).getAttack();
+                setHealth(getHealth() + ((Gauntlets) handArmor).getHealth());
+                setAttack(getAttack() + ((Gauntlets) handArmor).getAttack());
             } else {
-                mana += ((Gloves) handArmor).getMana();
-                intelligence += ((Gloves) handArmor).getIntelligence();
+                setMana(getMana() + ((Gloves) handArmor).getMana());
+                setIntelligence(getIntelligence() + ((Gloves) handArmor).getIntelligence());
             }
         }
     }
 
     public void unEquipHandArmor() {
         if (handArmor instanceof Gauntlets) {
-            health -= ((Gauntlets) handArmor).getHealth();
-            attack -= ((Gauntlets) handArmor).getAttack();
+            setHealth(getHealth() - ((Gauntlets) handArmor).getHealth());
+            setAttack(getAttack() - ((Gauntlets) handArmor).getAttack());
         } else {
-            mana -= ((Gloves) handArmor).getMana();
-            intelligence -= ((Gloves) handArmor).getIntelligence();
+            setMana(getMana() - ((Gloves) handArmor).getMana());
+            setIntelligence(getIntelligence() - ((Gloves) handArmor).getIntelligence());
         }
-        defense -= handArmor.getDefense();
+        setDefense(getDefense() - handArmor.getDefense());
         handArmor = null;
     }
 
@@ -180,18 +146,18 @@ public class Hero extends Character {
             throw new IllegalStateException("Hero level: " + level + " Item level: " + legArmor.getLevel());
         } else {
             this.legArmor = legArmor;
-            health += legArmor.getHealth();
-            mana += legArmor.getMana();
-            agility += legArmor.getAgility();
-            defense += legArmor.getDefense();
+            setHealth(getHealth() + legArmor.getHealth());
+            setMana(getMana() + legArmor.getMana());
+            setAgility(getAgility() + legArmor.getAgility());
+            setDefense(getDefense() + legArmor.getDefense());
         }
     }
 
     public void unEquipLegArmor() {
-        health -= legArmor.getHealth();
-        mana -= legArmor.getMana();
-        agility -= legArmor.getAgility();
-        defense -= legArmor.getDefense();
+        setHealth(getHealth() - legArmor.getHealth());
+        setMana(getMana() - legArmor.getMana());
+        setAgility(getAgility() - legArmor.getAgility());
+        setDefense(getDefense() - legArmor.getDefense());
         legArmor = null;
     }
 
@@ -200,27 +166,27 @@ public class Hero extends Character {
             throw new IllegalStateException("Hero level: " + level + " Item level: " + footArmor.getLevel());
         } else {
             this.footArmor = footArmor;
-            defense += footArmor.getDefense();
-            agility += footArmor.getAgility();
+            setDefense(getDefense() + footArmor.getDefense());
+            setAgility(getAgility() + footArmor.getAgility());
             if (footArmor instanceof Boots)
-                health += ((Boots) footArmor).getHealth();
+                setHealth(getHealth() + ((Boots) footArmor).getHealth());
             else
-                mana += ((Shoes) footArmor).getMana();
+                setMana(getMana() + ((Shoes)footArmor).getMana());
         }
     }
 
     public void unEquipFootArmor() {
         if (footArmor instanceof Boots)
-            health -= ((Boots) footArmor).getHealth();
+            setHealth(getHealth() - ((Boots) footArmor).getHealth());
         else
-            mana -= ((Shoes) footArmor).getMana();
-        defense -= footArmor.getDefense();
-        agility -= footArmor.getAgility();
+            setMana(getMana() - ((Shoes)footArmor).getMana());
+        setDefense(getDefense() - footArmor.getDefense());
+        setAgility(getAgility() - footArmor.getAgility());
         footArmor = null;
     }
     //Equip weapon och armor metoder end
 
-    public void addSpellToSpellBook(Spell spell){
+    public void addSpellToSpellBook(Spell spell) {
         spellBook.add(spell);
     }
 
@@ -250,10 +216,10 @@ public class Hero extends Character {
 
     @Override
     public String toString() {
-        return "Hero [name =" + this.getName() + ", level =" + this.getLevel() + ", " +
-                "attack =" + this.getAttack() + ", defense =" + this.getDefense() + ", health ="
-                + this.getHealth() + ", mana=" + this.getMana() + ", " + "intelligence=" +
-                this.getIntelligence() + ", agility =" + this.getAgility()
-                + ", experience=" + this.getExperience() + "]";
+        return "Hero [name =" + getName() + ", level =" + getLevel() + ", " +
+                "attack =" + getAttack() + ", defense =" + getDefense() + ", health ="
+                + getHealth() + ", mana =" + getMana() + ", " + "intelligence =" +
+                getIntelligence() + ", agility =" + getAgility()
+                + ", experience=" + getExperience() + "]";
     }
 }

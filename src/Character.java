@@ -91,8 +91,8 @@ public abstract class Character {
     }
 
     public void levelUp() {
-        if(this.level < 100) {
-            this.level++;
+        if(level < 100) {
+            level++;
             health += 20;
             mana += 20;
             attack += 5;
