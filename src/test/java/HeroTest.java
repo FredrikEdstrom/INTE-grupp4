@@ -511,6 +511,6 @@ class HeroTest {
         Hero hero = new Hero("Hero");
         Fireball fireball = new Fireball();
         hero.addSpellToSpellBook(fireball);
-        assertEquals(true,hero.getSpellBook().contains(fireball));
+        assertTrue(hero.getSpellBook().contains(fireball));
     }
 }
