@@ -216,10 +216,10 @@ public class Hero extends Character {
 
     @Override
     public String toString() {
-        return "Hero [name =" + getName() + ", level =" + getLevel() + ", " +
-                "attack =" + getAttack() + ", defense =" + getDefense() + ", health ="
-                + getHealth() + ", mana =" + getMana() + ", " + "intelligence =" +
-                getIntelligence() + ", agility =" + getAgility()
-                + ", experience=" + getExperience() + "]";
+        return "Hero [name = " + getName() + ", level = " + getLevel() + ", " +
+                "attack = " + getAttack() + ", defense = " + getDefense() + ", health = "
+                + getHealth() + ", mana = " + getMana() + ", " + "intelligence = " +
+                getIntelligence() + ", agility = " + getAgility()
+                + ", experience = " + getExperience() + "]";
     }
 }

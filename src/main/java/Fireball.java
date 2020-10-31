@@ -4,10 +4,7 @@ public class Fireball extends AttackSpell {
     private static final int LEVEL_REQUIREMENT = 1;
     private static final String DAMAGE_TYPE = "Fire";
     private static final int DEFAULT_DAMAGE = 20;
-
-
-
-
+    
     public Fireball(){
         super(NAME, DEFAULT_MANA_COST,LEVEL_REQUIREMENT,DAMAGE_TYPE,DEFAULT_DAMAGE);
     }

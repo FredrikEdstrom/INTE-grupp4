@@ -219,6 +219,7 @@ class HeroTest {
         assertEquals(415, slasher.getAttack());
         assertEquals(415, slasher.getDefense());
     }
+
     @Test
     void heroUnEquipRobe() {
         Hero caster = new Hero("Caster");
@@ -511,6 +512,14 @@ class HeroTest {
         Hero hero = new Hero("Hero");
         Fireball fireball = new Fireball();
         hero.addSpellToSpellBook(fireball);
-        assertEquals(true,hero.getSpellBook().contains(fireball));
+        assertTrue(hero.getSpellBook().contains(fireball));
+    }
+
+    @Test
+    void printToString() {
+        Hero player = new Hero("Player");
+        assertEquals("Hero [name = Player, level = 1, attack = 10," +
+                " defense = 10, health = 100, mana = 100, intelligence = 10, agility = 10," +
+                        " experience = 0]", player.toString());
     }
 }
