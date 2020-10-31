@@ -30,17 +30,28 @@ class RestoreHealthTest {
     }
 
     @Test
+    void heroHealthOverhealStartValue(){
+        Hero hero = new Hero("hero");
+        RestoreHealth restoreHealth = new RestoreHealth();
+        hero.castHealSpell(restoreHealth);
+        assertEquals(100,hero.getHealth());
+    }
+
+    @Test
     void equalsOverride(){
         RestoreHealth restoreHealth = new RestoreHealth();
         RestoreHealth restoreHealth2 = new RestoreHealth();
-        assertEquals(true,restoreHealth.equals(restoreHealth2));
+        Fireball fireball = new Fireball();
+        assertTrue(restoreHealth.equals(restoreHealth2));
+        assertFalse(restoreHealth.equals(fireball));
+
     }
 
     @Test
     void hashCodeSameForALlRestoreHealths(){
         RestoreHealth restoreHealth = new RestoreHealth();
         RestoreHealth restoreHealth2 = new RestoreHealth();
-        assertEquals(true,restoreHealth.hashCode()==restoreHealth2.hashCode());
+        assertTrue(restoreHealth.hashCode() == restoreHealth2.hashCode());
     }
 
 }

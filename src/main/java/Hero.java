@@ -196,14 +196,6 @@ public class Hero extends Character {
                 int newAttack = getAttack() + spell.getBuffValue();
                 setAttack(newAttack);
                 break;
-            case "DefenseUp":
-                int newDefense = getDefense() + spell.getBuffValue();
-                setDefense(newDefense);
-                break;
-            case "IntelligenceUp":
-                int newIntelligence = getIntelligence() + spell.getBuffValue();
-                setIntelligence(newIntelligence);
-                break;
         }
     }
 
