@@ -513,4 +513,5 @@ class HeroTest {
         hero.addSpellToSpellBook(fireball);
         assertEquals(true,hero.getSpellBook().contains(fireball));
     }
+
 }
