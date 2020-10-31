@@ -25,14 +25,16 @@ class FireballTest {
     void equalsOverride(){
         Fireball fireball = new Fireball();
         Fireball fireball2 = new Fireball();
-        assertEquals(true,fireball.equals(fireball2));
+        RestoreHealth restoreHealth = new RestoreHealth();
+        assertTrue(fireball.equals(fireball2));
+        assertFalse(fireball.equals(restoreHealth));
     }
 
     @Test
     void hashCodeSameForAllFireballs(){
         Fireball fireball = new Fireball();
         Fireball fireball2 = new Fireball();
-        assertEquals(true,fireball.hashCode()==fireball2.hashCode());
+        assertTrue(fireball.hashCode() == fireball2.hashCode());
     }
 
 }

@@ -25,13 +25,15 @@ class IncreaseAttackTest {
     void equalsOverride(){
         IncreaseAttack increaseAttack = new IncreaseAttack();
         IncreaseAttack increaseAttack2 = new IncreaseAttack();
-        assertEquals(true,increaseAttack.equals(increaseAttack2));
+        Fireball fireball = new Fireball();
+        assertTrue(increaseAttack.equals(increaseAttack2));
+        assertFalse(increaseAttack.equals(fireball));
     }
 
     @Test
     void hashCodeSameForAllIncreaseAttacks(){
         IncreaseAttack increaseAttack = new IncreaseAttack();
         IncreaseAttack increaseAttack2 = new IncreaseAttack();
-        assertEquals(true,increaseAttack.hashCode() == increaseAttack2.hashCode());
+        assertTrue(increaseAttack.hashCode() == increaseAttack2.hashCode());
     }
 }
