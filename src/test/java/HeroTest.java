@@ -515,6 +515,7 @@ class HeroTest {
         assertTrue(hero.getSpellBook().contains(fireball));
     }
 
+<<<<<<< HEAD
     @Test
     void printToString() {
         Hero player = new Hero("Player");
@@ -522,4 +523,6 @@ class HeroTest {
                 " defense = 10, health = 100, mana = 100, intelligence = 10, agility = 10," +
                         " experience = 0]", player.toString());
     }
+=======
+>>>>>>> a2b01725dffe4d4490a4694bc7192542de6f49e3
 }
