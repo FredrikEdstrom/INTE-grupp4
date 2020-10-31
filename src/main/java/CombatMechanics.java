@@ -4,7 +4,7 @@ public class CombatMechanics {
         if(defender.getImmunityToPhysicalAttack()) {
             return 0;
         } else if(defender.getDefense() == 0){
-            defender.setHealth(defender.getHealth() - (attacker.getAttack() / 1));
+            defender.setHealth(defender.getHealth() - attacker.getAttack());
             return defender.getHealth();
         } else {
             defender.setHealth(defender.getHealth() - (attacker.getAttack() / defender.getDefense()));
@@ -14,12 +14,11 @@ public class CombatMechanics {
 
     public int attackOrder(Enemy attacker, Hero defender) {
         if(defender.getDefense() == 0) {
-            defender.setHealth(defender.getHealth() - (attacker.getAttack() / 1));
-            return defender.getHealth();
+            defender.setHealth(defender.getHealth() - attacker.getAttack());
         } else {
             defender.setHealth(defender.getHealth() - (attacker.getAttack() / defender.getDefense()));
-            return defender.getHealth();
         }
+        return defender.getHealth();
     }
 
     public int magicAttack(Hero attacker, Enemy defender) {
