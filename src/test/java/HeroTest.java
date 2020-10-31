@@ -8,7 +8,13 @@ class HeroTest {
     void playerLevelUpTest() {
         Hero player = new Hero("player");
         player.levelUp();
-        assertEquals(2, player.getLevel());
+    }
+
+    @Test
+    void setPlayerExperience() {
+        Hero player = new Hero("player");
+        player.setExperience(100);
+        assertEquals(100, player.getExperience());
     }
 
     @Test
@@ -522,5 +528,5 @@ class HeroTest {
                 " defense = 10, health = 100, mana = 100, intelligence = 10, agility = 10," +
                         " experience = 0]", player.toString());
     }
-    
+
 }
