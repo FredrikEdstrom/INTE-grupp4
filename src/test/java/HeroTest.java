@@ -33,13 +33,26 @@ class HeroTest {
     }
 
     @Test
+    void setExperienceTest(){
+        Hero hero = new Hero("hero");
+        hero.setExperience(100);
+        assertEquals(100,hero.getExperience());
+    }
+
+
+
+    @Test
     void createHeroWithEmptyName() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new Enemy("",50, 100,100,100,100,100,100,false,false));
         assertThrows(IllegalArgumentException.class,
                 () -> new Hero(""));
     }
 
     @Test
     void createHeroWithBlankName() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new Enemy("",50, 100,100,100,100,100,100,false,false));
         assertThrows(IllegalArgumentException.class,
                 () -> new Hero("   "));
     }
