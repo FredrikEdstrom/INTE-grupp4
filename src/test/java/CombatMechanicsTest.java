@@ -223,4 +223,22 @@ class CombatMechanicsTest {
         assertEquals(100, enemy.getHealth());
     }
 
+    @Test
+    void setEnemyImmunityToPhysicalAttackTest(){
+        Hero player = new Hero("player");
+        Enemy enemy = new Enemy("enemy", 10, 10, 10, 100, 100, 10, 5, false, false);
+        enemy.setImmunityToPhysicalAttack(true);
+        cm.attackOrder(player, enemy);
+        assertEquals(100, enemy.getHealth());
+    }
+
+    @Test
+    void setEnemyImmunityToMagicAttackTest(){
+        Hero player = new Hero("player");
+        Enemy enemy = new Enemy("enemy", 10, 10, 10, 100, 100, 10, 5, false, false);
+        enemy.setImmunityToMagicAttack(true);
+        cm.magicAttack(player, enemy);
+        assertEquals(100, enemy.getHealth());
+    }
+
 }
