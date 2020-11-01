@@ -1,3 +1,5 @@
+//Attack-increasing spell with predefined default values not intended to be changeable,
+//but useable in calculating modified values
 public class IncreaseAttack extends BuffSpell{
     private static final String NAME = "Increase Attack";
     private static final int DEFAULT_COST = 25;
@@ -9,6 +11,7 @@ public class IncreaseAttack extends BuffSpell{
         super(NAME,DEFAULT_COST,LEVEL_REQUIREMENT,DEFAULT_BUFF_VALUE,DURATION);
     }
 
+    //Overridden equals and hashCode for use of IncreaseAttack in HashSet
     public boolean equals(Object other){
         if (other instanceof IncreaseAttack){
             IncreaseAttack i = (IncreaseAttack) other;

@@ -186,24 +186,30 @@ public class Hero extends Character {
     }
     //Equip weapon och armor metoder end
 
+    //Method for adding a previously unknown spell to the hero spellbook
     public void addSpellToSpellBook(Spell spell) {
         spellBook.add(spell);
     }
 
+    //Method for casting a supplied buffspell, currently only making use of IncreaseAttack
     public void castBuffSpell(BuffSpell spell) {
-        switch (spell.getName()) {
-            case "Increase Attack":
-                int newAttack = getAttack() + spell.getBuffValue();
-                setAttack(newAttack);
-                break;
+        if (spellBook.contains(spell)) {
+            switch (spell.getName()) {
+                case "Increase Attack":
+                    int newAttack = getAttack() + spell.getBuffValue();
+                    setAttack(newAttack);
+                    break;
+            }
         }
     }
-
+    //Method for casting a supplied healing spell, avoiding overhealing above hero default max-health
     public void castHealSpell(HealSpell spell) {
-        int newHealth = getHealth() + spell.getModifiedHealValue(getIntelligence());
-        if (newHealth > 100)
-            newHealth = 100;
-        setHealth(newHealth);
+        if (spellBook.contains(spell)) {
+            int newHealth = getHealth() + spell.getModifiedHealValue(getIntelligence());
+            if (newHealth > 100)
+                newHealth = 100;
+            setHealth(newHealth);
+        }
     }
 
     @Override

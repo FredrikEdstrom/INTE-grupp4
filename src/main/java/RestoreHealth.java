@@ -1,3 +1,5 @@
+//Healing spell with predefined default values not intended to be changeable,
+//but useable in calculating modified values
 public class RestoreHealth extends HealSpell{
     private static final String NAME = "Restore Health";
     private static final int DEFAULT_COST = 20;
@@ -8,10 +10,12 @@ public class RestoreHealth extends HealSpell{
         super(NAME,DEFAULT_COST,LEVEL_REQUIREMENT,DEFAULT_HEAL_VALUE);
     }
 
+    //Getter for modified healingvalue of the spell, affected by the supplied intelligence modifier
     public int getModifiedHealValue(int intelligence){
         return getHealValue() + intelligence * 2;
     }
 
+    //Overridden equals and hashCode for use of RestoreHealth in HashSet
     public boolean equals(Object other){
         if (other instanceof RestoreHealth){
             RestoreHealth r = (RestoreHealth) other;

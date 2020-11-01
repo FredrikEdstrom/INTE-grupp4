@@ -534,6 +534,22 @@ class HeroTest {
         assertTrue(hero.getSpellBook().contains(fireball));
     }
 
+    //Test for making sure only spells memorized in the hero spellbook will be
+    //cast.
+    @Test
+    void onlyCastSpellsMemorizedInSpellbook(){
+       Hero hero = new Hero("hero");
+       IncreaseAttack increaseAttack = new IncreaseAttack();
+       RestoreHealth restoreHealth = new RestoreHealth();
+       hero.addSpellToSpellBook(increaseAttack);
+       hero.setHealth(60);
+       hero.castBuffSpell(increaseAttack);
+       hero.castHealSpell(restoreHealth);
+       assertEquals(60,hero.getAttack());
+       assertEquals(60,hero.getHealth());
+
+    }
+
     @Test
     void printToString() {
         Hero player = new Hero("Player");
