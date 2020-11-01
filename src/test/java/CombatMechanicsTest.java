@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CombatMechanicsTest {
 
+    //instance of the CombatMechanics class that will be used for the all of the tests
     CombatMechanics cm = new CombatMechanics();
 
     @Test
