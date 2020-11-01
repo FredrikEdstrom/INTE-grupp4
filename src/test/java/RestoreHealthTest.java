@@ -25,6 +25,7 @@ class RestoreHealthTest {
         Hero hero = new Hero("hero");                    //intelligence 10
         RestoreHealth restoreHealth = new RestoreHealth();     //default heal 20
         hero.setHealth(60);
+        hero.addSpellToSpellBook(restoreHealth);
         hero.castHealSpell(restoreHealth);                    //healvalue is defaultheal + int*2
         assertEquals(100,hero.getHealth());
     }

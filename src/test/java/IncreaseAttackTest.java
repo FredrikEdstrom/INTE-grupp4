@@ -17,6 +17,7 @@ class IncreaseAttackTest {
     void heroAttackIncreased(){
         Hero hero = new Hero("hero");
         IncreaseAttack increaseAttack = new IncreaseAttack();
+        hero.addSpellToSpellBook(increaseAttack);
         hero.castBuffSpell(increaseAttack);
         assertEquals(60,hero.getAttack());
     }
