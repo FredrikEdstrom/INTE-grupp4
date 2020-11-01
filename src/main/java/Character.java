@@ -10,7 +10,7 @@ public abstract class Character {
     protected int intelligence = 10;
     protected int agility = 10;
     protected int experience = 0;
-    protected  boolean isAlive = true;
+    protected boolean isAlive = true;
 
     public Character(String name) {
         if (name.isEmpty() || name.isBlank())
@@ -87,13 +87,11 @@ public abstract class Character {
         this.intelligence = intelligence;
     }
 
-    public void setAgility(int agility) { this.agility = agility; }
+    public void setAgility(int agility) {this.agility = agility;}
 
     public void setExperience(int experience) { this.experience = experience; }
 
-    public void setAlive() {
-        isAlive = !isAlive;
-    }
+    public void setAlive() {isAlive = !isAlive;}
 
     public void levelUp() {
         if(level < 100) {
