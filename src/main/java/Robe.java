@@ -14,7 +14,6 @@ public class Robe extends BodyArmor {
         }
     }
 
-
     @Override
     public int getHealth() {
         return health;

@@ -241,4 +241,16 @@ class CombatMechanicsTest {
         assertEquals(100, enemy.getHealth());
     }
 
+    @Test
+    void heroDamageAndKillEnemy(){
+        Hero hero = new Hero("hero");
+        Enemy enemy = new Enemy("enemy", 10, 10, 10, 100, 100, 10, 5, false, false);
+        hero.setAttack(500);
+        cm.attackOrder(hero,enemy);
+        cm.attackOrder(enemy,hero);
+        cm.attackOrder(hero,enemy);
+        assertFalse(enemy.isAlive());
+        assertTrue(hero.isAlive());
+    }
+
 }
