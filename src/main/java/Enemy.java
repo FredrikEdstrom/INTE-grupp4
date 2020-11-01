@@ -6,7 +6,9 @@ public class Enemy extends Character {
     public Enemy(String name, int level, int attack, int defense, int health, int mana, int intelligence, int agility, boolean immunityToPhysicalAttack,
                  boolean immunityToMagicAttack) {
         super(name, level, attack, defense, health, mana, intelligence, agility);
+        //makes enemy immune to attackOrder
         this.immunityToPhysicalAttack = immunityToPhysicalAttack;
+        //makes enemy immune to magicAttack
         this.immunityToMagicAttack = immunityToMagicAttack;
     }
 

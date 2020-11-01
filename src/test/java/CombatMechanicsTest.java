@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CombatMechanicsTest {
 
+    //instance of the CombatMechanics class that will be used for the all of the tests
     CombatMechanics cm = new CombatMechanics();
 
     @Test
@@ -239,6 +240,30 @@ class CombatMechanicsTest {
         enemy.setImmunityToMagicAttack(true);
         cm.magicAttack(player, enemy);
         assertEquals(100, enemy.getHealth());
+    }
+
+    @Test
+    void heroDamageAndKillEnemy(){
+        Hero hero = new Hero("hero");
+        Enemy enemy = new Enemy("enemy", 10, 10, 10, 100, 100, 10, 5, false, false);
+        hero.setAttack(500);
+        cm.attackOrder(hero,enemy);
+        cm.attackOrder(enemy,hero);
+        cm.attackOrder(hero,enemy);
+        assertFalse(enemy.isAlive());
+        assertTrue(hero.isAlive());
+    }
+
+    @Test
+    void EnemyDamageAndKillHero(){
+        Hero hero = new Hero("hero");
+        Enemy enemy = new Enemy("enemy", 10, 10, 10, 100, 100, 10, 5, false, false);
+        enemy.setAttack(500);
+        cm.attackOrder(enemy,hero);
+        cm.attackOrder(hero,enemy);
+        cm.attackOrder(enemy,hero);
+        assertFalse(hero.isAlive());
+        assertTrue(enemy.isAlive());
     }
 
 }

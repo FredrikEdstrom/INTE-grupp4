@@ -77,6 +77,8 @@ public abstract class Character {
 
     public void setHealth(int health) {
         this.health = health;
+        if (health <= 0)
+            setAlive();
     }
 
     public void setMana(int mana) {
@@ -93,6 +95,7 @@ public abstract class Character {
 
     public void setAlive() {isAlive = !isAlive;}
 
+    //A method that increases a Character objects level by 1 and its stats by a predefined amount
     public void levelUp() {
         if(level < 100) {
             level++;
