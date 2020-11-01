@@ -41,6 +41,4 @@ public class CombatMechanics {
             return enemy;
         }
     }
-
 }
-
