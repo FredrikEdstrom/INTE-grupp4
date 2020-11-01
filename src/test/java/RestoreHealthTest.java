@@ -34,6 +34,7 @@ class RestoreHealthTest {
     void heroHealthOverhealStartValue(){
         Hero hero = new Hero("hero");
         RestoreHealth restoreHealth = new RestoreHealth();
+        hero.addSpellToSpellBook(restoreHealth);
         hero.castHealSpell(restoreHealth);
         assertEquals(100,hero.getHealth());
     }
