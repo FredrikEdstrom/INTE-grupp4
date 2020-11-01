@@ -77,6 +77,8 @@ public abstract class Character {
 
     public void setHealth(int health) {
         this.health = health;
+        if (health <= 0)
+            setAlive();
     }
 
     public void setMana(int mana) {
