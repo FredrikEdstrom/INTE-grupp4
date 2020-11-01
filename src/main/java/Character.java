@@ -97,6 +97,7 @@ public abstract class Character {
         isAlive = !isAlive;
     }
 
+    //A method that increases a Character objects level by 1 and its stats by a predefined amount
     public void levelUp() {
         if(level < 100) {
             level++;
