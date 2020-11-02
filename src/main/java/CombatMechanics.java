@@ -7,10 +7,12 @@ public class CombatMechanics {
         if(defender.getImmunityToPhysicalAttack()) {
             return 0;
         } else {
-            if(defender.getDefense() == 0){
+            if(defender.getDefense() < 1){
                 defender.setHealth(defender.getHealth() - attacker.getAttack());
-            } else {
+            } else if(attacker.getAttack() >= defender.getHealth()){
                 defender.setHealth(defender.getHealth() - (attacker.getAttack() / defender.getDefense()));
+            } else{
+                defender.setHealth(defender.getHealth()-1);
             }
             return defender.getHealth();
         }
@@ -20,10 +22,12 @@ public class CombatMechanics {
     //health from the hero object depending on the enemy objects attack, and the hero objects defense and
     // puts that value as the hero objects new health value
     public int attackOrder(Enemy attacker, Hero defender) {
-        if(defender.getDefense() == 0) {
+        if(defender.getDefense() < 1) {
             defender.setHealth(defender.getHealth() - attacker.getAttack());
-        } else {
+        } else if(attacker.getAttack() >= defender.getDefense()){
             defender.setHealth(defender.getHealth() - (attacker.getAttack() / defender.getDefense()));
+        } else{
+            defender.setHealth(defender.getHealth()-1);
         }
         return defender.getHealth();
     }

@@ -58,7 +58,7 @@ class CombatMechanicsTest {
         player.setAttack(9);
         Enemy enemy = new Enemy("enemy", 10, 10, 10, 100, 100, 10, 5, false, false);
         cm.attackOrder(player, enemy);
-        assertEquals(100, enemy.getHealth());
+        assertEquals(99, enemy.getHealth());
     }
 
     @Test
@@ -67,7 +67,7 @@ class CombatMechanicsTest {
         Enemy enemy = new Enemy("enemy", 10, 10, 10, 100, 100, 10, 5, false, false);
         player.setAttack(0);
         cm.attackOrder(player, enemy);
-        assertEquals(100, enemy.getHealth());
+        assertEquals(99, enemy.getHealth());
     }
 
     @Test
@@ -76,7 +76,7 @@ class CombatMechanicsTest {
         Enemy enemy = new Enemy("enemy", 10, 10, 10, 100, 100, 10, 5, false, false);
         player.setAttack(-100);
         cm.attackOrder(player, enemy);
-        assertEquals(110, enemy.getHealth());
+        assertEquals(99, enemy.getHealth());
     }
 
     @Test
@@ -102,7 +102,7 @@ class CombatMechanicsTest {
         Enemy enemy = new Enemy("enemy", 1, 10, 10, 100, 100, 10, 5, false, false);
         enemy.setAttack(9);
         cm.attackOrder(enemy, player);
-        assertEquals(100, player.getHealth());
+        assertEquals(99, player.getHealth());
     }
 
     @Test
@@ -111,7 +111,7 @@ class CombatMechanicsTest {
         Enemy enemy = new Enemy("enemy", 1, 10, 10, 100, 100, 10, 5, false, false);
         enemy.setAttack(0);
         cm.attackOrder(enemy, player);
-        assertEquals(100, player.getHealth());
+        assertEquals(99, player.getHealth());
     }
 
     @Test
@@ -120,7 +120,7 @@ class CombatMechanicsTest {
         Enemy enemy = new Enemy("enemy", 1, 10, 10, 100, 100, 10, 5, false, false);
         enemy.setAttack(-100);
         cm.attackOrder(enemy, player);
-        assertEquals(110, player.getHealth());
+        assertEquals(99, player.getHealth());
     }
 
     @Test
@@ -197,12 +197,29 @@ class CombatMechanicsTest {
     }
 
     @Test
+    void playerAttacksEnemyWithNegativeDefenseTest() {
+        Hero player = new Hero("player");
+        Enemy enemy = new Enemy("enemy", 10, 10, -10, 100, 100, 10, 5, false, false);
+        cm.attackOrder(player, enemy);
+        assertEquals(90, enemy.getHealth());
+    }
+
+    @Test
     void enemyAttacksPlayerWithZeroDefenseTest() {
         Hero player = new Hero("player");
         player.setDefense(0);
         Enemy enemy = new Enemy("enemy", 10, 10, 10, 100, 100, 10, 5, false, false);
         cm.attackOrder(enemy, player);
-        assertEquals(0, player.getDefense());
+        assertEquals(90, player.getHealth());
+    }
+
+    @Test
+    void enemyAttacksPlayerWithNegativeDefenseTest() {
+        Hero player = new Hero("player");
+        player.setDefense(-10);
+        Enemy enemy = new Enemy("enemy", 10, 10, 10, 100, 100, 10, 5, false, false);
+        cm.attackOrder(enemy, player);
+        assertEquals(90, player.getHealth());
     }
 
     @Test
@@ -230,6 +247,7 @@ class CombatMechanicsTest {
         Enemy enemy = new Enemy("enemy", 10, 10, 10, 100, 100, 10, 5, false, false);
         enemy.setImmunityToPhysicalAttack(true);
         cm.attackOrder(player, enemy);
+        assertTrue(enemy.getImmunityToPhysicalAttack());
         assertEquals(100, enemy.getHealth());
     }
 
@@ -239,7 +257,55 @@ class CombatMechanicsTest {
         Enemy enemy = new Enemy("enemy", 10, 10, 10, 100, 100, 10, 5, false, false);
         enemy.setImmunityToMagicAttack(true);
         cm.magicAttack(player, enemy);
+        assertTrue(enemy.getImmunityToMagicAttack());
         assertEquals(100, enemy.getHealth());
+    }
+
+    @Test
+    void setEnemyImmunityToPhysicalAndMagicAttackTest(){
+        Hero player = new Hero("player");
+        Enemy enemy = new Enemy("enemy", 10, 10, 10, 100, 100, 10, 5, false, false);
+        enemy.setImmunityToPhysicalAttack(true);
+        enemy.setImmunityToMagicAttack(true);
+        cm.attackOrder(player, enemy);
+        cm.magicAttack(player, enemy);
+        assertTrue(enemy.getImmunityToPhysicalAttack());
+        assertTrue(enemy.getImmunityToMagicAttack());
+        assertEquals(100, player.getMana());
+        assertEquals(100, enemy.getHealth());
+    }
+
+    @Test
+    void removeEnemyImmunityToPhysicalAttackTest(){
+        Hero player = new Hero("player");
+        Enemy enemy = new Enemy("enemy", 10, 10, 10, 100, 100, 10, 5, true, false);
+        enemy.setImmunityToPhysicalAttack(false);
+        cm.attackOrder(player, enemy);
+        assertFalse(enemy.getImmunityToPhysicalAttack());
+        assertEquals(99, enemy.getHealth());
+    }
+
+    @Test
+    void removeEnemyImmunityToMagicAttackTest(){
+        Hero player = new Hero("player");
+        Enemy enemy = new Enemy("enemy", 10, 10, 10, 100, 100, 10, 5, false, true);
+        enemy.setImmunityToMagicAttack(false);
+        cm.attackOrder(player, enemy);
+        assertFalse(enemy.getImmunityToMagicAttack());
+        assertEquals(99, enemy.getHealth());
+    }
+
+    @Test
+    void bothHeroAndEnemyKillable(){
+        Hero hero = new Hero("hero");
+        Enemy enemy = new Enemy("enemy", 10, 10, 10, 100, 100, 10, 5, false, true);
+        enemy.setImmunityToPhysicalAttack(true);
+        enemy.setImmunityToMagicAttack(true);
+        hero.setDefense(11);
+        cm.attackOrder(hero,enemy);
+        cm.attackOrder(enemy,hero);
+        assertEquals(100,enemy.getHealth());
+        assertEquals(99, hero.getHealth());
     }
 
     @Test
