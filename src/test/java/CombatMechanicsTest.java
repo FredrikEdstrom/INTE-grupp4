@@ -197,12 +197,29 @@ class CombatMechanicsTest {
     }
 
     @Test
+    void playerAttacksEnemyWithNegativeDefenseTest() {
+        Hero player = new Hero("player");
+        Enemy enemy = new Enemy("enemy", 10, 10, -10, 100, 100, 10, 5, false, false);
+        cm.attackOrder(player, enemy);
+        assertEquals(90, enemy.getHealth());
+    }
+
+    @Test
     void enemyAttacksPlayerWithZeroDefenseTest() {
         Hero player = new Hero("player");
         player.setDefense(0);
         Enemy enemy = new Enemy("enemy", 10, 10, 10, 100, 100, 10, 5, false, false);
         cm.attackOrder(enemy, player);
-        assertEquals(0, player.getDefense());
+        assertEquals(90, player.getHealth());
+    }
+
+    @Test
+    void enemyAttacksPlayerWithNegativeDefenseTest() {
+        Hero player = new Hero("player");
+        player.setDefense(-10);
+        Enemy enemy = new Enemy("enemy", 10, 10, 10, 100, 100, 10, 5, false, false);
+        cm.attackOrder(enemy, player);
+        assertEquals(90, player.getHealth());
     }
 
     @Test
