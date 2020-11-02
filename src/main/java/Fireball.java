@@ -1,3 +1,5 @@
+//Damaging spell with predefined default values not intended to be changeable,
+// but useable in calculating modified values
 public class Fireball extends AttackSpell {
     private static final String NAME = "Fireball";
     private static final int DEFAULT_MANA_COST = 5;
@@ -9,10 +11,13 @@ public class Fireball extends AttackSpell {
         super(NAME, DEFAULT_MANA_COST,LEVEL_REQUIREMENT,DAMAGE_TYPE,DEFAULT_DAMAGE);
     }
 
+    //A getter of modified damage value of the spell, affected by the supplied intelligence modifier
     public int getModifiedDamage(int intelligence){
         return getDefaultDamage() + intelligence * 2;
     }
 
+    //Overridden equals and hashCode for use of Fireball in HashSet
+    @Override
     public boolean equals(Object other){
         if (other instanceof Fireball){
             Fireball f = (Fireball)other;

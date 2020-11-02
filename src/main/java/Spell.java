@@ -1,3 +1,4 @@
+//Abstract masterclass for all spells, contains most common properties for a spell
 public abstract class Spell {
     private String name;
     private int cost;

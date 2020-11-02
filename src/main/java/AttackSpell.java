@@ -1,3 +1,5 @@
+// Abstract subclass of Spell that groups spells intended do deal damage to an opponent.
+// Contains common properties for attacking spells
 public abstract class AttackSpell extends Spell{
     private String damageType;
     private int defaultDamage;

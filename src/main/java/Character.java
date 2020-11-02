@@ -10,7 +10,7 @@ public abstract class Character {
     protected int intelligence = 10;
     protected int agility = 10;
     protected int experience = 0;
-    protected  boolean isAlive = true;
+    protected boolean isAlive = true;
 
     public Character(String name) {
         if (name.isEmpty() || name.isBlank())
@@ -89,13 +89,11 @@ public abstract class Character {
         this.intelligence = intelligence;
     }
 
-    public void setAgility(int agility) { this.agility = agility; }
+    public void setAgility(int agility) {this.agility = agility;}
 
     public void setExperience(int experience) { this.experience = experience; }
 
-    public void setAlive() {
-        isAlive = !isAlive;
-    }
+    public void setAlive() {isAlive = !isAlive;}
 
     //A method that increases a Character objects level by 1 and its stats by a predefined amount
     public void levelUp() {
