@@ -296,6 +296,19 @@ class CombatMechanicsTest {
     }
 
     @Test
+    void bothHeroAndEnemyKillable(){
+        Hero hero = new Hero("hero");
+        Enemy enemy = new Enemy("enemy", 10, 10, 10, 100, 100, 10, 5, false, true);
+        enemy.setImmunityToPhysicalAttack(true);
+        enemy.setImmunityToMagicAttack(true);
+        hero.setDefense(11);
+        cm.attackOrder(hero,enemy);
+        cm.attackOrder(enemy,hero);
+        assertEquals(100,enemy.getHealth());
+        assertEquals(99, hero.getHealth());
+    }
+
+    @Test
     void heroDamageAndKillEnemy(){
         Hero hero = new Hero("hero");
         Enemy enemy = new Enemy("enemy", 10, 10, 10, 100, 100, 10, 5, false, false);
