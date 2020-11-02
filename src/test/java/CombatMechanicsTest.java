@@ -247,6 +247,7 @@ class CombatMechanicsTest {
         Enemy enemy = new Enemy("enemy", 10, 10, 10, 100, 100, 10, 5, false, false);
         enemy.setImmunityToPhysicalAttack(true);
         cm.attackOrder(player, enemy);
+        assertTrue(enemy.getImmunityToPhysicalAttack());
         assertEquals(100, enemy.getHealth());
     }
 
@@ -256,7 +257,42 @@ class CombatMechanicsTest {
         Enemy enemy = new Enemy("enemy", 10, 10, 10, 100, 100, 10, 5, false, false);
         enemy.setImmunityToMagicAttack(true);
         cm.magicAttack(player, enemy);
+        assertTrue(enemy.getImmunityToMagicAttack());
         assertEquals(100, enemy.getHealth());
+    }
+
+    @Test
+    void setEnemyImmunityToPhysicalAndMagicAttackTest(){
+        Hero player = new Hero("player");
+        Enemy enemy = new Enemy("enemy", 10, 10, 10, 100, 100, 10, 5, false, false);
+        enemy.setImmunityToPhysicalAttack(true);
+        enemy.setImmunityToMagicAttack(true);
+        cm.attackOrder(player, enemy);
+        cm.magicAttack(player, enemy);
+        assertTrue(enemy.getImmunityToPhysicalAttack());
+        assertTrue(enemy.getImmunityToMagicAttack());
+        assertEquals(100, player.getMana());
+        assertEquals(100, enemy.getHealth());
+    }
+
+    @Test
+    void removeEnemyImmunityToPhysicalAttackTest(){
+        Hero player = new Hero("player");
+        Enemy enemy = new Enemy("enemy", 10, 10, 10, 100, 100, 10, 5, true, false);
+        enemy.setImmunityToPhysicalAttack(false);
+        cm.attackOrder(player, enemy);
+        assertFalse(enemy.getImmunityToPhysicalAttack());
+        assertEquals(99, enemy.getHealth());
+    }
+
+    @Test
+    void removeEnemyImmunityToMagicAttackTest(){
+        Hero player = new Hero("player");
+        Enemy enemy = new Enemy("enemy", 10, 10, 10, 100, 100, 10, 5, false, true);
+        enemy.setImmunityToMagicAttack(false);
+        cm.attackOrder(player, enemy);
+        assertFalse(enemy.getImmunityToMagicAttack());
+        assertEquals(99, enemy.getHealth());
     }
 
     @Test
