@@ -9,8 +9,10 @@ public class CombatMechanics {
         } else {
             if(defender.getDefense() < 1){
                 defender.setHealth(defender.getHealth() - attacker.getAttack());
-            } else {
+            } else if(attacker.getAttack() >= defender.getHealth()){
                 defender.setHealth(defender.getHealth() - (attacker.getAttack() / defender.getDefense()));
+            } else{
+                defender.setHealth(defender.getHealth()-1);
             }
             return defender.getHealth();
         }
@@ -22,8 +24,10 @@ public class CombatMechanics {
     public int attackOrder(Enemy attacker, Hero defender) {
         if(defender.getDefense() < 1) {
             defender.setHealth(defender.getHealth() - attacker.getAttack());
-        } else {
+        } else if(attacker.getAttack() >= defender.getDefense()){
             defender.setHealth(defender.getHealth() - (attacker.getAttack() / defender.getDefense()));
+        } else{
+            defender.setHealth(defender.getHealth()-1);
         }
         return defender.getHealth();
     }

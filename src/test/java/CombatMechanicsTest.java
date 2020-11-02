@@ -58,7 +58,7 @@ class CombatMechanicsTest {
         player.setAttack(9);
         Enemy enemy = new Enemy("enemy", 10, 10, 10, 100, 100, 10, 5, false, false);
         cm.attackOrder(player, enemy);
-        assertEquals(100, enemy.getHealth());
+        assertEquals(99, enemy.getHealth());
     }
 
     @Test
@@ -67,7 +67,7 @@ class CombatMechanicsTest {
         Enemy enemy = new Enemy("enemy", 10, 10, 10, 100, 100, 10, 5, false, false);
         player.setAttack(0);
         cm.attackOrder(player, enemy);
-        assertEquals(100, enemy.getHealth());
+        assertEquals(99, enemy.getHealth());
     }
 
     @Test
@@ -76,7 +76,7 @@ class CombatMechanicsTest {
         Enemy enemy = new Enemy("enemy", 10, 10, 10, 100, 100, 10, 5, false, false);
         player.setAttack(-100);
         cm.attackOrder(player, enemy);
-        assertEquals(110, enemy.getHealth());
+        assertEquals(99, enemy.getHealth());
     }
 
     @Test
@@ -102,7 +102,7 @@ class CombatMechanicsTest {
         Enemy enemy = new Enemy("enemy", 1, 10, 10, 100, 100, 10, 5, false, false);
         enemy.setAttack(9);
         cm.attackOrder(enemy, player);
-        assertEquals(100, player.getHealth());
+        assertEquals(99, player.getHealth());
     }
 
     @Test
@@ -111,7 +111,7 @@ class CombatMechanicsTest {
         Enemy enemy = new Enemy("enemy", 1, 10, 10, 100, 100, 10, 5, false, false);
         enemy.setAttack(0);
         cm.attackOrder(enemy, player);
-        assertEquals(100, player.getHealth());
+        assertEquals(99, player.getHealth());
     }
 
     @Test
@@ -120,7 +120,7 @@ class CombatMechanicsTest {
         Enemy enemy = new Enemy("enemy", 1, 10, 10, 100, 100, 10, 5, false, false);
         enemy.setAttack(-100);
         cm.attackOrder(enemy, player);
-        assertEquals(110, player.getHealth());
+        assertEquals(99, player.getHealth());
     }
 
     @Test
