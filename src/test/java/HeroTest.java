@@ -480,10 +480,10 @@ class HeroTest {
         combat.attackOrder(noobKing, slasher);
         slasher.changeArmorDurability(true);
 
-        assertEquals(99, slasher.getBodyArmor().getDurabilty());
+        assertEquals(99, rustyArmor.getDurability());
     }
 
-    //Armor loose its effect when durability dropped to 0 and
+    //Armor looses its effect when durability dropped to 0 and
     //it also automatically un-equip
     @Test
     void heroArmorsDurabilityDroppedToZero() {
@@ -499,7 +499,7 @@ class HeroTest {
             slasher.changeArmorDurability(true);
         }
 
-        assertEquals(0, rustyArmor.getDurabilty());
+        assertEquals(0, rustyArmor.getDurability());
         assertNull(slasher.getBodyArmor());
         assertEquals(100, slasher.getHealth());
         assertEquals(100, slasher.getMana());

@@ -118,28 +118,28 @@ public class Hero extends Character {
     public void changeArmorDurability(boolean hit) {
         if(hit) {
             if(headArmor != null) {
-                headArmor.setDurabilty();
-                if(headArmor.getDurabilty() == 0)
+                headArmor.setDurability();
+                if(headArmor.getDurability() == 0)
                     unEquipArmor(headArmor);
             }
             if(bodyArmor != null) {
-                bodyArmor.setDurabilty();
-                if(bodyArmor.getDurabilty() == 0)
+                bodyArmor.setDurability();
+                if(bodyArmor.getDurability() == 0)
                     unEquipArmor(bodyArmor);
             }
             if(handArmor != null) {
-                handArmor.setDurabilty();
-                if(handArmor.getDurabilty() == 0)
+                handArmor.setDurability();
+                if(handArmor.getDurability() == 0)
                     unEquipArmor(handArmor);
             }
             if(legArmor != null) {
-                legArmor.setDurabilty();
-                if(legArmor.getDurabilty() == 0)
+                legArmor.setDurability();
+                if(legArmor.getDurability() == 0)
                     unEquipArmor(legArmor);
             }
             if(footArmor != null) {
-                footArmor.setDurabilty();
-                if(footArmor.getDurabilty() == 0)
+                footArmor.setDurability();
+                if(footArmor.getDurability() == 0)
                     unEquipArmor(footArmor);
             }
         }
