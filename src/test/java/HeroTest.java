@@ -519,16 +519,27 @@ class HeroTest {
     //cast.
     @Test
     void onlyCastSpellsMemorizedInSpellbook() {
-        Hero hero = new Hero("hero");
-        IncreaseAttack increaseAttack = new IncreaseAttack();
-        RestoreHealth restoreHealth = new RestoreHealth();
-        hero.addSpellToSpellBook(increaseAttack);
-        hero.setHealth(60);
-        hero.castBuffSpell(increaseAttack);
-        hero.castHealSpell(restoreHealth);
-        assertEquals(60, hero.getAttack());
-        assertEquals(60, hero.getHealth());
+        Hero hero = new Hero("hero");  //hero attack is 10 by default
+        IncreaseAttack inSpellbook = new IncreaseAttack(); //attackbuff is 50
+        RestoreHealth notInSpellbook = new RestoreHealth();
+        hero.addSpellToSpellBook(inSpellbook);
+        hero.setHealth(40); //sets health down to 40 to try healing spell on hero
+        hero.castBuffSpell(inSpellbook);
+        hero.castHealSpell(notInSpellbook);
+        assertEquals(60, hero.getAttack()); //increaseattack should be cast
+        assertEquals(40, hero.getHealth()); //restorehealth should not
 
+    }
+
+    //Test for assuring that duplicate spells will not be memorized in the hero spellbook
+    @Test
+    void duplicateSpellNotAddedToSpellbook(){
+        Fireball f1 = new Fireball();
+        Fireball f2 = new Fireball();
+        Hero hero = new Hero("hero");
+        hero.addSpellToSpellBook(f1);
+        hero.addSpellToSpellBook(f2);
+        assertEquals(1,hero.getSpellBook().size());
     }
 
     @Test

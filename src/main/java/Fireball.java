@@ -32,4 +32,5 @@ public class Fireball extends AttackSpell {
     public int hashCode() {
         return NAME.hashCode() + DAMAGE_TYPE.hashCode() * 10000 + DEFAULT_MANA_COST + DEFAULT_DAMAGE + LEVEL_REQUIREMENT;
     }
+
 }
