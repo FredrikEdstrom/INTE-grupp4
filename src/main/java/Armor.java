@@ -7,6 +7,7 @@ public abstract class Armor {
     private int intelligence;
     private int agility;
     private int defense;
+    private int durabilty = 100;
 
     public Armor(String name, int level) {
         if (name.isEmpty() || name.isBlank())
@@ -52,6 +53,8 @@ public abstract class Armor {
         return defense;
     }
 
+    public int getDurabilty() { return durabilty;}
+
     protected void setHealth(int health) {
         this.health = health;
     }
@@ -74,6 +77,19 @@ public abstract class Armor {
 
     protected void setDefense(int defense) {
         this.defense = defense;
+    }
+
+    public void setDurabilty( ) {
+        if (durabilty != 0)
+        durabilty--;
+        else {
+            health = 0;
+            mana = 0;
+            attack = 0;
+            intelligence = 0;
+            agility = 0;
+            defense = 0;
+        }
     }
 
     protected abstract void setArmorStats();
