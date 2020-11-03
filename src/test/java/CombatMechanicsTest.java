@@ -311,11 +311,11 @@ class CombatMechanicsTest {
     @Test
     void heroDamageAndKillEnemy(){
         Hero hero = new Hero("hero");
-        Enemy enemy = new Enemy("enemy", 10, 10, 10, 100, 100, 10, 5, false, false);
-        hero.setAttack(500);
-        cm.attackOrder(hero,enemy);
-        cm.attackOrder(enemy,hero);
-        cm.attackOrder(hero,enemy);
+        Enemy enemy = new Enemy("enemy", 10, 10, 0, 100, 100, 10, 5, false, false);
+        while(enemy.isAlive()){
+            cm.attackOrder(hero, enemy);
+            cm.attackOrder(enemy, hero);
+        }
         assertFalse(enemy.isAlive());
         assertTrue(hero.isAlive());
     }
@@ -323,11 +323,11 @@ class CombatMechanicsTest {
     @Test
     void EnemyDamageAndKillHero(){
         Hero hero = new Hero("hero");
-        Enemy enemy = new Enemy("enemy", 10, 10, 10, 100, 100, 10, 5, false, false);
-        enemy.setAttack(500);
-        cm.attackOrder(enemy,hero);
-        cm.attackOrder(hero,enemy);
-        cm.attackOrder(enemy,hero);
+        Enemy enemy = new Enemy("enemy", 10, 100, 10, 100, 100, 10, 5, false, false);
+        while(hero.isAlive()){
+            cm.attackOrder(hero, enemy);
+            cm.attackOrder(enemy, hero);
+        }
         assertFalse(hero.isAlive());
         assertTrue(enemy.isAlive());
     }
