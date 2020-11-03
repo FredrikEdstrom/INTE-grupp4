@@ -1,29 +1,39 @@
-public abstract class LegArmor {
-    private final String name;
-    private final int level;
+public class LegArmor extends Armor {
+    private boolean isPlate = false;
+    private boolean isTrousers = false;
 
-    public LegArmor(String name, int level) {
-        if (name.isEmpty() || name.isBlank())
-            throw new IllegalArgumentException("Name: empty"); //Namn får inte vara blank eller tom
-        this.name = name;
-        if (level < 1 || level > 100)
-            throw new IllegalArgumentException("Level: " + level); //Level får inte vara lägre än 1 eller högre än 100
-        this.level = level;
+    public LegArmor(String name, int level, boolean isPlate) {
+        super(name, level);
+        if (isPlate)
+            this.isPlate = true;
+        else
+            isTrousers = true;
+        setArmorStats();
     }
 
-    public String getName() {
-        return name;
+    public boolean isPlate() {
+        return isPlate;
     }
 
-    public int getLevel() {
-        return level;
+    public boolean isTrousers() {
+        return isTrousers;
     }
 
-    public abstract int getHealth();
+    //Leg plates gives health, defense, and small amount of mana and agility,
+    // while trousers mana, agility, and small amount of health and defense.
+    @Override
+    protected void setArmorStats() {
+        if (isPlate) {
+            setHealth(10 * getLevel());
+            setMana(getLevel() / 2);
+            setDefense(3 * getLevel());
+            setAgility(getLevel() / 2);
+        } else if (isTrousers) {
+            setHealth(getLevel() / 2);
+            setMana(10 * getLevel());
+            setDefense(getLevel() / 2);
+            setAgility(3 * getLevel());
+        }
+    }
 
-    public abstract int getMana();
-
-    public abstract int getAgility();
-
-    public abstract int getDefense();
 }

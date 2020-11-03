@@ -3,83 +3,44 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class FootArmorTest {
-    //Boots gives health, more defense, and little agility,
-    // while shoes gives mana, little defense and more agility.
 
-    //Level 1 boots have a standard value of 10 health, 5 defense,
-    //and 2 agility.
     @Test
-    void createLevelOneBoots() {
-        Boots tornBoots = new Boots("Torn Boots", 1);
-        assertEquals("Torn Boots", tornBoots.getName());
-        assertEquals(1, tornBoots.getLevel());
-        assertEquals(10, tornBoots.getHealth());
-        assertEquals(5, tornBoots.getDefense());
-        assertEquals(2, tornBoots.getAgility());
+    void checkIfBootsHaveRightArmorType() {
+        FootArmor boots = new FootArmor("Boots", 20, true);
+        assertTrue(boots.isBoots());
+        assertFalse(boots.isShoes());
     }
 
-    //Level 1 shoes have a standard value of 10 mana, 2 defense,
-    //and 5 agility.
     @Test
-    void createShoesLevelOne() {
-        Shoes tornShoes = new Shoes("Torn Shoes", 1);
-        assertEquals("Torn Shoes", tornShoes.getName());
-        assertEquals(1, tornShoes.getLevel());
-        assertEquals(10, tornShoes.getMana());
-        assertEquals(2, tornShoes.getDefense());
-        assertEquals(5, tornShoes.getAgility());
+    void checkIfShoesHaveRightArmorType() {
+        FootArmor shoes = new FootArmor("Shoes", 20, false);
+        assertTrue(shoes.isShoes());
+        assertFalse(shoes.isBoots());
     }
 
-    //Boots health increases by 5 * level, defense by 3 * level,
-    //and agility by 0.5 * level
     @Test
-    void createBootsHigherThanLevelOne() {
-        Boots boneBoots = new Boots("Bone Boots", 67);
-        assertEquals("Bone Boots", boneBoots.getName());
-        assertEquals(67, boneBoots.getLevel());
-        assertEquals(345, boneBoots.getHealth());
-        assertEquals(206, boneBoots.getDefense());
-        assertEquals(35, boneBoots.getAgility());
-
+    void checkIfBootsHaveRightStats() {
+        FootArmor boots = new FootArmor("Boots", 60, true);
+        assertEquals("Boots", boots.getName());
+        assertEquals(60, boots.getLevel());
+        assertEquals(300, boots.getHealth());
+        assertEquals(0, boots.getMana());
+        assertEquals(180, boots.getDefense());
+        assertEquals(0, boots.getAttack());
+        assertEquals(0, boots.getIntelligence());
+        assertEquals(30, boots.getAgility());
     }
 
-    //Shoes mana increases by 5 * level, defense by 0.5 * level,
-    //and agility by 3 * level
     @Test
-    void createShoesHigherThanLevelOne() {
-        Shoes priestShoes = new Shoes("Priest Shoes", 67);
-        assertEquals("Priest Shoes", priestShoes.getName());
-        assertEquals(67, priestShoes.getLevel());
-        assertEquals(345, priestShoes.getMana());
-        assertEquals(35, priestShoes.getDefense());
-        assertEquals(206, priestShoes.getAgility());
-    }
-
-    //Creating foot armor with empty name is not allowed
-    @Test
-    void createFootArmorEmptyName() {
-        assertThrows(IllegalArgumentException.class, () ->
-                new Boots("", 10));
-    }
-
-    //Creating foot armor with blank name is not allowed
-    @Test
-    void createFootArmorBlankName() {
-        assertThrows(IllegalArgumentException.class, () ->
-                new Shoes("    ", 5));
-    }
-
-    //Creating foot armor lower than level 1 is not allowed
-    @Test
-    void createFootArmorLevelLowerThanOne() {
-        assertThrows(IllegalArgumentException.class, () ->
-                new Boots("Torn Boots", 0));
-    }
-
-    //Creating foot armor higher than level 100 is not allowed
-    @Test
-    void createFootArmorHigherThanLevelOneHundred() {
-        assertThrows(IllegalArgumentException.class, () ->
-                new Shoes("High Priest Shoes", 101));
+    void checkIfShoesHaveRightStats() {
+        FootArmor shoes = new FootArmor("Shoes", 100, false);
+        assertEquals("Shoes", shoes.getName());
+        assertEquals(100, shoes.getLevel());
+        assertEquals(0, shoes.getHealth());
+        assertEquals(500, shoes.getMana());
+        assertEquals(50, shoes.getDefense());
+        assertEquals(0, shoes.getAttack());
+        assertEquals(0, shoes.getIntelligence());
+        assertEquals(300, shoes.getAgility());
     }
 }

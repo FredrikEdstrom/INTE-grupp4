@@ -4,67 +4,59 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class WeaponTest {
 
-    //Level 1 sword have a standard value of 20 attack
     @Test
-    void createLevelOneSword() {
-        Sword rustySword = new Sword("Rusty Sword", 1);
-        assertEquals("Rusty Sword", rustySword.getName());
-        assertEquals(1, rustySword.getLevel());
-        assertEquals(20, rustySword.getAttack());
-    }
-
-    //Level 1 staff have a standard value of 20 intelligence
-    @Test
-    void createLevelOneStaff() {
-        Staff woodenStaff = new Staff("Wooden Staff", 1);
-        assertEquals("Wooden Staff", woodenStaff.getName());
-        assertEquals(1, woodenStaff.getLevel());
-        assertEquals(20, woodenStaff.getIntelligence());
-    }
-
-    //Swords attack increases for every level by 5 * level
-    @Test
-    void createSwordHigherThanLevelOne() {
-        Sword excalibur = new Sword("Excalibur", 11);
-        assertEquals("Excalibur", excalibur.getName());
-        assertEquals(11, excalibur.getLevel());
-        assertEquals(75, excalibur.getAttack());
-    }
-
-    //Staff intelligence increases for every level by 5 * level
-    @Test
-    void createStaffHigherThanLevelOne() {
-        Staff goldenStaff = new Staff("Golden Staff", 11);
-        assertEquals("Golden Staff", goldenStaff.getName());
-        assertEquals(11, goldenStaff.getLevel());
-        assertEquals(75, goldenStaff.getIntelligence());
-    }
-
-    //Creating weapon with empty name is not allowed
-    @Test
-    void createWeaponWithEmptyName() {
-        assertThrows(IllegalArgumentException.class,
-                () -> new Sword("", 25));
-    }
-
-    //Creating weapon with blank name is not allowed
-    @Test
-    void createWeaponWithBlankName() {
-        assertThrows(IllegalArgumentException.class,
-                () -> new Sword(" ", 10));
-    }
-
-    //Creating weapon lower than level 1 is not allowed
-    @Test
-    void createWeaponWithLevelLowerThanOne() {
+    void createWeaponEmptyName() {
         assertThrows(IllegalArgumentException.class, () ->
-                new Sword("Rusty Sword", 0));
+                new Weapon("", 17, true));
     }
 
-    //Creating weapon higher than level 100 is not allowed
     @Test
-    void createWeaponWithLevelHigherThanOneHundred() {
+    void createWeaponBlankName() {
         assertThrows(IllegalArgumentException.class, () ->
-                new Staff("Merlin Staff", 101));
+                new Weapon("    ", 3, false));
+    }
+
+    @Test
+    void createWeaponLevelLowerThanLevelOne() {
+        Weapon sword = new Weapon("Rusty Sword", 0, true);
+        assertEquals(1, sword.getLevel());
+    }
+
+    @Test
+    void createWeaponHigherThanLevelOneHundred() {
+        Weapon staff = new Weapon("Merlin Staff", 101, false);
+        assertEquals(100, staff.getLevel());
+    }
+
+    @Test
+    void checkIfSwordHaveRightWeaponType() {
+        Weapon sword = new Weapon("Steel Sword", 10, true);
+        assertTrue(sword.isSword());
+        assertFalse(sword.isStaff());
+    }
+
+    @Test
+    void checkIfStaffHaveRightWeaponType() {
+        Weapon staff = new Weapon("Golden Staff", 50, false);
+        assertTrue(staff.isStaff());
+        assertFalse(staff.isSword());
+    }
+
+    @Test
+    void checkIfSwordHaveRightStats() {
+        Weapon sword = new Weapon("Steel Sword", 10, true);
+        assertEquals("Steel Sword", sword.getName());
+        assertEquals(10, sword.getLevel());
+        assertEquals(100, sword.getAttack());
+        assertEquals(0, sword.getIntelligence());
+    }
+
+    @Test
+    void checkIfStaffHaveRightStats(){
+        Weapon staff = new Weapon("Golden Staff", 50, false);
+        assertEquals("Golden Staff", staff.getName());
+        assertEquals(50, staff.getLevel());
+        assertEquals(500, staff.getIntelligence());
+        assertEquals(0, staff.getAttack());
     }
 }

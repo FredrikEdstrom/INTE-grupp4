@@ -1,23 +1,36 @@
-public abstract class HandArmor {
-    private final String name;
-    private final int level;
+public class HandArmor extends Armor {
+    private boolean isGauntlets = false;
+    private boolean isGloves = false;
 
-    public HandArmor(String name, int level) {
-        if (name.isEmpty() || name.isBlank())
-            throw new IllegalArgumentException("Name: empty"); //Namn får inte vara blank eller tom
-        this.name = name;
-        if(level < 1 || level > 100)
-            throw new IllegalArgumentException("Level: " + level); //Level får inte vara lägre än 1 eller högre än 100
-        this.level = level;
+    public HandArmor(String name, int level, boolean isGauntlets) {
+        super(name, level);
+        if (isGauntlets)
+            this.isGauntlets = true;
+        else
+            isGloves = true;
+        setArmorStats();
     }
 
-    public String getName() {
-        return name;
+    public boolean isGauntlets() {
+        return isGauntlets;
     }
 
-    public int getLevel() {
-        return level;
+    public boolean isGloves() {
+        return isGloves;
     }
 
-    public abstract int getDefense();
+    //Gauntlets gives health, attack, and defense, while
+    //gloves gives mana, intelligence and small amount of defense
+    @Override
+    protected void setArmorStats() {
+        if (isGauntlets) {
+            setHealth(5 * getLevel());
+            setDefense(3 * getLevel());
+            setAttack(3 * getLevel());
+        } else if (isGloves) {
+            setMana(5 * getLevel());
+            setDefense(getLevel() / 2);
+            setIntelligence(3 * getLevel());
+        }
+    }
 }

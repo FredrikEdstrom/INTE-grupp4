@@ -1,25 +1,36 @@
-public abstract class FootArmor {
-    private final String name;
-    private final int level;
+public class FootArmor extends Armor{
+    private boolean isBoots = false;
+    private boolean isShoes = false;
 
-    public FootArmor(String name, int level) {
-        if (name.isEmpty() || name.isBlank())
-            throw new IllegalArgumentException("Name: empty"); //Namn får inte vara blank eller tom
-        this.name = name;
-        if(level < 1 || level > 100)
-            throw new IllegalArgumentException("Level: " + level); //Level får inte vara lägre än 1 eller högre än 100
-        this.level = level;
+    public FootArmor(String name, int level, boolean isBoots) {
+        super(name, level);
+        if(isBoots)
+            this.isBoots = true;
+        else
+            this.isShoes = true;
+        setArmorStats();
     }
 
-    public String getName() {
-        return name;
+    public boolean isBoots() {
+        return isBoots;
     }
 
-    public int getLevel() {
-        return level;
+    public boolean isShoes() {
+        return isShoes;
     }
 
-    public abstract int getDefense();
-
-    public abstract int getAgility();
+    //Boots gives health, defense, and small amount of agility,
+    //while shoes gives mana, agility, and small amount of defense.
+    @Override
+    protected void setArmorStats() {
+        if(isBoots) {
+            setHealth(5 * getLevel());
+            setDefense(3 * getLevel());
+            setAgility(getLevel() / 2);
+        } else if (isShoes) {
+            setMana(5 * getLevel());
+            setDefense(getLevel() / 2);
+            setAgility(3 * getLevel());
+        }
+    }
 }

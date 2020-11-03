@@ -1,23 +1,34 @@
-public abstract class HeadArmor {
-    private final String name;
-    private final int level;
+public class HeadArmor extends Armor {
+    private boolean isHelmet = false;
+    private boolean isCap = false;
 
-    public HeadArmor(String name, int level) {
-        if (name.isEmpty() || name.isBlank())
-            throw new IllegalArgumentException("Name: blank"); //Namn får inte vara blank eller tom
-        this.name = name;
-        if(level < 1 || level > 100)
-            throw new IllegalArgumentException("Level: " + level); //Level får inte vara lägre än 1 eller högre än 100
-        this.level = level;
+    public HeadArmor(String name, int level, boolean isHelmet) {
+        super(name, level);
+        if(isHelmet)
+            this.isHelmet = true;
+        else
+            isCap = true;
+        setArmorStats();
     }
 
-    public String getName() {
-        return name;
+    public boolean isHelmet() {
+        return isHelmet;
     }
 
-    public int getLevel() {
-        return level;
+    public boolean isCap() {
+        return isCap;
     }
 
-    public abstract int getDefense();
+    //Helmet gives health, defense, while
+    //cap gives mana and small amount of defense
+    @Override
+    protected void setArmorStats() {
+        if(isHelmet) {
+            setHealth(5 * getLevel());
+            setDefense(3 * getLevel());
+        } else if (isCap) {
+            setMana(5 * getLevel());
+            setDefense(getLevel() / 2);
+        }
+    }
 }

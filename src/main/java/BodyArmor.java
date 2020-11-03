@@ -1,26 +1,38 @@
-public abstract class BodyArmor {
-    private final String name;
-    private final int level;
+public class BodyArmor extends Armor {
+    private boolean isPlate = false;
+    private boolean isRobe = false;
 
-    public BodyArmor(String name, int level) {
-        if (name.isEmpty() || name.isBlank())
-            throw new IllegalArgumentException("Name: empty"); //Namn får inte vara blank eller tom
-        this.name = name;
-        if (level < 1 || level > 100)
-            throw new IllegalArgumentException("Level: " + level); //Level får inte vara lägre än 1 eller högre än 100
-        this.level = level;
+    public BodyArmor(String name, int level, boolean isPlate) {
+        super(name, level);
+        if(isPlate)
+            this.isPlate = true;
+        else
+            isRobe = true;
+        setArmorStats();
     }
 
-    public String getName() {
-        return name;
+    public boolean isPlate() {
+        return isPlate;
     }
 
-    public int getLevel() { return level; }
+    public boolean isRobe() {
+        return isRobe;
+    }
 
-    public abstract int getHealth();
-
-    public abstract int getMana();
-
-    public abstract int getDefense();
-
+    //Plate armor gives attack, health, defense, and small amount of mana, while
+    //robe gives intelligence, mana, and small amount of health and defense.
+    @Override
+    protected void setArmorStats() {
+        if(isPlate) {
+            setHealth(10 * getLevel());
+            setMana(getLevel() / 2);
+            setDefense(5 * getLevel());
+            setAttack(3 * getLevel());
+        } else if(isRobe) {
+            setHealth(getLevel() / 2);
+            setMana(10 * getLevel());
+            setDefense(getLevel() / 2);
+            setIntelligence(3 * getLevel());
+        }
+    }
 }
