@@ -54,8 +54,8 @@ public class Hero extends Character {
                 setAttack(getAttack() + weapon.getAttack());
             else
                 setIntelligence(getIntelligence() + weapon.getIntelligence());
+            this.weapon = weapon;
         }
-        this.weapon = weapon;
     }
 
     public void unEquipWeapon() {
@@ -90,56 +90,60 @@ public class Hero extends Character {
         }
     }
 
-    public void unEquipHeadArmor() {
-        if (headArmor.isHelmet())
-            setHealth(getHealth() - headArmor.getHealth());
-        else
-            setMana(getMana() - headArmor.getMana());
-        setDefense(getDefense() - headArmor.getDefense());
-        headArmor = null;
-    }
-
-    public void unEquipBodyArmor() {
-        if (bodyArmor.isPlate())
-            setAttack(getAttack() - bodyArmor.getAttack());
-        else
-            setIntelligence(getIntelligence() - bodyArmor.getIntelligence());
-        setHealth(getHealth() - bodyArmor.getHealth());
-        setMana(getMana() - bodyArmor.getMana());
-        setDefense(getDefense() - bodyArmor.getDefense());
-        bodyArmor = null;
-    }
-
-    public void unEquipHandArmor() {
-        if (handArmor.isGauntlets()) {
-            setHealth(getHealth() - handArmor.getHealth());
-            setAttack(getAttack() - handArmor.getAttack());
-        } else {
-            setMana(getMana() - handArmor.getMana());
-            setIntelligence(getIntelligence() - handArmor.getIntelligence());
+    public void unEquipArmor(Armor armor) {
+        if (armor == headArmor || armor == bodyArmor || armor == handArmor
+                || armor == legArmor || armor == footArmor) {
+            setHealth(getHealth() - armor.getHealth());
+            setMana(getMana() - armor.getMana());
+            setDefense(getDefense() - armor.getDefense());
+            setAttack(getAttack() - armor.getAttack());
+            setIntelligence(getIntelligence() - armor.getIntelligence());
+            setAgility(getAgility() - armor.getAgility());
         }
-        setDefense(getDefense() - handArmor.getDefense());
-        handArmor = null;
-    }
-
-    public void unEquipLegArmor() {
-        setHealth(getHealth() - legArmor.getHealth());
-        setMana(getMana() - legArmor.getMana());
-        setAgility(getAgility() - legArmor.getAgility());
-        setDefense(getDefense() - legArmor.getDefense());
-        legArmor = null;
-    }
-
-    public void unEquipFootArmor() {
-        if (footArmor.isBoots())
-            setHealth(getHealth() - footArmor.getHealth());
-        else
-            setMana(getMana() - footArmor.getMana());
-        setDefense(getDefense() - footArmor.getDefense());
-        setAgility(getAgility() - footArmor.getAgility());
-        footArmor = null;
+        if (armor == headArmor)
+            headArmor = null;
+        if (armor == bodyArmor)
+            bodyArmor = null;
+        if (armor == handArmor)
+            handArmor = null;
+        if (armor == legArmor)
+            legArmor = null;
+        if (armor == footArmor)
+            footArmor = null;
     }
     //Equip weapon och armor metoder end
+
+    //Armors durability drops for every hit, when it dropped to 0
+    //all armor stats become 0 and un-equip it automatically
+    public void changeArmorDurability(boolean hit) {
+        if(hit) {
+            if(headArmor != null) {
+                headArmor.setDurabilty();
+                if(headArmor.getDurabilty() == 0)
+                    unEquipArmor(headArmor);
+            }
+            if(bodyArmor != null) {
+                bodyArmor.setDurabilty();
+                if(bodyArmor.getDurabilty() == 0)
+                    unEquipArmor(bodyArmor);
+            }
+            if(handArmor != null) {
+                handArmor.setDurabilty();
+                if(handArmor.getDurabilty() == 0)
+                    unEquipArmor(handArmor);
+            }
+            if(legArmor != null) {
+                legArmor.setDurabilty();
+                if(legArmor.getDurabilty() == 0)
+                    unEquipArmor(legArmor);
+            }
+            if(footArmor != null) {
+                footArmor.setDurabilty();
+                if(footArmor.getDurabilty() == 0)
+                    unEquipArmor(footArmor);
+            }
+        }
+    }
 
     //Method for adding a previously unknown spell to the hero spellbook
     public void addSpellToSpellBook(Spell spell) {
@@ -157,6 +161,7 @@ public class Hero extends Character {
             }
         }
     }
+
     //Method for casting a supplied healing spell, avoiding overhealing above hero default max-health
     public void castHealSpell(HealSpell spell) {
         if (spellBook.contains(spell)) {
