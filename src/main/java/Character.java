@@ -97,7 +97,7 @@ public abstract class Character {
 
     //A method that increases a Character objects level by 1 and its stats by a predefined amount
     public void levelUp() {
-        if(level < 100) {
+        if(level != 100) {
             level++;
             health += 20;
             mana += 20;
@@ -107,16 +107,4 @@ public abstract class Character {
             agility += 5;
         }
     }
-
-    //Setter metod för level som används för testning
-    protected void setLevel(int level) {
-        if(level > 100) {
-            level = 100;
-        } else if(level < 1) {
-            level = 1;
-        }
-        while (this.level != level)
-            levelUp();
-    }
-
 }
