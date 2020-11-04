@@ -18,4 +18,6 @@ public abstract class AttackSpell extends Spell{
         return defaultDamage;
     }
 
+    public abstract int getModifiedDamage(int intelligence);
+
 }

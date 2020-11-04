@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -330,6 +331,37 @@ class CombatMechanicsTest {
         }
         assertFalse(hero.isAlive());
         assertTrue(enemy.isAlive());
+    }
+
+    @Test
+    void magicSpellAttackUsesAttackSpell(){
+        Hero hero = new Hero("hero");
+        Enemy enemy = new Enemy("enemy", 10, 100, 10, 100, 100, 10, 5, false, false);
+        Fireball fireball = new Fireball();
+        hero.addSpellToSpellBook(fireball);
+        cm.magicSpellAttack(hero,enemy,fireball);
+        assertEquals(60,enemy.getHealth());
+    }
+
+    @Test
+    void magicSpellAttackWithInsufficientMana(){
+        Hero hero = new Hero("hero");
+        Enemy enemy = new Enemy("enemy", 10, 100, 10, 100, 100, 10, 5, false, false);
+        Fireball fireball = new Fireball();
+        hero.addSpellToSpellBook(fireball);
+        hero.setMana(1);     //fireball manacost is 5
+        cm.magicSpellAttack(hero,enemy,fireball);
+        assertEquals(100,enemy.getHealth()); //enemy should be undamaged
+    }
+
+    @Test
+    void magicSpellAttackOnImmuneEnemy(){
+        Hero hero = new Hero("hero");
+        Enemy enemy = new Enemy("enemy", 10, 100, 10, 100, 100, 10, 5, false, false);
+        Fireball fireball = new Fireball();
+        hero.addSpellToSpellBook(fireball);
+        enemy.setImmunityToMagicAttack(true);
+        assertEquals(100,enemy.getHealth());
     }
 
 }

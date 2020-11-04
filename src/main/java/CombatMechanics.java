@@ -46,6 +46,14 @@ public class CombatMechanics {
             return defender.getHealth();
         }
     }
+    //Method for hero using AttackSpell to attack an enemy. Unsuccessful if spell not memorized in spellbook,
+    // manacost to high or enemy immune to magic
+    public void magicSpellAttack(Hero attacker, Enemy defender, AttackSpell spell) {
+        if (attacker.getSpellBook().contains(spell) && !defender.getImmunityToMagicAttack()&& !(attacker.getMana() < spell.getCost())) {
+            attacker.setMana(attacker.getMana() - spell.getCost());
+            defender.setHealth(defender.getHealth() - spell.getModifiedDamage(attacker.getIntelligence())); //damage value derived from intelligence of hero
+        }
+    }
 
     //A method that takes in an instance of a Hero and Enemy as parameters and compares their
     //agility values and returns the object with higher agility value or returns the hero if both objects
