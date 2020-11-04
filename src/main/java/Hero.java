@@ -116,32 +116,27 @@ public class Hero extends Character {
     //Armors durability drops for every hit, when it dropped to 0
     //all armor stats become 0 and un-equip it automatically
     public void changeArmorDurability(boolean hit) {
-        if(hit) {
-            if(headArmor != null) {
+        if (hit) {
+            if (headArmor != null)
                 headArmor.setDurability();
-                if(headArmor.getDurability() == 0)
-                    unEquipArmor(headArmor);
-            }
-            if(bodyArmor != null) {
+            if (headArmor != null && headArmor.getDurability() == 0)
+                unEquipArmor(headArmor);
+            if (bodyArmor != null)
                 bodyArmor.setDurability();
-                if(bodyArmor.getDurability() == 0)
-                    unEquipArmor(bodyArmor);
-            }
-            if(handArmor != null) {
+            if (bodyArmor != null && bodyArmor.getDurability() == 0)
+                unEquipArmor(bodyArmor);
+            if (handArmor != null)
                 handArmor.setDurability();
-                if(handArmor.getDurability() == 0)
-                    unEquipArmor(handArmor);
-            }
-            if(legArmor != null) {
+            if (handArmor != null && handArmor.getDurability() == 0)
+                unEquipArmor(handArmor);
+            if (legArmor != null)
                 legArmor.setDurability();
-                if(legArmor.getDurability() == 0)
-                    unEquipArmor(legArmor);
-            }
-            if(footArmor != null) {
+            if (legArmor != null && legArmor.getDurability() == 0)
+                unEquipArmor(legArmor);
+            if (footArmor != null)
                 footArmor.setDurability();
-                if(footArmor.getDurability() == 0)
-                    unEquipArmor(footArmor);
-            }
+            if (footArmor != null && footArmor.getDurability() == 0)
+                unEquipArmor(footArmor);
         }
     }
 

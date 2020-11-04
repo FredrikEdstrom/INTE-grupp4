@@ -30,4 +30,19 @@ class ArmorTest {
         FootArmor highPriestBoots = new FootArmor("High Priest Boots", 101, true);
         assertEquals(100, highPriestBoots.getLevel());
     }
+
+    @Test
+    void armorDurabilityDroppedToZero() {
+        Armor bodyPlate = new BodyArmor("Body Plate", 1, true);
+        while(bodyPlate.getDurability() != 0) {
+            bodyPlate.setDurability();
+        }
+        bodyPlate.setStatsToZero();
+
+        assertEquals(0, bodyPlate.getDurability());
+        assertEquals(0, bodyPlate.getHealth());
+        assertEquals(0, bodyPlate.getMana());
+        assertEquals(0, bodyPlate.getAttack());
+        assertEquals(0, bodyPlate.getDefense());
+    }
 }

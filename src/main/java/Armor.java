@@ -53,7 +53,9 @@ public abstract class Armor {
         return defense;
     }
 
-    public int getDurability() { return durability;}
+    public int getDurability() {
+        return durability;
+    }
 
     protected void setHealth(int health) {
         this.health = health;
@@ -79,10 +81,12 @@ public abstract class Armor {
         this.defense = defense;
     }
 
-    public void setDurability( ) {
+    public void setDurability() {
         if (durability != 0)
-        durability--;
-        else {
+            durability--;
+    }
+    public void setStatsToZero() {
+        if (durability == 0) {
             health = 0;
             mana = 0;
             attack = 0;
