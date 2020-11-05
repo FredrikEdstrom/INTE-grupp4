@@ -113,8 +113,8 @@ public class Hero extends Character {
     }
     //Equip weapon och armor metoder end
 
-    //Armors durability drops for every hit, when it dropped to 0
-    //all armor stats become 0 and un-equip it automatically
+    //Armors durability drops by 1 for every hit, when it dropped to 0 and
+    //un-equip it automatically and then all armor stats become 0
     public void changeArmorDurability(boolean hit) {
         if (hit) {
             if (headArmor != null)
