@@ -47,4 +47,15 @@ class ArmorTest {
         assertEquals(0, bodyPlate.getAgility());
     }
 
+    @Test
+    void hashCodeEqualsTrue() {
+        Armor armor = new BodyArmor("Body Armor", 1, true);
+        Armor bodyArmor = new BodyArmor("Body Armor", 1, true);
+        Armor legArmor = new LegArmor("Leg Armor", 1, true);
+
+        assertEquals(armor, armor);
+        assertNotEquals(legArmor, armor);
+        assertEquals(armor, bodyArmor);
+        assertEquals(armor.hashCode(), armor.hashCode());
+    }
 }

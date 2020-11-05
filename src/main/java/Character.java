@@ -2,16 +2,16 @@ import java.util.HashMap;
 
 public abstract class Character {
 
-    protected final String name;
-    protected int level = 1;
-    protected int attack = 10;
-    protected int defense = 10;
-    protected int health = 100;
-    protected int mana = 100;
-    protected int intelligence = 10;
-    protected int agility = 10;
-    protected int experience = 0;
-    protected boolean isAlive = true;
+    private final String name;
+    private int level = 1;
+    private int attack = 10;
+    private int defense = 10;
+    private int health = 100;
+    private int mana = 100;
+    private int intelligence = 10;
+    private int agility = 10;
+    private int experience = 0;
+    private boolean isAlive = true;
 
     private Weapon weapon;
     private final HashMap<String, Armor> armor = new HashMap<>();
