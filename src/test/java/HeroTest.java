@@ -166,6 +166,7 @@ class HeroTest {
         while (slasher.getLevel() != 30)
             slasher.levelUp();
         slasher.equipArmor(skullHelm);
+        assertEquals(skullHelm, slasher.getHeadArmor());
         assertEquals(830, slasher.getHealth());
         assertEquals(245, slasher.getDefense());
     }
@@ -178,6 +179,7 @@ class HeroTest {
         while (caster.getLevel() != 30)
             caster.levelUp();
         caster.equipArmor(priestCap);
+        assertEquals(priestCap, caster.getHeadArmor());
         assertEquals(830, caster.getMana());
         assertEquals(170, caster.getDefense());
     }
@@ -218,6 +220,7 @@ class HeroTest {
         while (slasher.getLevel() != 72)
             slasher.levelUp();
         slasher.equipArmor(goldenPlate);
+        assertEquals(goldenPlate, slasher.getBodyArmor());
         assertEquals(2240, slasher.getHealth());
         assertEquals(1556, slasher.getMana());
         assertEquals(581, slasher.getAttack());
@@ -232,6 +235,7 @@ class HeroTest {
         while (caster.getLevel() != 72)
             caster.levelUp();
         caster.equipArmor(priestRobe);
+        assertEquals(priestRobe, caster.getBodyArmor());
         assertEquals(1556, caster.getHealth());
         assertEquals(2240, caster.getMana());
         assertEquals(581, caster.getIntelligence());
@@ -279,6 +283,7 @@ class HeroTest {
         while (slasher.getLevel() != 40)
             slasher.levelUp();
         slasher.equipArmor(boneGauntlets);
+        assertEquals(boneGauntlets, slasher.getHandArmor());
         assertEquals(1080, slasher.getHealth());
         assertEquals(325, slasher.getAttack());
         assertEquals(325, slasher.getDefense());
@@ -292,6 +297,7 @@ class HeroTest {
         while (caster.getLevel() != 40)
             caster.levelUp();
         caster.equipArmor(priestGloves);
+        assertEquals(priestGloves, caster.getHandArmor());
         assertEquals(1080, caster.getMana());
         assertEquals(325, caster.getIntelligence());
         assertEquals(225, caster.getDefense());
@@ -334,6 +340,7 @@ class HeroTest {
         while (slasher.getLevel() != 80)
             slasher.levelUp();
         slasher.equipArmor(goldenLegPlate);
+        assertEquals(goldenLegPlate, slasher.getLegArmor());
         assertEquals(2480, slasher.getHealth());
         assertEquals(1720, slasher.getMana());
         assertEquals(445, slasher.getAgility());
@@ -393,6 +400,7 @@ class HeroTest {
         while (slasher.getLevel() != 35)
             slasher.levelUp();
         slasher.equipArmor(boneBoots);
+        assertEquals(boneBoots, slasher.getFootArmor());
         assertEquals(955, slasher.getHealth());
         assertEquals(197, slasher.getAgility());
         assertEquals(285, slasher.getDefense());
@@ -406,6 +414,7 @@ class HeroTest {
         while (caster.getLevel() != 35)
             caster.levelUp();
         caster.equipArmor(priestShoes);
+        assertEquals(priestShoes, caster.getFootArmor());
         assertEquals(955, caster.getMana());
         assertEquals(285, caster.getAgility());
         assertEquals(197, caster.getDefense());
@@ -442,8 +451,7 @@ class HeroTest {
     //Hero equip and un-equip weapon and armor end
 
     //Armor durability dropped by 1 for every hit
-    //Armor also automatically un-equip and
-    //it looses its effect when durability dropped to 0
+    //Armor looses its effect when durability dropped to 0
     @Test
     void heroHeadArmorDurabilityDroppedToZero() {
         CombatMechanics combat = new CombatMechanics();
@@ -456,9 +464,9 @@ class HeroTest {
             combat.attackOrder(noobKing, slasher);
             slasher.changeArmorDurability(true);
         }
-        rustyHelmet.setStatsToZero(); //Method that sets armor stats to zero when durability is 0
-        assertEquals(0, rustyHelmet.getDurability());
-        assertNull(slasher.getBodyArmor());
+        assertEquals(0, slasher.getHeadArmor().getDurability());
+        assertEquals(0, slasher.getHeadArmor().getHealth());
+        assertEquals(0, slasher.getHeadArmor().getDefense());
     }
 
     @Test
@@ -473,9 +481,11 @@ class HeroTest {
             combat.attackOrder(noobKing, slasher);
             slasher.changeArmorDurability(true);
         }
-        rustyArmor.setStatsToZero();
-        assertEquals(0, rustyArmor.getDurability());
-        assertNull(slasher.getBodyArmor());
+        assertEquals(0, slasher.getBodyArmor().getDurability());
+        assertEquals(0, slasher.getBodyArmor().getHealth());
+        assertEquals(0, slasher.getBodyArmor().getMana());
+        assertEquals(0, slasher.getBodyArmor().getDefense());
+        assertEquals(0, slasher.getBodyArmor().getAttack());
     }
 
     @Test
@@ -490,9 +500,10 @@ class HeroTest {
             combat.attackOrder(noobKing, slasher);
             slasher.changeArmorDurability(true);
         }
-        rustyGauntlets.setStatsToZero();
-        assertEquals(0, rustyGauntlets.getDurability());
-        assertNull(slasher.getBodyArmor());
+        assertEquals(0, slasher.getHandArmor().getDurability());
+        assertEquals(0, slasher.getHandArmor().getHealth());
+        assertEquals(0, slasher.getHandArmor().getDefense());
+        assertEquals(0, slasher.getHandArmor().getAttack());
     }
 
     @Test
@@ -507,9 +518,11 @@ class HeroTest {
             combat.attackOrder(noobKing, slasher);
             slasher.changeArmorDurability(true);
         }
-        rustyLeg.setStatsToZero();
-        assertEquals(0, rustyLeg.getDurability());
-        assertNull(slasher.getBodyArmor());
+        assertEquals(0, slasher.getLegArmor().getDurability());
+        assertEquals(0, slasher.getLegArmor().getHealth());
+        assertEquals(0, slasher.getLegArmor().getMana());
+        assertEquals(0, slasher.getLegArmor().getDefense());
+        assertEquals(0, slasher.getLegArmor().getAgility());
     }
 
     @Test
@@ -524,9 +537,10 @@ class HeroTest {
             combat.attackOrder(noobKing, slasher);
             slasher.changeArmorDurability(true);
         }
-        rustyBoots.setStatsToZero();
-        assertEquals(0, rustyBoots.getDurability());
-        assertNull(slasher.getBodyArmor());
+        assertEquals(0, slasher.getFootArmor().getDurability());
+        assertEquals(0, slasher.getFootArmor().getHealth());
+        assertEquals(0, slasher.getFootArmor().getDefense());
+        assertEquals(0, slasher.getFootArmor().getAgility());
     }
 
     @Test

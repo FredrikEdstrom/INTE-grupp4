@@ -3,40 +3,10 @@ import java.util.Set;
 
 public class Hero extends Character {
 
-    private Weapon weapon;
-    private HeadArmor headArmor;
-    private BodyArmor bodyArmor;
-    private HandArmor handArmor;
-    private LegArmor legArmor;
-    private FootArmor footArmor;
     private Set<Spell> spellBook = new HashSet<Spell>();
 
     public Hero(String name) {
         super(name);
-    }
-
-    public Weapon getWeapon() {
-        return weapon;
-    }
-
-    public HeadArmor getHeadArmor() {
-        return headArmor;
-    }
-
-    public BodyArmor getBodyArmor() {
-        return bodyArmor;
-    }
-
-    public HandArmor getHandArmor() {
-        return handArmor;
-    }
-
-    public LegArmor getLegArmor() {
-        return legArmor;
-    }
-
-    public FootArmor getFootArmor() {
-        return footArmor;
     }
 
     public Set<Spell> getSpellBook() {
@@ -50,20 +20,12 @@ public class Hero extends Character {
             throw new IllegalStateException("Hero level: " + getLevel()
                     + " Item level: " + weapon.getLevel());
         } else {
-            if (weapon.isSword())
-                setAttack(getAttack() + weapon.getAttack());
-            else
-                setIntelligence(getIntelligence() + weapon.getIntelligence());
-            this.weapon = weapon;
+            setWeapon(weapon);
         }
     }
 
     public void unEquipWeapon() {
-        if (weapon.isSword())
-            setAttack(getAttack() - weapon.getAttack());
-        else
-            setIntelligence(getIntelligence() - weapon.getIntelligence());
-        weapon = null;
+        setWeapon(null);
     }
 
     public void equipArmor(Armor armor) {
@@ -72,44 +34,29 @@ public class Hero extends Character {
                     + " Item level: " + armor.getLevel());
         } else {
             if (armor instanceof HeadArmor)
-                headArmor = (HeadArmor) armor;
+                setHeadArmor((HeadArmor) armor);
             if (armor instanceof BodyArmor)
-                bodyArmor = (BodyArmor) armor;
+                setBodyArmor((BodyArmor) armor);
             if (armor instanceof HandArmor)
-                handArmor = (HandArmor) armor;
+                setHandArmor((HandArmor) armor);
             if (armor instanceof LegArmor)
-                legArmor = (LegArmor) armor;
+                setLegArmor((LegArmor) armor);
             if (armor instanceof FootArmor)
-                footArmor = (FootArmor) armor;
-            setHealth(getHealth() + armor.getHealth());
-            setMana(getMana() + armor.getMana());
-            setDefense(getDefense() + armor.getDefense());
-            setAttack(getAttack() + armor.getAttack());
-            setIntelligence(getIntelligence() + armor.getIntelligence());
-            setAgility(getAgility() + armor.getAgility());
+                setFootArmor((FootArmor) armor);
         }
     }
 
     public void unEquipArmor(Armor armor) {
-        if (armor == headArmor || armor == bodyArmor || armor == handArmor
-                || armor == legArmor || armor == footArmor) {
-            setHealth(getHealth() - armor.getHealth());
-            setMana(getMana() - armor.getMana());
-            setDefense(getDefense() - armor.getDefense());
-            setAttack(getAttack() - armor.getAttack());
-            setIntelligence(getIntelligence() - armor.getIntelligence());
-            setAgility(getAgility() - armor.getAgility());
-        }
-        if (armor == headArmor)
-            headArmor = null;
-        if (armor == bodyArmor)
-            bodyArmor = null;
-        if (armor == handArmor)
-            handArmor = null;
-        if (armor == legArmor)
-            legArmor = null;
-        if (armor == footArmor)
-            footArmor = null;
+        if (armor == getHeadArmor())
+            setHeadArmor(null);
+        if (armor == getBodyArmor())
+            setBodyArmor(null);
+        if (armor == getHandArmor())
+            setHandArmor(null);
+        if (armor == getLegArmor())
+            setLegArmor(null);
+        if (armor == getFootArmor())
+            setFootArmor(null);
     }
     //Equip weapon och armor metoder end
 
@@ -117,26 +64,16 @@ public class Hero extends Character {
     //un-equip it automatically and then all armor stats become 0
     public void changeArmorDurability(boolean hit) {
         if (hit) {
-            if (headArmor != null)
-                headArmor.setDurability();
-            if (headArmor != null && headArmor.getDurability() == 0)
-                unEquipArmor(headArmor);
-            if (bodyArmor != null)
-                bodyArmor.setDurability();
-            if (bodyArmor != null && bodyArmor.getDurability() == 0)
-                unEquipArmor(bodyArmor);
-            if (handArmor != null)
-                handArmor.setDurability();
-            if (handArmor != null && handArmor.getDurability() == 0)
-                unEquipArmor(handArmor);
-            if (legArmor != null)
-                legArmor.setDurability();
-            if (legArmor != null && legArmor.getDurability() == 0)
-                unEquipArmor(legArmor);
-            if (footArmor != null)
-                footArmor.setDurability();
-            if (footArmor != null && footArmor.getDurability() == 0)
-                unEquipArmor(footArmor);
+            if (getHeadArmor() != null)
+                getHeadArmor().setDurability();
+            if (getBodyArmor() != null)
+                getBodyArmor().setDurability();
+            if (getLegArmor() != null)
+                getLegArmor().setDurability();
+            if (getHandArmor() != null)
+                getHandArmor().setDurability();
+            if (getFootArmor() != null)
+                getFootArmor().setDurability();
         }
     }
 
