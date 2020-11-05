@@ -166,8 +166,9 @@ class HeroTest {
         while (slasher.getLevel() != 30)
             slasher.levelUp();
         slasher.equipArmor(skullHelm);
-        assertEquals(skullHelm, slasher.getHeadArmor());
+        assertEquals(680, slasher.getHealth() - skullHelm.getHealth());
         assertEquals(830, slasher.getHealth());
+        assertEquals(155, slasher.getDefense() - skullHelm.getDefense());
         assertEquals(245, slasher.getDefense());
     }
 
@@ -250,9 +251,13 @@ class HeroTest {
             slasher.levelUp();
         slasher.equipArmor(dragonPlate);
         slasher.unEquipArmor(dragonPlate);
+        assertEquals(2540, slasher.getHealth() + dragonPlate.getHealth());
         assertEquals(1720, slasher.getHealth());
+        assertEquals(1761, slasher.getMana() + dragonPlate.getMana());
         assertEquals(1720, slasher.getMana());
+        assertEquals(661, slasher.getAttack() + dragonPlate.getAttack());
         assertEquals(415, slasher.getAttack());
+        assertEquals(825, slasher.getDefense() + dragonPlate.getDefense());
         assertEquals(415, slasher.getDefense());
         assertNull(slasher.getBodyArmor());
     }

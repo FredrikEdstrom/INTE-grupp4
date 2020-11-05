@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public abstract class Armor {
     private final String name;
     private final int level;
@@ -82,7 +84,7 @@ public abstract class Armor {
     }
 
     public void setDurability() {
-        if (durability != 0)
+        if (durability > 0)
             durability--;
         if (durability == 0) {
             health = 0;
@@ -96,4 +98,24 @@ public abstract class Armor {
 
     protected abstract void setArmorStats();
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Armor)) return false;
+        Armor armor = (Armor) o;
+        return level == armor.level &&
+                health == armor.health &&
+                mana == armor.mana &&
+                attack == armor.attack &&
+                intelligence == armor.intelligence &&
+                agility == armor.agility &&
+                defense == armor.defense &&
+                durability == armor.durability &&
+                Objects.equals(name, armor.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, level, health, mana, attack, intelligence, agility, defense, durability);
+    }
 }
