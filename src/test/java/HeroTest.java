@@ -166,8 +166,9 @@ class HeroTest {
         while (slasher.getLevel() != 30)
             slasher.levelUp();
         slasher.equipArmor(skullHelm);
-        assertEquals(skullHelm, slasher.getHeadArmor());
+        assertEquals(680, slasher.getHealth() - skullHelm.getHealth());
         assertEquals(830, slasher.getHealth());
+        assertEquals(155, slasher.getDefense() - skullHelm.getDefense());
         assertEquals(245, slasher.getDefense());
     }
 
@@ -250,9 +251,13 @@ class HeroTest {
             slasher.levelUp();
         slasher.equipArmor(dragonPlate);
         slasher.unEquipArmor(dragonPlate);
+        assertEquals(2540, slasher.getHealth() + dragonPlate.getHealth());
         assertEquals(1720, slasher.getHealth());
+        assertEquals(1761, slasher.getMana() + dragonPlate.getMana());
         assertEquals(1720, slasher.getMana());
+        assertEquals(661, slasher.getAttack() + dragonPlate.getAttack());
         assertEquals(415, slasher.getAttack());
+        assertEquals(825, slasher.getDefense() + dragonPlate.getDefense());
         assertEquals(415, slasher.getDefense());
         assertNull(slasher.getBodyArmor());
     }
@@ -447,9 +452,9 @@ class HeroTest {
         assertEquals(180, caster.getDefense());
         assertNull(caster.getFootArmor());
     }
+
     //Foot armor equip and un-equip test ends
     //Hero equip and un-equip weapon and armor end
-
     //Armor durability dropped by 1 for every hit
     //Armor looses its effect when durability dropped to 0
     @Test
@@ -576,6 +581,20 @@ class HeroTest {
         hero.addSpellToSpellBook(f1);
         hero.addSpellToSpellBook(f2);
         assertEquals(1, hero.getSpellBook().size());
+    }
+
+    @Test
+    void setAgilityTest() {
+        Character hero = new Hero("Hero");
+        hero.setAgility(20);
+        assertEquals(20, hero.getAgility());
+    }
+
+    @Test
+    void setIntelligenceTest() {
+        Character hero = new Hero("Hero");
+        hero.setIntelligence(30);
+        assertEquals(30, hero.getIntelligence());
     }
 
     @Test

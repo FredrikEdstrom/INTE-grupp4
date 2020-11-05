@@ -34,7 +34,7 @@ class ArmorTest {
     @Test
     void armorDurabilityDroppedToZero() {
         Armor bodyPlate = new BodyArmor("Body Plate", 1, true);
-        while(bodyPlate.getDurability() != 0) {
+        while(bodyPlate.getDurability() > 0) {
             bodyPlate.setDurability();
         }
 
@@ -42,39 +42,20 @@ class ArmorTest {
         assertEquals(0, bodyPlate.getHealth());
         assertEquals(0, bodyPlate.getMana());
         assertEquals(0, bodyPlate.getAttack());
+        assertEquals(0, bodyPlate.getIntelligence());
         assertEquals(0, bodyPlate.getDefense());
+        assertEquals(0, bodyPlate.getAgility());
     }
 
     @Test
-    void legPlateWithLevelHigherThanTrousers() {
-        Armor legPlate = new LegArmor("Leg Plate", 10, true);
-        Armor trousers = new LegArmor("Trousers", 1, false);
+    void hashCodeEqualsTrue() {
+        Armor armor = new BodyArmor("Body Armor", 1, true);
+        Armor bodyArmor = new BodyArmor("Body Armor", 1, true);
+        Armor legArmor = new LegArmor("Leg Armor", 1, true);
 
-        assertTrue(legPlate.getHealth() > trousers.getHealth());
-        assertFalse(legPlate.getMana() > trousers.getMana());
-        assertTrue(legPlate.getDefense() > trousers.getDefense());
-        assertTrue(legPlate.getAgility() > trousers.getAgility());
-    }
-
-    @Test
-    void legPlateWithLevelLowerThanTrousers() {
-        Armor legPlate = new LegArmor("Leg Plate", 20, true);
-        Armor trousers = new LegArmor("Trousers", 50, false);
-
-        assertTrue(legPlate.getHealth() > trousers.getHealth());
-        assertFalse(legPlate.getMana() > trousers.getMana());
-        assertTrue(legPlate.getDefense() > trousers.getDefense());
-        assertFalse(legPlate.getAgility() > trousers.getAgility());
-    }
-
-    @Test
-    void legPlateWithLevelEqualThanTrousers() {
-        Armor legPlate = new LegArmor("Leg Plate", 100, true);
-        Armor trousers = new LegArmor("Trousers", 100, false);
-
-        assertTrue(legPlate.getHealth() > trousers.getHealth());
-        assertFalse(legPlate.getMana() > trousers.getMana());
-        assertTrue(legPlate.getDefense() > trousers.getDefense());
-        assertFalse(legPlate.getAgility() > trousers.getAgility());
+        assertEquals(armor, armor);
+        assertNotEquals(legArmor, armor);
+        assertEquals(armor, bodyArmor);
+        assertEquals(armor.hashCode(), armor.hashCode());
     }
 }
