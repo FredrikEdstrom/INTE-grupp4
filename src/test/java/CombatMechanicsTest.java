@@ -12,6 +12,8 @@ class CombatMechanicsTest {
     void playerIsFasterTest() {
         Hero player = new Hero("player");
         Enemy enemy = new Enemy("enemy", 10, 10, 100, 100, 10, 5, 5, false, false);
+        player.setAgility(10);
+        enemy.setAgility(5);
         assertEquals(player, cm.firstMove(player, enemy));
     }
 
@@ -19,6 +21,8 @@ class CombatMechanicsTest {
     void enemyIsFasterTest() {
         Hero player = new Hero("player");
         Enemy enemy = new Enemy("enemy", 10, 10, 10, 100, 100, 10, 15, false, false);
+        player.setAgility(10);
+        enemy.setAgility(15);
         assertEquals(enemy, cm.firstMove(player, enemy));
     }
 
@@ -26,6 +30,8 @@ class CombatMechanicsTest {
     void playerAndEnemyAreEquallyFastTest() {
         Hero player = new Hero("player");
         Enemy enemy = new Enemy("enemy", 10, 10, 10, 100, 100, 10, 10, false, false);
+        player.setAgility(10);
+        enemy.setAgility(10);
         assertEquals(player, cm.firstMove(player, enemy));
     }
 
