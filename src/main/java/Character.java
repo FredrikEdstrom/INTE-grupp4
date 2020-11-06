@@ -110,8 +110,10 @@ public abstract class Character {
     public void setHealth(int health) {
         if (this.health > 0)
             this.health = health;
-        if (this.health <= 0)
+        if (this.health <= 0) {
             setAlive();
+            this.health = 0;
+        }
     }
 
     public void setMana(int mana) {

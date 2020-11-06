@@ -374,6 +374,7 @@ class CombatMechanicsTest {
         while (enemy.isAlive())
             cm.magicSpellAttack(hero,enemy,fireball);
         assertFalse(enemy.isAlive());
+        assertEquals(0,enemy.getHealth());
     }
 
 }
