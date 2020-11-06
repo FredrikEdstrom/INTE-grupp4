@@ -361,7 +361,19 @@ class CombatMechanicsTest {
         Fireball fireball = new Fireball();
         hero.addSpellToSpellBook(fireball);
         enemy.setImmunityToMagicAttack(true);
+        cm.magicSpellAttack(hero,enemy,fireball);
         assertEquals(100,enemy.getHealth());
+    }
+
+    @Test
+    void magicSpellAttackUntilEnemyDead(){
+        Hero hero = new Hero("hero");
+        Enemy enemy = new Enemy("enemy", 10, 100, 10, 100, 100, 10, 5, false, false);
+        Fireball fireball = new Fireball();
+        hero.addSpellToSpellBook(fireball);
+        while (enemy.isAlive())
+            cm.magicSpellAttack(hero,enemy,fireball);
+        assertFalse(enemy.isAlive());
     }
 
 }
