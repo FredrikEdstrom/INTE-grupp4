@@ -433,4 +433,19 @@ class CombatMechanicsTest {
         assertEquals(0,enemy.getHealth());
     }
 
+    @Test
+    void magicSpellAttackUnitlInsufficientMana(){
+        Hero hero = new Hero("hero");
+        Enemy enemy = new Enemy("enemy", 10, 100, 10, 100, 100, 10, 5, false, false);
+        Fireball fireball = new Fireball();
+        enemy.setHealth(1000);
+        hero.addSpellToSpellBook(fireball);
+        while (enemy.isAlive() && (hero.getMana()>=fireball.getCost()))
+            cm.magicSpellAttack(hero,enemy,fireball);
+        assertTrue(enemy.isAlive());
+        assertEquals(0,hero.getMana());
+        assertEquals(200,enemy.getHealth());
+
+    }
+
 }
