@@ -498,7 +498,9 @@ class HeroTest {
         Hero slasher = new Hero("Slasher");
         Enemy noobKing = new Enemy("Noob King", 1, 10, 10, 100,
                 100, 10, 10, false, false);
-        Armor rustyHelmet = new HeadArmor("Rusty Helmet", 1, true);
+        Armor rustyHelmet = new HeadArmor("Rusty Helmet", 6, true);
+        while (slasher.getLevel() < 6)
+            slasher.levelUp();
         slasher.equipArmor(rustyHelmet);
         combat.attackOrder(noobKing, slasher);
         slasher.changeArmorDurability(true);
@@ -511,7 +513,9 @@ class HeroTest {
         Hero slasher = new Hero("Slasher");
         Enemy noobKing = new Enemy("Noob King", 1, 10, 10, 100,
                 100, 10, 10, false, false);
-        Armor rustyHelmet = new HeadArmor("Rusty Helmet", 1, true);
+        Armor rustyHelmet = new HeadArmor("Rusty Helmet", 6, true);
+        while (slasher.getLevel() < 6)
+            slasher.levelUp();
         slasher.equipArmor(rustyHelmet);
         for (int i = 0; i < 200; i++) {
             combat.attackOrder(noobKing, slasher);
@@ -528,7 +532,9 @@ class HeroTest {
         Hero slasher = new Hero("Slasher");
         Enemy noobKing = new Enemy("Noob King", 1, 10, 10, 100,
                 100, 10, 10, false, false);
-        Armor rustyArmor = new BodyArmor("Rusty Armor", 1, true);
+        Armor rustyArmor = new BodyArmor("Rusty Armor", 6, true);
+        while (slasher.getLevel() < 6)
+            slasher.levelUp();
         slasher.equipArmor(rustyArmor);
         combat.attackOrder(noobKing, slasher);
         slasher.changeArmorDurability(true);
@@ -541,7 +547,9 @@ class HeroTest {
         Hero slasher = new Hero("Slasher");
         Enemy noobKing = new Enemy("Noob King", 1, 10, 10, 100,
                 100, 10, 10, false, false);
-        Armor rustyArmor = new BodyArmor("Rusty Armor", 1, true);
+        Armor rustyArmor = new BodyArmor("Rusty Armor", 6, true);
+        while (slasher.getLevel() < 6)
+            slasher.levelUp();
         slasher.equipArmor(rustyArmor);
         for (int i = 0; i < 200; i++) {
             combat.attackOrder(noobKing, slasher);
@@ -560,7 +568,9 @@ class HeroTest {
         Hero slasher = new Hero("Slasher");
         Enemy noobKing = new Enemy("Noob King", 1, 10, 10, 100,
                 100, 10, 10, false, false);
-        Armor rustyGauntlets = new HandArmor("Rusty Gauntlets", 1, true);
+        Armor rustyGauntlets = new HandArmor("Rusty Gauntlets", 6, true);
+        while (slasher.getLevel() < 6)
+            slasher.levelUp();
         slasher.equipArmor(rustyGauntlets);
         combat.attackOrder(noobKing, slasher);
         slasher.changeArmorDurability(true);
@@ -573,7 +583,9 @@ class HeroTest {
         Hero slasher = new Hero("Slasher");
         Enemy noobKing = new Enemy("Noob King", 1, 10, 10, 100,
                 100, 10, 10, false, false);
-        Armor rustyGauntlets = new HandArmor("Rusty Gauntlets", 1, true);
+        Armor rustyGauntlets = new HandArmor("Rusty Gauntlets", 6, true);
+        while (slasher.getLevel() < 6)
+            slasher.levelUp();
         slasher.equipArmor(rustyGauntlets);
         for (int i = 0; i < 200; i++) {
             combat.attackOrder(noobKing, slasher);
@@ -591,7 +603,9 @@ class HeroTest {
         Hero slasher = new Hero("Slasher");
         Enemy noobKing = new Enemy("Noob King", 1, 10, 10, 100,
                 100, 10, 10, false, false);
-        Armor rustyLeg = new LegArmor("Rusty Leg", 1, true);
+        Armor rustyLeg = new LegArmor("Rusty Leg", 6, true);
+        while (slasher.getLevel() < 6)
+            slasher.levelUp();
         slasher.equipArmor(rustyLeg);
         combat.attackOrder(noobKing, slasher);
         slasher.changeArmorDurability(true);
@@ -604,7 +618,9 @@ class HeroTest {
         Hero slasher = new Hero("Slasher");
         Enemy noobKing = new Enemy("Noob King", 1, 10, 10, 100,
                 100, 10, 10, false, false);
-        Armor rustyLeg = new LegArmor("Rusty Leg", 1, true);
+        Armor rustyLeg = new LegArmor("Rusty Leg", 6, true);
+        while (slasher.getLevel() < 6)
+            slasher.levelUp();
         slasher.equipArmor(rustyLeg);
         for (int i = 0; i < 200; i++) {
             combat.attackOrder(noobKing, slasher);
@@ -623,7 +639,9 @@ class HeroTest {
         Hero slasher = new Hero("Slasher");
         Enemy noobKing = new Enemy("Noob King", 1, 10, 10, 100,
                 100, 10, 10, false, false);
-        Armor rustyBoots = new FootArmor("Rusty Boots", 1, true);
+        Armor rustyBoots = new FootArmor("Rusty Boots", 6, true);
+        while (slasher.getLevel() < 6)
+            slasher.levelUp();
         slasher.equipArmor(rustyBoots);
         combat.attackOrder(noobKing, slasher);
         slasher.changeArmorDurability(true);
@@ -636,7 +654,9 @@ class HeroTest {
         Hero slasher = new Hero("Slasher");
         Enemy noobKing = new Enemy("Noob King", 1, 10, 10, 100,
                 100, 10, 10, false, false);
-        Armor rustyBoots = new FootArmor("Rusty Boots", 1, true);
+        Armor rustyBoots = new FootArmor("Rusty Boots", 6, true);
+        while (slasher.getLevel() < 6)
+            slasher.levelUp();
         slasher.equipArmor(rustyBoots);
         for (int i = 0; i < 200; i++) {
             combat.attackOrder(noobKing, slasher);
@@ -652,7 +672,7 @@ class HeroTest {
     void heroEquipPlateArmorHitOneHundredTimesStillAlive() {
         CombatMechanics combat = new CombatMechanics();
         Hero slasher = new Hero("Slasher");
-        Enemy noobKing = new Enemy("Noob King", 1, 10, 10, 100,
+        Enemy noobKing = new Enemy("Noob King", 1, 170, 10, 100,
                 100, 10, 10, false, false);
         BodyArmor rustyArmor = new BodyArmor("Rusty Armor", 1, true);
         slasher.equipArmor(rustyArmor);
@@ -663,7 +683,7 @@ class HeroTest {
         assertTrue(rustyArmor.isPlate());
         assertFalse(rustyArmor.isRobe());
         assertEquals(50, slasher.getBodyArmor().getDurability());
-        assertEquals(10, slasher.getBodyArmor().getHealth());
+        assertEquals(10, slasher.getHealth());
         assertTrue(slasher.isAlive());
     }
 
@@ -683,7 +703,7 @@ class HeroTest {
         assertFalse(tornRobe.isPlate());
         assertEquals(tornRobe, slasher.getBodyArmor());
         assertEquals(50, slasher.getBodyArmor().getDurability());
-        assertEquals(0, slasher.getBodyArmor().getHealth());
+        assertEquals(0, slasher.getHealth());
         assertFalse(slasher.isAlive());
     }
 
