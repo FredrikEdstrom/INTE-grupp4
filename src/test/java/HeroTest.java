@@ -43,6 +43,19 @@ class HeroTest {
         assertEquals(100, hero.getExperience());
     }
 
+    @Test
+    void setAgilityTest() {
+        Character hero = new Hero("Hero");
+        hero.setAgility(20);
+        assertEquals(20, hero.getAgility());
+    }
+
+    @Test
+    void setIntelligenceTest() {
+        Character hero = new Hero("Hero");
+        hero.setIntelligence(30);
+        assertEquals(30, hero.getIntelligence());
+    }
 
     @Test
     void createHeroWithEmptyName() {
@@ -77,12 +90,13 @@ class HeroTest {
     void heroEquipSword() {
         Hero slasher = new Hero("Slasher");
         Weapon goldenSword = new Weapon("Golden Sword", 50, true);
-        while (slasher.getLevel() != 50)
+        while (slasher.getLevel() < 50)
             slasher.levelUp();
         slasher.equipWeapon(goldenSword);
         assertTrue(slasher.getWeapon().isSword());
         assertEquals(goldenSword, slasher.getWeapon());
         assertEquals(755, slasher.getAttack());
+        assertEquals(255, slasher.getAttack() - goldenSword.getAttack());
     }
 
     //Staff increases intelligence
@@ -90,19 +104,20 @@ class HeroTest {
     void heroEquipStaff() {
         Hero caster = new Hero("Caster");
         Weapon goldenStaff = new Weapon("Golden Staff", 50, false);
-        while (caster.getLevel() != 50)
+        while (caster.getLevel() < 50)
             caster.levelUp();
         caster.equipWeapon(goldenStaff);
         assertFalse(caster.getWeapon().isSword());
         assertEquals(goldenStaff, caster.getWeapon());
         assertEquals(755, caster.getIntelligence());
+        assertEquals(255, caster.getIntelligence() - goldenStaff.getIntelligence());
     }
 
     @Test
     void heroUnEquipSword() {
         Hero slasher = new Hero("Slasher");
         Weapon goldenSword = new Weapon("Golden Sword", 50, true);
-        while (slasher.getLevel() != 50)
+        while (slasher.getLevel() < 50)
             slasher.levelUp();
         slasher.equipWeapon(goldenSword);
         slasher.unEquipWeapon();
@@ -115,7 +130,7 @@ class HeroTest {
     void heroUnEquipStaff() {
         Hero caster = new Hero("Caster");
         Weapon goldenStaff = new Weapon("Golden Staff", 50, false);
-        while (caster.getLevel() != 50)
+        while (caster.getLevel() < 50)
             caster.levelUp();
         caster.equipWeapon(goldenStaff);
         caster.unEquipWeapon();
@@ -137,7 +152,7 @@ class HeroTest {
     @Test
     void checkIfArmorsAreInTheRightSlot() {
         Hero slasher = new Hero("Slasher");
-        while (slasher.getLevel() != 82)
+        while (slasher.getLevel() < 82)
             slasher.levelUp();
         Armor dragonHelm = new HeadArmor("Dragon Helm", 82, true);
         Armor dragonPlate = new BodyArmor("Dragon Plate", 82, true);
@@ -163,12 +178,10 @@ class HeroTest {
     void heroEquipHelmet() {
         Hero slasher = new Hero("Slasher");
         HeadArmor skullHelm = new HeadArmor("Skull Helm", 30, true);
-        while (slasher.getLevel() != 30)
+        while (slasher.getLevel() < 30)
             slasher.levelUp();
         slasher.equipArmor(skullHelm);
-        assertEquals(680, slasher.getHealth() - skullHelm.getHealth());
         assertEquals(830, slasher.getHealth());
-        assertEquals(155, slasher.getDefense() - skullHelm.getDefense());
         assertEquals(245, slasher.getDefense());
     }
 
@@ -177,7 +190,7 @@ class HeroTest {
     void heroEquipCap() {
         Hero caster = new Hero("Caster");
         HeadArmor priestCap = new HeadArmor("Priest Cap", 30, false);
-        while (caster.getLevel() != 30)
+        while (caster.getLevel() < 30)
             caster.levelUp();
         caster.equipArmor(priestCap);
         assertEquals(priestCap, caster.getHeadArmor());
@@ -189,26 +202,26 @@ class HeroTest {
     void heroUnEquipHelmet() {
         Hero slasher = new Hero("Slasher");
         HeadArmor skullHelmet = new HeadArmor("Skull Helmet", 45, true);
-        while (slasher.getLevel() != 45)
+        while (slasher.getLevel() < 45)
             slasher.levelUp();
         slasher.equipArmor(skullHelmet);
         slasher.unEquipArmor(skullHelmet);
-        assertNull(slasher.getHeadArmor());
         assertEquals(980, slasher.getHealth());
         assertEquals(230, slasher.getDefense());
+        assertNull(slasher.getHeadArmor());
     }
 
     @Test
     void heroUnEquipCap() {
         Hero caster = new Hero("Caster");
         HeadArmor priestCap = new HeadArmor("Priest Cap", 45, false);
-        while (caster.getLevel() != 45)
+        while (caster.getLevel() < 45)
             caster.levelUp();
         caster.equipArmor(priestCap);
         caster.unEquipArmor(priestCap);
-        assertNull(caster.getHeadArmor());
         assertEquals(980, caster.getMana());
         assertEquals(230, caster.getDefense());
+        assertNull(caster.getHeadArmor());
     }
     //Head armor equip un-equip ends
 
@@ -218,14 +231,18 @@ class HeroTest {
     void heroEquipBodyPlate() {
         Hero slasher = new Hero("Slasher");
         BodyArmor goldenPlate = new BodyArmor("Golden Plate", 72, true);
-        while (slasher.getLevel() != 72)
+        while (slasher.getLevel() < 72)
             slasher.levelUp();
         slasher.equipArmor(goldenPlate);
         assertEquals(goldenPlate, slasher.getBodyArmor());
         assertEquals(2240, slasher.getHealth());
+        assertEquals(1520, slasher.getHealth() - goldenPlate.getHealth());
         assertEquals(1556, slasher.getMana());
+        assertEquals(1520, slasher.getMana() - goldenPlate.getMana());
         assertEquals(581, slasher.getAttack());
+        assertEquals(365, slasher.getAttack() - goldenPlate.getAttack());
         assertEquals(725, slasher.getDefense());
+        assertEquals(365, slasher.getDefense() - goldenPlate.getDefense());
     }
 
     //Robe increases health, mana, intelligence, and defense
@@ -233,31 +250,31 @@ class HeroTest {
     void heroEquipRobe() {
         Hero caster = new Hero("Caster");
         BodyArmor priestRobe = new BodyArmor("Priest Robe", 72, false);
-        while (caster.getLevel() != 72)
+        while (caster.getLevel() < 72)
             caster.levelUp();
         caster.equipArmor(priestRobe);
         assertEquals(priestRobe, caster.getBodyArmor());
         assertEquals(1556, caster.getHealth());
+        assertEquals(1520, caster.getHealth() - priestRobe.getHealth());
         assertEquals(2240, caster.getMana());
+        assertEquals(1520, caster.getMana() - priestRobe.getMana());
         assertEquals(581, caster.getIntelligence());
+        assertEquals(365, caster.getIntelligence() - priestRobe.getIntelligence());
         assertEquals(401, caster.getDefense());
+        assertEquals(365, caster.getDefense() - priestRobe.getDefense());
     }
 
     @Test
     void heroUnEquipBodyPlate() {
         Hero slasher = new Hero("Slasher");
         BodyArmor dragonPlate = new BodyArmor("Dragon Plate", 82, true);
-        while (slasher.getLevel() != 82)
+        while (slasher.getLevel() < 82)
             slasher.levelUp();
         slasher.equipArmor(dragonPlate);
         slasher.unEquipArmor(dragonPlate);
-        assertEquals(2540, slasher.getHealth() + dragonPlate.getHealth());
         assertEquals(1720, slasher.getHealth());
-        assertEquals(1761, slasher.getMana() + dragonPlate.getMana());
         assertEquals(1720, slasher.getMana());
-        assertEquals(661, slasher.getAttack() + dragonPlate.getAttack());
         assertEquals(415, slasher.getAttack());
-        assertEquals(825, slasher.getDefense() + dragonPlate.getDefense());
         assertEquals(415, slasher.getDefense());
         assertNull(slasher.getBodyArmor());
     }
@@ -266,7 +283,7 @@ class HeroTest {
     void heroUnEquipRobe() {
         Hero caster = new Hero("Caster");
         BodyArmor blessedRobe = new BodyArmor("Blessed Robe", 82, false);
-        while (caster.getLevel() != 82)
+        while (caster.getLevel() < 82)
             caster.levelUp();
         caster.equipArmor(blessedRobe);
         caster.unEquipArmor(blessedRobe);
@@ -285,13 +302,16 @@ class HeroTest {
     void heroEquipGauntlets() {
         Hero slasher = new Hero("Slasher");
         HandArmor boneGauntlets = new HandArmor("Bone Gauntlets", 40, true);
-        while (slasher.getLevel() != 40)
+        while (slasher.getLevel() < 40)
             slasher.levelUp();
         slasher.equipArmor(boneGauntlets);
         assertEquals(boneGauntlets, slasher.getHandArmor());
         assertEquals(1080, slasher.getHealth());
+        assertEquals(880, slasher.getHealth() - boneGauntlets.getHealth());
         assertEquals(325, slasher.getAttack());
+        assertEquals(205, slasher.getAttack() - boneGauntlets.getAttack());
         assertEquals(325, slasher.getDefense());
+        assertEquals(205, slasher.getDefense() - boneGauntlets.getDefense());
     }
 
     //Gloves increases mana, intelligence, and defense
@@ -299,20 +319,23 @@ class HeroTest {
     void heroEquipGloves() {
         Hero caster = new Hero("Caster");
         HandArmor priestGloves = new HandArmor("Priest Gloves", 40, false);
-        while (caster.getLevel() != 40)
+        while (caster.getLevel() < 40)
             caster.levelUp();
         caster.equipArmor(priestGloves);
         assertEquals(priestGloves, caster.getHandArmor());
         assertEquals(1080, caster.getMana());
+        assertEquals(880, caster.getMana() - priestGloves.getMana());
         assertEquals(325, caster.getIntelligence());
+        assertEquals(205, caster.getIntelligence() - priestGloves.getIntelligence());
         assertEquals(225, caster.getDefense());
+        assertEquals(205, caster.getDefense() - priestGloves.getDefense());
     }
 
     @Test
     void heroUnEquipGauntlets() {
         Hero slasher = new Hero("Slasher");
         HandArmor boneGauntlets = new HandArmor("Bone Gauntlets", 40, true);
-        while (slasher.getLevel() != 40)
+        while (slasher.getLevel() < 40)
             slasher.levelUp();
         slasher.equipArmor(boneGauntlets);
         slasher.unEquipArmor(boneGauntlets);
@@ -326,7 +349,7 @@ class HeroTest {
     void heroUnEquipGloves() {
         Hero slasher = new Hero("Slasher");
         HandArmor priestGloves = new HandArmor("Priest Gloves", 40, false);
-        while (slasher.getLevel() != 40)
+        while (slasher.getLevel() < 40)
             slasher.levelUp();
         slasher.equipArmor(priestGloves);
         slasher.unEquipArmor(priestGloves);
@@ -342,7 +365,7 @@ class HeroTest {
     void heroEquipLegPlate() {
         Hero slasher = new Hero("Slasher");
         LegArmor goldenLegPlate = new LegArmor("Golden Leg Plate", 80, true);
-        while (slasher.getLevel() != 80)
+        while (slasher.getLevel() < 80)
             slasher.levelUp();
         slasher.equipArmor(goldenLegPlate);
         assertEquals(goldenLegPlate, slasher.getLegArmor());
@@ -356,20 +379,24 @@ class HeroTest {
     void heroEquipTrousers() {
         Hero caster = new Hero("Caster");
         LegArmor priestTrousers = new LegArmor("Priest Trousers", 80, false);
-        while (caster.getLevel() != 80)
+        while (caster.getLevel() < 80)
             caster.levelUp();
         caster.equipArmor(priestTrousers);
         assertEquals(1720, caster.getHealth());
+        assertEquals(1680, caster.getHealth() - priestTrousers.getHealth());
         assertEquals(2480, caster.getMana());
+        assertEquals(1680, caster.getMana() - priestTrousers.getMana());
         assertEquals(645, caster.getAgility());
+        assertEquals(405, caster.getAgility() - priestTrousers.getAgility());
         assertEquals(445, caster.getDefense());
+        assertEquals(405, caster.getDefense() - priestTrousers.getDefense());
     }
 
     @Test
     void heroUnEquipLegPlate() {
         Hero slasher = new Hero("Slasher");
         LegArmor dragonLegPlate = new LegArmor("Dragon Leg Plate", 80, true);
-        while (slasher.getLevel() != 80)
+        while (slasher.getLevel() < 80)
             slasher.levelUp();
         slasher.equipArmor(dragonLegPlate);
         slasher.unEquipArmor(dragonLegPlate);
@@ -384,7 +411,7 @@ class HeroTest {
     void heroUnEquipTrousers() {
         Hero caster = new Hero("Caster");
         LegArmor blessedTrousers = new LegArmor("Blessed Trousers", 80, false);
-        while (caster.getLevel() != 80)
+        while (caster.getLevel() < 80)
             caster.levelUp();
         caster.equipArmor(blessedTrousers);
         caster.unEquipArmor(blessedTrousers);
@@ -402,13 +429,16 @@ class HeroTest {
     void heroEquipBoots() {
         Hero slasher = new Hero("Slasher");
         FootArmor boneBoots = new FootArmor("Bone Boots", 35, true);
-        while (slasher.getLevel() != 35)
+        while (slasher.getLevel() < 35)
             slasher.levelUp();
         slasher.equipArmor(boneBoots);
         assertEquals(boneBoots, slasher.getFootArmor());
         assertEquals(955, slasher.getHealth());
+        assertEquals(780, slasher.getHealth() - boneBoots.getHealth());
         assertEquals(197, slasher.getAgility());
+        assertEquals(180, slasher.getAgility() - boneBoots.getAgility());
         assertEquals(285, slasher.getDefense());
+        assertEquals(180, slasher.getDefense() - boneBoots.getDefense());
     }
 
     //Shoes increases mana, agility and defense
@@ -416,20 +446,23 @@ class HeroTest {
     void heroEquipShoes() {
         Hero caster = new Hero("Caster");
         FootArmor priestShoes = new FootArmor("Priest Shoes", 35, false);
-        while (caster.getLevel() != 35)
+        while (caster.getLevel() < 35)
             caster.levelUp();
         caster.equipArmor(priestShoes);
         assertEquals(priestShoes, caster.getFootArmor());
         assertEquals(955, caster.getMana());
+        assertEquals(780, caster.getMana() - priestShoes.getMana());
         assertEquals(285, caster.getAgility());
+        assertEquals(180, caster.getAgility() - priestShoes.getAgility());
         assertEquals(197, caster.getDefense());
+        assertEquals(180, caster.getDefense() - priestShoes.getDefense());
     }
 
     @Test
     void heroUnEquipBoots() {
         Hero slasher = new Hero("Slasher");
         FootArmor boneBoots = new FootArmor("Bone Boots", 35, true);
-        while (slasher.getLevel() != 35)
+        while (slasher.getLevel() < 35)
             slasher.levelUp();
         slasher.equipArmor(boneBoots);
         slasher.unEquipArmor(boneBoots);
@@ -443,7 +476,7 @@ class HeroTest {
     void heroUnEquipShoes() {
         Hero caster = new Hero("Caster");
         FootArmor priestShoes = new FootArmor("Priest Shoes", 35, false);
-        while (caster.getLevel() != 35)
+        while (caster.getLevel() < 35)
             caster.levelUp();
         caster.equipArmor(priestShoes);
         caster.unEquipArmor(priestShoes);
@@ -455,8 +488,23 @@ class HeroTest {
 
     //Foot armor equip and un-equip test ends
     //Hero equip and un-equip weapon and armor end
+
     //Armor durability dropped by 1 for every hit
     //Armor looses its effect when durability dropped to 0
+
+    @Test
+    void changeHeadArmorsDurabilityWhenHit() {
+        CombatMechanics combat = new CombatMechanics();
+        Hero slasher = new Hero("Slasher");
+        Enemy noobKing = new Enemy("Noob King", 1, 10, 10, 100,
+                100, 10, 10, false, false);
+        Armor rustyHelmet = new HeadArmor("Rusty Helmet", 1, true);
+        slasher.equipArmor(rustyHelmet);
+        combat.attackOrder(noobKing, slasher);
+        slasher.changeArmorDurability(true);
+        assertEquals(99.5, slasher.getHeadArmor().getDurability());
+    }
+
     @Test
     void heroHeadArmorDurabilityDroppedToZero() {
         CombatMechanics combat = new CombatMechanics();
@@ -465,13 +513,26 @@ class HeroTest {
                 100, 10, 10, false, false);
         Armor rustyHelmet = new HeadArmor("Rusty Helmet", 1, true);
         slasher.equipArmor(rustyHelmet);
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 200; i++) {
             combat.attackOrder(noobKing, slasher);
             slasher.changeArmorDurability(true);
         }
         assertEquals(0, slasher.getHeadArmor().getDurability());
         assertEquals(0, slasher.getHeadArmor().getHealth());
         assertEquals(0, slasher.getHeadArmor().getDefense());
+    }
+
+    @Test
+    void changeBodyArmorsDurabilityWhenHit() {
+        CombatMechanics combat = new CombatMechanics();
+        Hero slasher = new Hero("Slasher");
+        Enemy noobKing = new Enemy("Noob King", 1, 10, 10, 100,
+                100, 10, 10, false, false);
+        Armor rustyArmor = new BodyArmor("Rusty Armor", 1, true);
+        slasher.equipArmor(rustyArmor);
+        combat.attackOrder(noobKing, slasher);
+        slasher.changeArmorDurability(true);
+        assertEquals(99.5, slasher.getBodyArmor().getDurability());
     }
 
     @Test
@@ -482,7 +543,7 @@ class HeroTest {
                 100, 10, 10, false, false);
         Armor rustyArmor = new BodyArmor("Rusty Armor", 1, true);
         slasher.equipArmor(rustyArmor);
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 200; i++) {
             combat.attackOrder(noobKing, slasher);
             slasher.changeArmorDurability(true);
         }
@@ -494,6 +555,19 @@ class HeroTest {
     }
 
     @Test
+    void changeHandArmorsDurabilityWhenHit() {
+        CombatMechanics combat = new CombatMechanics();
+        Hero slasher = new Hero("Slasher");
+        Enemy noobKing = new Enemy("Noob King", 1, 10, 10, 100,
+                100, 10, 10, false, false);
+        Armor rustyGauntlets = new HandArmor("Rusty Gauntlets", 1, true);
+        slasher.equipArmor(rustyGauntlets);
+        combat.attackOrder(noobKing, slasher);
+        slasher.changeArmorDurability(true);
+        assertEquals(99.5, slasher.getHandArmor().getDurability());
+    }
+
+    @Test
     void heroHandArmorDurabilityDroppedToZero() {
         CombatMechanics combat = new CombatMechanics();
         Hero slasher = new Hero("Slasher");
@@ -501,7 +575,7 @@ class HeroTest {
                 100, 10, 10, false, false);
         Armor rustyGauntlets = new HandArmor("Rusty Gauntlets", 1, true);
         slasher.equipArmor(rustyGauntlets);
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 200; i++) {
             combat.attackOrder(noobKing, slasher);
             slasher.changeArmorDurability(true);
         }
@@ -512,6 +586,19 @@ class HeroTest {
     }
 
     @Test
+    void changeLegArmorsDurabilityWhenHit() {
+        CombatMechanics combat = new CombatMechanics();
+        Hero slasher = new Hero("Slasher");
+        Enemy noobKing = new Enemy("Noob King", 1, 10, 10, 100,
+                100, 10, 10, false, false);
+        Armor rustyLeg = new LegArmor("Rusty Leg", 1, true);
+        slasher.equipArmor(rustyLeg);
+        combat.attackOrder(noobKing, slasher);
+        slasher.changeArmorDurability(true);
+        assertEquals(99.5, slasher.getLegArmor().getDurability());
+    }
+
+    @Test
     void heroLegArmorDurabilityDroppedToZero() {
         CombatMechanics combat = new CombatMechanics();
         Hero slasher = new Hero("Slasher");
@@ -519,7 +606,7 @@ class HeroTest {
                 100, 10, 10, false, false);
         Armor rustyLeg = new LegArmor("Rusty Leg", 1, true);
         slasher.equipArmor(rustyLeg);
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 200; i++) {
             combat.attackOrder(noobKing, slasher);
             slasher.changeArmorDurability(true);
         }
@@ -531,6 +618,19 @@ class HeroTest {
     }
 
     @Test
+    void changeFootArmorsDurabilityWhenHit() {
+        CombatMechanics combat = new CombatMechanics();
+        Hero slasher = new Hero("Slasher");
+        Enemy noobKing = new Enemy("Noob King", 1, 10, 10, 100,
+                100, 10, 10, false, false);
+        Armor rustyBoots = new FootArmor("Rusty Boots", 1, true);
+        slasher.equipArmor(rustyBoots);
+        combat.attackOrder(noobKing, slasher);
+        slasher.changeArmorDurability(true);
+        assertEquals(99.5, slasher.getFootArmor().getDurability());
+    }
+
+    @Test
     void heroFootArmorDurabilityDroppedToZero() {
         CombatMechanics combat = new CombatMechanics();
         Hero slasher = new Hero("Slasher");
@@ -538,7 +638,7 @@ class HeroTest {
                 100, 10, 10, false, false);
         Armor rustyBoots = new FootArmor("Rusty Boots", 1, true);
         slasher.equipArmor(rustyBoots);
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 200; i++) {
             combat.attackOrder(noobKing, slasher);
             slasher.changeArmorDurability(true);
         }
@@ -546,6 +646,45 @@ class HeroTest {
         assertEquals(0, slasher.getFootArmor().getHealth());
         assertEquals(0, slasher.getFootArmor().getDefense());
         assertEquals(0, slasher.getFootArmor().getAgility());
+    }
+
+    @Test
+    void heroEquipPlateArmorHitOneHundredTimesStillAlive() {
+        CombatMechanics combat = new CombatMechanics();
+        Hero slasher = new Hero("Slasher");
+        Enemy noobKing = new Enemy("Noob King", 1, 10, 10, 100,
+                100, 10, 10, false, false);
+        BodyArmor rustyArmor = new BodyArmor("Rusty Armor", 1, true);
+        slasher.equipArmor(rustyArmor);
+        for (int i = 0; i < 100; i++) {
+            combat.attackOrder(noobKing, slasher);
+            slasher.changeArmorDurability(true);
+        }
+        assertTrue(rustyArmor.isPlate());
+        assertFalse(rustyArmor.isRobe());
+        assertEquals(50, slasher.getBodyArmor().getDurability());
+        assertEquals(10, slasher.getBodyArmor().getHealth());
+        assertTrue(slasher.isAlive());
+    }
+
+    @Test
+    void heroEquipRobeDiedAfterHitOneHundredTimes() {
+        CombatMechanics combat = new CombatMechanics();
+        Hero slasher = new Hero("Slasher");
+        Enemy noobKing = new Enemy("Noob King", 1, 10, 10, 100,
+                100, 10, 10, false, false);
+        BodyArmor tornRobe = new BodyArmor("Torn Robe", 1, false);
+        slasher.equipArmor(tornRobe);
+        for (int i = 0; i < 100; i++) {
+            combat.attackOrder(noobKing, slasher);
+            slasher.changeArmorDurability(true);
+        }
+        assertTrue(tornRobe.isRobe());
+        assertFalse(tornRobe.isPlate());
+        assertEquals(tornRobe, slasher.getBodyArmor());
+        assertEquals(50, slasher.getBodyArmor().getDurability());
+        assertEquals(0, slasher.getBodyArmor().getHealth());
+        assertFalse(slasher.isAlive());
     }
 
     @Test
@@ -581,20 +720,6 @@ class HeroTest {
         hero.addSpellToSpellBook(f1);
         hero.addSpellToSpellBook(f2);
         assertEquals(1, hero.getSpellBook().size());
-    }
-
-    @Test
-    void setAgilityTest() {
-        Character hero = new Hero("Hero");
-        hero.setAgility(20);
-        assertEquals(20, hero.getAgility());
-    }
-
-    @Test
-    void setIntelligenceTest() {
-        Character hero = new Hero("Hero");
-        hero.setIntelligence(30);
-        assertEquals(30, hero.getIntelligence());
     }
 
     @Test
