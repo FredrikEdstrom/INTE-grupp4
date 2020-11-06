@@ -672,7 +672,7 @@ class HeroTest {
     void heroEquipPlateArmorHitOneHundredTimesStillAlive() {
         CombatMechanics combat = new CombatMechanics();
         Hero slasher = new Hero("Slasher");
-        Enemy noobKing = new Enemy("Noob King", 1, 170, 10, 100,
+        Enemy noobKing = new Enemy("Noob King", 1, 10, 10, 100,
                 100, 10, 10, false, false);
         BodyArmor rustyArmor = new BodyArmor("Rusty Armor", 1, true);
         slasher.equipArmor(rustyArmor);

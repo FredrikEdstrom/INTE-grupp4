@@ -159,6 +159,16 @@ public abstract class Character {
 
     public void setHealth(int health) {
         this.health = health;
+        if(armor.get("Head Armor") != null)
+            this.health -= armor.get("Head Armor").getHealth();
+        if(armor.get("Body Armor") != null)
+            this.health -= armor.get("Body Armor").getHealth();
+        if(armor.get("Hand Armor") != null)
+            this.health -= armor.get("Hand Armor").getHealth();
+        if(armor.get("Leg Armor") != null)
+            this.health -= armor.get("Leg Armor").getHealth();
+        if(armor.get("Foot Armor") != null)
+            this.health -= armor.get("Foot Armor").getHealth();
         if (getHealth() <= 0)
             setAlive();
     }
