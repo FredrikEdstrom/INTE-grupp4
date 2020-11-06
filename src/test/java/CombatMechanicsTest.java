@@ -140,7 +140,7 @@ class CombatMechanicsTest {
         player.setAttack(516);
         cm.magicAttack(player, enemy);
         assertEquals(80, player.getMana());
-        assertEquals(-932, enemy.getHealth());
+        assertEquals(0, enemy.getHealth());
     }
 
     @Test
