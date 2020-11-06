@@ -47,10 +47,11 @@ class CombatMechanicsTest {
     @Test
     void playerAttacksEnemyWithHigherThanPossibleBaseAttackTest() {
         Hero player = new Hero("player");
-        player.setAttack(516);
         Enemy enemy = new Enemy("enemy", 10, 10, 10, 100, 100, 10, 5, false, false);
+        player.setAttack(516);
+        enemy.setDefense(0);
         cm.attackOrder(player, enemy);
-        assertEquals(49, enemy.getHealth());
+        assertEquals(0, enemy.getHealth());
     }
 
     @Test
