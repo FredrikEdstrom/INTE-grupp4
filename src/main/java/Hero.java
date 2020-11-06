@@ -78,6 +78,7 @@ public class Hero extends Character {
         if (armor == getFootArmor())
             setFootArmor(null);
     }
+
     //Equip weapon och armor metoder end
 
     //Armors durability drops by 1 for every hit, when it dropped to 0 and

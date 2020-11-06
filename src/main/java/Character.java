@@ -135,26 +135,62 @@ public abstract class Character {
     }
 
     public void setWeapon(Weapon weapon) {
+        if (this.weapon != null && weapon != null) {
+            this.attack -= this.weapon.getAttack();
+            this.intelligence -= this.weapon.getIntelligence();
+        }
         this.weapon = weapon;
     }
 
     public void setHeadArmor(HeadArmor headArmor) {
+        if (armor.get("Head Armor") != null && headArmor != null) {
+            this.health -= armor.get("Head Armor").getHealth();
+            this.mana -= armor.get("Head Armor").getMana();
+            this.defense -= armor.get("Head Armor").getDefense();
+        }
         armor.put("Head Armor", headArmor);
     }
 
     public void setBodyArmor(BodyArmor bodyArmor) {
+        if (armor.get("Body Armor") != null && bodyArmor != null) {
+            this.health -= armor.get("Body Armor").getHealth();
+            this.mana -= armor.get("Body Armor").getMana();
+            this.defense -= armor.get("Body Armor").getDefense();
+            this.attack -= armor.get("Body Armor").getAttack();
+            this.intelligence -= armor.get("Body Armor").getIntelligence();
+        }
         armor.put("Body Armor", bodyArmor);
     }
 
     public void setHandArmor(HandArmor handArmor) {
+        if (armor.get("Hand Armor") != null && handArmor != null) {
+            this.health -= armor.get("Hand Armor").getHealth();
+            this.mana -= armor.get("Hand Armor").getMana();
+            this.defense -= armor.get("Hand Armor").getDefense();
+            this.attack -= armor.get("Hand Armor").getAttack();
+            this.intelligence -= armor.get("Hand Armor").getIntelligence();
+        }
         armor.put("Hand Armor", handArmor);
     }
 
     public void setLegArmor(LegArmor legArmor) {
+        if (armor.get("Leg Armor") != null && legArmor != null) {
+            this.health -= armor.get("Leg Armor").getHealth();
+            this.mana -= armor.get("Leg Armor").getMana();
+            this.defense -= armor.get("Leg Armor").getDefense();
+            this.agility -= armor.get("Leg Armor").getAgility();
+        }
         armor.put("Leg Armor", legArmor);
     }
 
     public void setFootArmor(FootArmor footArmor) {
+        if (armor.get("Foot Armor") != null && footArmor != null) {
+            this.health -= armor.get("Foot Armor").getHealth();
+            this.mana -= armor.get("Foot Armor").getMana();
+            this.defense -= armor.get("Foot Armor").getDefense();
+            this.agility -= armor.get("Foot Armor").getAgility();
+            armor.put("Foot Armor", footArmor);
+        }
         armor.put("Foot Armor", footArmor);
     }
 
