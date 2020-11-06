@@ -22,7 +22,7 @@ public abstract class Character {
         this.name = name;
     }
 
-    public Character(String name, int level, int attack, int defense, int health, int mana, int intelligence, int agility){
+    public Character(String name, int level, int attack, int defense, int health, int mana, int intelligence, int agility) {
         if (name.isEmpty() || name.isBlank())
             throw new IllegalArgumentException("Name: empty"); //Namn får inte vara tom eller blank
         this.name = name;
@@ -44,78 +44,26 @@ public abstract class Character {
     }
 
     public int getAttack() {
-        int attack = this.attack;
-        if(weapon != null)
-            attack += weapon.getAttack();
-        if(armor.get("Body Armor") != null)
-            attack += armor.get("Body Armor").getAttack();
-        if(armor.get("Hand Armor") != null)
-            attack += armor.get("Hand Armor").getAttack();
         return attack;
     }
 
     public int getDefense() {
-        int defense = this.defense;
-        if(armor.get("Head Armor") != null)
-            defense += armor.get("Head Armor").getDefense();
-        if(armor.get("Body Armor") != null)
-            defense += armor.get("Body Armor").getDefense();
-        if(armor.get("Hand Armor") != null)
-            defense += armor.get("Hand Armor").getDefense();
-        if(armor.get("Leg Armor") != null)
-            defense += armor.get("Leg Armor").getDefense();
-        if(armor.get("Foot Armor") != null)
-            defense += armor.get("Foot Armor").getDefense();
         return defense;
     }
 
     public int getHealth() {
-        int health = this.health;
-        if(armor.get("Head Armor") != null)
-            health += armor.get("Head Armor").getHealth();
-        if(armor.get("Body Armor") != null)
-            health += armor.get("Body Armor").getHealth();
-        if(armor.get("Hand Armor") != null)
-            health += armor.get("Hand Armor").getHealth();
-        if(armor.get("Leg Armor") != null)
-            health += armor.get("Leg Armor").getHealth();
-        if(armor.get("Foot Armor") != null)
-            health += armor.get("Foot Armor").getHealth();
         return health;
     }
 
     public int getMana() {
-        int mana = this.mana;
-        if(armor.get("Head Armor") != null)
-            mana += armor.get("Head Armor").getMana();
-        if(armor.get("Body Armor") != null)
-            mana += armor.get("Body Armor").getMana();
-        if(armor.get("Hand Armor") != null)
-            mana += armor.get("Hand Armor").getMana();
-        if(armor.get("Leg Armor") != null)
-            mana += armor.get("Leg Armor").getMana();
-        if(armor.get("Foot Armor") != null)
-            mana += armor.get("Foot Armor").getMana();
         return mana;
     }
 
     public int getIntelligence() {
-        int intelligence = this.intelligence;
-        if(weapon != null)
-            intelligence += weapon.getIntelligence();
-        if(armor.get("Body Armor") != null)
-            intelligence += armor.get("Body Armor").getIntelligence();
-        if(armor.get("Hand Armor") != null)
-            intelligence += armor.get("Hand Armor").getIntelligence();
         return intelligence;
     }
 
     public int getAgility() {
-        int agility = this.agility;
-        if(armor.get("Leg Armor") != null)
-            agility += armor.get("Leg Armor").getAgility();
-        if(armor.get("Foot Armor") != null)
-            agility += armor.get("Foot Armor").getAgility();
         return agility;
     }
 
@@ -123,7 +71,9 @@ public abstract class Character {
         return experience;
     }
 
-    public boolean isAlive() { return isAlive;}
+    public boolean isAlive() {
+        return isAlive;
+    }
 
     public Weapon getWeapon() {
         return this.weapon;
@@ -158,18 +108,9 @@ public abstract class Character {
     }
 
     public void setHealth(int health) {
-        this.health = health;
-        if(armor.get("Head Armor") != null)
-            this.health -= armor.get("Head Armor").getHealth();
-        if(armor.get("Body Armor") != null)
-            this.health -= armor.get("Body Armor").getHealth();
-        if(armor.get("Hand Armor") != null)
-            this.health -= armor.get("Hand Armor").getHealth();
-        if(armor.get("Leg Armor") != null)
-            this.health -= armor.get("Leg Armor").getHealth();
-        if(armor.get("Foot Armor") != null)
-            this.health -= armor.get("Foot Armor").getHealth();
-        if (getHealth() <= 0)
+        if (this.health > 0)
+            this.health = health;
+        if (this.health <= 0)
             setAlive();
     }
 
@@ -181,11 +122,17 @@ public abstract class Character {
         this.intelligence = intelligence;
     }
 
-    public void setAgility(int agility) {this.agility = agility;}
+    public void setAgility(int agility) {
+        this.agility = agility;
+    }
 
-    public void setExperience(int experience) { this.experience = experience; }
+    public void setExperience(int experience) {
+        this.experience = experience;
+    }
 
-    public void setAlive() {isAlive = !isAlive;}
+    public void setAlive() {
+        isAlive = !isAlive;
+    }
 
     public void setWeapon(Weapon weapon) {
         this.weapon = weapon;
@@ -213,7 +160,7 @@ public abstract class Character {
 
     //A method that increases a Character objects level by 1 and its stats by a predefined amount
     public void levelUp() {
-        if(level < 100) {
+        if (level < 100) {
             level++;
             health += 20;
             mana += 20;

@@ -86,7 +86,10 @@ public abstract class Armor {
     public void setDurability() {
         if (durability > 0)
             durability -= 0.5;
-        if (durability == 0) {
+    }
+
+    public void durabilityZeroStatsToZero() {
+        if (durability <= 0) {
             health = 0;
             mana = 0;
             attack = 0;

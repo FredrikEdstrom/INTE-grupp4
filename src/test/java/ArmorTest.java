@@ -37,7 +37,7 @@ class ArmorTest {
         while(bodyPlate.getDurability() > 0) {
             bodyPlate.setDurability();
         }
-
+        bodyPlate.durabilityZeroStatsToZero();
         assertEquals(0, bodyPlate.getDurability());
         assertEquals(0, bodyPlate.getHealth());
         assertEquals(0, bodyPlate.getMana());
