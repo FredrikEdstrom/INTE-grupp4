@@ -15,7 +15,7 @@ public class IncreaseAttack extends BuffSpell{
     public boolean equals(Object other){
         if (other instanceof IncreaseAttack){
             IncreaseAttack i = (IncreaseAttack) other;
-            return NAME == i.NAME && DEFAULT_COST == i.DEFAULT_COST && LEVEL_REQUIREMENT == i.LEVEL_REQUIREMENT
+            return NAME.equals(i.NAME) && DEFAULT_COST == i.DEFAULT_COST && LEVEL_REQUIREMENT == i.LEVEL_REQUIREMENT
                     && DEFAULT_BUFF_VALUE == i.DEFAULT_BUFF_VALUE && DURATION == i.DURATION;
         }
         else

@@ -126,12 +126,16 @@ public class Hero extends Character {
     //Method for casting a supplied buffspell, currently only making use of IncreaseAttack
     public void castBuffSpell(BuffSpell spell) {
         if (spellBook.contains(spell)) {
-            switch (spell.getName()) {
-                case "Increase Attack":
-                    int newAttack = getAttack() + spell.getBuffValue();
-                    setAttack(newAttack);
-                    break;
+            if (spell.getName().equals("Increase Attack")){
+                int newAttack = getAttack() + spell.getBuffValue();
+                setAttack(newAttack);
             }
+//            switch (spell.getName()) {
+//                case "Increase Attack":
+//                    int newAttack = getAttack() + spell.getBuffValue();
+//                    setAttack(newAttack);
+//                    break;
+//            }
         }
     }
 

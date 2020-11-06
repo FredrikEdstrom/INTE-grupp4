@@ -21,7 +21,7 @@ public class Fireball extends AttackSpell {
     public boolean equals(Object other){
         if (other instanceof Fireball){
             Fireball f = (Fireball)other;
-            return NAME == f.NAME && DAMAGE_TYPE == f.DAMAGE_TYPE && DEFAULT_DAMAGE == f.DEFAULT_DAMAGE
+            return NAME.equals(f.NAME) && DAMAGE_TYPE.equals(f.DAMAGE_TYPE) && DEFAULT_DAMAGE == f.DEFAULT_DAMAGE
             && DEFAULT_MANA_COST == f.DEFAULT_MANA_COST && LEVEL_REQUIREMENT == f.LEVEL_REQUIREMENT;
         }
         else

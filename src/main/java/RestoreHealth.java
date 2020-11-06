@@ -19,7 +19,7 @@ public class RestoreHealth extends HealSpell{
     public boolean equals(Object other){
         if (other instanceof RestoreHealth){
             RestoreHealth r = (RestoreHealth) other;
-            return NAME == r.NAME && DEFAULT_COST == r.DEFAULT_COST && LEVEL_REQUIREMENT == r.LEVEL_REQUIREMENT
+            return NAME.equals(r.NAME) && DEFAULT_COST == r.DEFAULT_COST && LEVEL_REQUIREMENT == r.LEVEL_REQUIREMENT
                     && DEFAULT_HEAL_VALUE == r.DEFAULT_HEAL_VALUE;
         }
         else

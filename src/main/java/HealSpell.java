@@ -1,7 +1,7 @@
 // Abstract subclass of Spell that groups spells intended to heal a character.
 // Contains common properties of healing spells
 public abstract class HealSpell extends Spell {
-    private int healValue;
+    private final int healValue;
 
     public HealSpell(String name, int cost, int levelReq,int healValue) {
         super(name,cost,levelReq);
