@@ -81,6 +81,61 @@ class CombatMechanicsTest {
     }
 
     @Test
+    void playerAttacksEnemyWhichHasLowestBaseDefenseTest() {
+        Hero player = new Hero("player");
+        Enemy enemy = new Enemy("enemy", 10, 10, 10, 100, 100, 10, 5, false, false);
+        player.setAttack(100);
+        enemy.setDefense(10);
+        cm.attackOrder(player, enemy);
+        assertEquals(90, enemy.getHealth());
+    }
+
+    @Test
+    void playerAttacksEnemyWhichHasHigherThanPossibleDefenseTest() {
+        Hero player = new Hero("player");
+        player.setAttack(516);
+        Enemy enemy = new Enemy("enemy", 10, 10, 10, 100, 100, 10, 5, false, false);
+        player.setAttack(100);
+        enemy.setDefense(516);
+        cm.attackOrder(player, enemy);
+        assertEquals(99, enemy.getHealth());
+    }
+
+    @Test
+    void playerAttacksEnemyWhichHasLowerThanPossibleDefenseTest() {
+        Hero player = new Hero("player");
+        player.setAttack(9);
+        Enemy enemy = new Enemy("enemy", 10, 10, 10, 100, 100, 10, 5, false, false);
+        player.setAttack(100);
+        enemy.setDefense(1);
+        cm.attackOrder(player, enemy);
+        assertEquals(0, enemy.getHealth());
+        assertFalse(enemy.isAlive());
+    }
+
+    @Test
+    void playerAttacksEnemyWhichHasZeroDefenseTest() {
+        Hero player = new Hero("player");
+        Enemy enemy = new Enemy("enemy", 10, 10, 10, 100, 100, 10, 5, false, false);
+        player.setAttack(100);
+        enemy.setDefense(0);
+        cm.attackOrder(player, enemy);
+        assertEquals(0, enemy.getHealth());
+        assertFalse(enemy.isAlive());
+    }
+
+    @Test
+    void playerAttacksEnemyWhichHasNegativeDefenseTest() {
+        Hero player = new Hero("player");
+        Enemy enemy = new Enemy("enemy", 10, 10, 10, 100, 100, 10, 5, false, false);
+        player.setAttack(100);
+        enemy.setDefense(-10);
+        cm.attackOrder(player, enemy);
+        assertEquals(0, enemy.getHealth());
+        assertFalse(enemy.isAlive());
+    }
+
+    @Test
     void enemyAttacksPlayerWithLowestBaseAttackTest() {
         Hero player = new Hero("player");
         Enemy enemy = new Enemy("enemy", 1, 10, 10, 100, 100, 10, 5, false, false);
@@ -140,7 +195,7 @@ class CombatMechanicsTest {
         player.setAttack(516);
         cm.magicAttack(player, enemy);
         assertEquals(80, player.getMana());
-        assertEquals(-932, enemy.getHealth());
+        assertEquals(0, enemy.getHealth());
     }
 
     @Test
@@ -361,7 +416,20 @@ class CombatMechanicsTest {
         Fireball fireball = new Fireball();
         hero.addSpellToSpellBook(fireball);
         enemy.setImmunityToMagicAttack(true);
+        cm.magicSpellAttack(hero,enemy,fireball);
         assertEquals(100,enemy.getHealth());
+    }
+
+    @Test
+    void magicSpellAttackUntilEnemyDead(){
+        Hero hero = new Hero("hero");
+        Enemy enemy = new Enemy("enemy", 10, 100, 10, 100, 100, 10, 5, false, false);
+        Fireball fireball = new Fireball();
+        hero.addSpellToSpellBook(fireball);
+        while (enemy.isAlive())
+            cm.magicSpellAttack(hero,enemy,fireball);
+        assertFalse(enemy.isAlive());
+        assertEquals(0,enemy.getHealth());
     }
 
 }

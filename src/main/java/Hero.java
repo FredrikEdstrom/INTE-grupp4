@@ -20,11 +20,19 @@ public class Hero extends Character {
             throw new IllegalStateException("Hero level: " + getLevel()
                     + " Item level: " + weapon.getLevel());
         } else {
+            if(weapon.isSword())
+                setAttack(getAttack() + weapon.getAttack());
+            else
+                setIntelligence(getIntelligence() + weapon.getIntelligence());
             setWeapon(weapon);
         }
     }
 
     public void unEquipWeapon() {
+        if(getWeapon().isSword())
+            setAttack(getAttack() - getWeapon().getAttack());
+        else
+            setIntelligence(getIntelligence() - getWeapon().getIntelligence());
         setWeapon(null);
     }
 
@@ -43,10 +51,22 @@ public class Hero extends Character {
                 setLegArmor((LegArmor) armor);
             if (armor instanceof FootArmor)
                 setFootArmor((FootArmor) armor);
+            setHealth(getHealth() + armor.getHealth());
+            setMana(getMana() + armor.getMana());
+            setDefense(getDefense() + armor.getDefense());
+            setAttack(getAttack() + armor.getAttack());
+            setIntelligence(getIntelligence() + armor.getIntelligence());
+            setAgility(getAgility() + armor.getAgility());
         }
     }
 
     public void unEquipArmor(Armor armor) {
+        setHealth(getHealth() - armor.getHealth());
+        setMana(getMana() - armor.getMana());
+        setDefense(getDefense() - armor.getDefense());
+        setAttack(getAttack() - armor.getAttack());
+        setIntelligence(getIntelligence() - armor.getIntelligence());
+        setAgility(getAgility() - armor.getAgility());
         if (armor == getHeadArmor())
             setHeadArmor(null);
         if (armor == getBodyArmor())
@@ -61,20 +81,40 @@ public class Hero extends Character {
     //Equip weapon och armor metoder end
 
     //Armors durability drops by 1 for every hit, when it dropped to 0 and
-    //un-equip it automatically and then all armor stats become 0
+    //then all armor stats become 0
     public void changeArmorDurability(boolean hit) {
         if (hit) {
             if (getHeadArmor() != null)
                 getHeadArmor().setDurability();
+            if (getHeadArmor() != null && getHeadArmor().getDurability() <= 0)
+                changeArmorEffects(getHeadArmor());
             if (getBodyArmor() != null)
                 getBodyArmor().setDurability();
+            if (getBodyArmor() != null && getBodyArmor().getDurability() <= 0)
+                changeArmorEffects(getBodyArmor());
             if (getLegArmor() != null)
                 getLegArmor().setDurability();
+            if (getLegArmor() != null && getLegArmor().getDurability() <= 0)
+                changeArmorEffects(getLegArmor());
             if (getHandArmor() != null)
                 getHandArmor().setDurability();
+            if (getHandArmor() != null && getHandArmor().getDurability() <= 0)
+                changeArmorEffects(getHandArmor());
             if (getFootArmor() != null)
                 getFootArmor().setDurability();
+            if (getFootArmor() != null && getFootArmor().getDurability() <= 0)
+                changeArmorEffects(getFootArmor());
         }
+    }
+
+    public void changeArmorEffects(Armor armor) {
+        setHealth(getHealth() - armor.getHealth());
+        setMana(getMana() - armor.getMana());
+        setDefense(getDefense() - armor.getDefense());
+        setAttack(getAttack() - armor.getAttack());
+        setIntelligence(getIntelligence() - armor.getIntelligence());
+        setAgility(getAgility() - armor.getAgility());
+        armor.durabilityZeroStatsToZero();
     }
 
     //Method for adding a previously unknown spell to the hero spellbook

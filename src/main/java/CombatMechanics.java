@@ -9,7 +9,7 @@ public class CombatMechanics {
         } else {
             if(defender.getDefense() < 1){
                 defender.setHealth(defender.getHealth() - attacker.getAttack());
-            } else if(attacker.getAttack() >= defender.getHealth()){
+            } else if(attacker.getAttack() >= defender.getDefense()){
                 defender.setHealth(defender.getHealth() - (attacker.getAttack() / defender.getDefense()));
             } else{
                 defender.setHealth(defender.getHealth()-1);
